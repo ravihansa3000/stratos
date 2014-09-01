@@ -20,29 +20,14 @@
 #
 # ----------------------------------------------------------------------------
 
-set -e # fail on error
-set -x # debug output
+set -e
+set -u
 
-cd bind
-docker -D push apachestratos/bind:$VERSION
-cd ..
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cd puppetmaster
-docker push apachestratos/puppetmaster:$VERSION
-cd ..
+. /$SCRIPT_DIR/stop_stratos_containers.sh
 
-cd puppettestnode
-docker push apachestratos/puppettestnode:$VERSION
-cd ..
-
-cd mysql
-docker push apachestratos/mysql:$VERSION
-cd ..
-
-cd activemq
-docker push apachestratos/activemq:$VERSION
-cd ..
-
-cd stratos
-docker push apachestratos/stratos:$VERSION
-cd ..
+stratos_image_ids=$(docker images -a | grep '^apachestratos' | awk '{print $3}')
+if [[ -n $stratos_image_ids ]]; then
+  docker rmi $stratos_image_ids
+fi
