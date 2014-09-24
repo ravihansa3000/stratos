@@ -59,6 +59,11 @@
             <version>0.0.7</version>
         </dependency>
         <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch.agentproxy.usocket-nc</artifactId>
+            <version>0.0.7</version>
+        </dependency>
+        <dependency>
             <groupId>net.schmizz</groupId>
             <artifactId>sshj</artifactId>
             <version>0.9.0</version>
@@ -269,14 +274,12 @@
                                 <bundleDef>org.apache.jclouds.api:openstack-keystone:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.stratos:aws-ec2:1.8.0-stratos</bundleDef>
                                 <bundleDef>com.google.guava:guava:17.0</bundleDef>
-
-
                                 <bundleDef>
                                     org.apache.servicemix.bundles:org.apache.servicemix.bundles.jsch-agentproxy-jsch:0.0.7_1
                                 </bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.connector-factory:0.0.7</bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.sshagent:0.0.7</bundleDef>
-                                <bundleDef>com.jcraft:jsch.agentproxy.usocket-jna:0.0.7</bundleDef>
+                                <bundleDef>com.jcraft:jsch.agentproxy.usocket-nc:0.0.7</bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.core:0.0.7</bundleDef>
                                 <bundleDef>net.java.dev.jna:jna:4.1.0</bundleDef>
                                 <bundleDef>
