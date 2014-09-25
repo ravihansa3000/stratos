@@ -37,7 +37,6 @@ import org.apache.stratos.messaging.message.receiver.topology.TopologyManager;
 public class CEPTopologyEventReceiver implements Runnable {
 
     private static final Log log = LogFactory.getLog(CEPTopologyEventReceiver.class);
-
     private TopologyEventReceiver topologyEventReceiver;
     private boolean terminated;
     private FaultHandlingWindowProcessor faultHandler;
@@ -59,7 +58,7 @@ public class CEPTopologyEventReceiver implements Runnable {
                     try {
                         TopologyManager.acquireReadLock();
                         if (log.isInfoEnabled()) {
-                            log.info("Complete topology event received to fault handling window processor.");
+                            log.info("Complete topology event received by fault handling window processor.");
                         }
                         CompleteTopologyEvent completeTopologyEvent = (CompleteTopologyEvent) event;
                         initialized = faultHandler.loadTimeStampMapFromTopology(completeTopologyEvent.getTopology());
@@ -79,8 +78,7 @@ public class CEPTopologyEventReceiver implements Runnable {
                 MemberTerminatedEvent memberTerminatedEvent = (MemberTerminatedEvent) event;
                 faultHandler.getMemberTimeStampMap().remove(memberTerminatedEvent.getMemberId());
                 if (log.isInfoEnabled()){
-                    log.info("Member [member id] " + memberTerminatedEvent.getMemberId() +
-                            " was removed from the time stamp map.");
+                    log.info("Member removed from the time stamp map [member id] " + memberTerminatedEvent.getMemberId());
                 }
             }
         });
@@ -93,8 +91,9 @@ public class CEPTopologyEventReceiver implements Runnable {
 
                 // do not put this member if we have already received a health event
                 faultHandler.getMemberTimeStampMap().putIfAbsent(memberActivatedEvent.getMemberId(), System.currentTimeMillis());
-                log.info("Member [member id] " + memberActivatedEvent.getMemberId() +
-                        " was added to the time stamp map.");
+                if (log.isInfoEnabled()){
+                    log.info("Member added to the time stamp map [member id] " + memberActivatedEvent.getMemberId());
+                }
             }
         });
     }
@@ -108,7 +107,7 @@ public class CEPTopologyEventReceiver implements Runnable {
         Thread thread = new Thread(topologyEventReceiver);
         thread.start();
         if (log.isInfoEnabled()) {
-            log.info("CEP topology receiver thread started");
+            log.info("CEP topology receiver thread started.");
         }
 
         // Keep the thread live until terminated
@@ -119,7 +118,7 @@ public class CEPTopologyEventReceiver implements Runnable {
             }
         }
         if (log.isInfoEnabled()) {
-            log.info("CEP topology receiver thread terminated");
+            log.info("CEP topology receiver thread terminated.");
         }
     }
 

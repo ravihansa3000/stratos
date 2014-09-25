@@ -280,7 +280,7 @@ public class FaultHandlingWindowProcessor extends WindowProcessor implements Run
         Thread topologyTopicSubscriberThread = new Thread(cepTopologyEventReceiver);
         topologyTopicSubscriberThread.start();
         if (log.isDebugEnabled()) {
-            log.debug("CEP topology receiver thread started");
+            log.debug("CEP topology receiver thread started.");
         }
 
         //Ordinary scheduling
