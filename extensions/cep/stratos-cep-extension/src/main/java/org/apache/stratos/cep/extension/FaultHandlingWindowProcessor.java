@@ -230,8 +230,10 @@ public class FaultHandlingWindowProcessor extends WindowProcessor implements Run
                 Long eventTimeStamp = (Long) pair.getValue();
 
                 if ((currentTime - eventTimeStamp) > TIME_OUT) {
-                    log.info("Faulty member detected [member-id] " + pair.getKey() + " with [last time-stamp] " +
-                            eventTimeStamp + " [time-out] " + TIME_OUT + " milliseconds");
+                    if (log.isInfoEnabled()) {
+                        log.info("Faulty member detected [member-id] " + pair.getKey() + " with [last time-stamp] " +
+                                eventTimeStamp + " [time-out] " + TIME_OUT + " milliseconds");
+                    }
                     publishMemberFault((String) pair.getKey());
                 }
             }
@@ -261,6 +263,7 @@ public class FaultHandlingWindowProcessor extends WindowProcessor implements Run
     @Override
     protected void init(Expression[] parameters, QueryPostProcessingElement nextProcessor,
                         AbstractDefinition streamDefinition, String elementId, boolean async, SiddhiContext siddhiContext) {
+        // get parameters from execution plan
         if (parameters[0] instanceof IntConstant) {
             timeToKeep = ((IntConstant) parameters[0]).getValue();
         } else {
