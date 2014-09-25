@@ -168,28 +168,35 @@ public class FaultHandlingWindowProcessor extends WindowProcessor implements Run
         if (StringUtils.isEmpty(memberId)){
             return null;
         }
-        if (TopologyManager.getTopology().isInitialized()){
+        try {
             TopologyManager.acquireReadLock();
-            if (TopologyManager.getTopology().getServices() == null){
-                return null;
-            }
+            if (TopologyManager.getTopology().isInitialized()){
 
-            // TODO make this efficient by adding APIs to messaging component
-            for (Service service : TopologyManager.getTopology().getServices()) {
-                if (service.getClusters() != null) {
-                    for (Cluster cluster : service.getClusters()) {
-                        if (cluster.getMembers() != null) {
-                            for (Member member : cluster.getMembers()){
-                                if (memberId.equals(member.getMemberId())){
-                                    return member;
+                if (TopologyManager.getTopology().getServices() == null){
+                    return null;
+                }
+
+                // TODO make this efficient by adding APIs to messaging component
+                for (Service service : TopologyManager.getTopology().getServices()) {
+                    if (service.getClusters() != null) {
+                        for (Cluster cluster : service.getClusters()) {
+                            if (cluster.getMembers() != null) {
+                                for (Member member : cluster.getMembers()){
+                                    if (memberId.equals(member.getMemberId())){
+                                        return member;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+        }catch (Exception e){
+            log.error("Failed to retrieve member from the topology." + e.getMessage());
+        }finally {
             TopologyManager.releaseReadLock();
         }
+
         return null;
     }
 
