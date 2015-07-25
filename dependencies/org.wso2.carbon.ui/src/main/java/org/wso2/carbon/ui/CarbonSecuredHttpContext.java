@@ -1,23 +1,23 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
+ *  Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  WSO2 Inc. licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
+ * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
  */
 package org.wso2.carbon.ui;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.osgi.framework.Bundle;
@@ -52,7 +52,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     private Context defaultContext;
 
     /**
-     * 
      * @param bundle
      * @param s
      * @param uiResourceRegistry
@@ -71,7 +70,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     public boolean handleSecurity(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String requestedURI = request.getRequestURI();
-        
         // Get the matching CarbonUIAuthenticator. If no match found for the given request, this
         // will return null.
         CarbonUIAuthenticator authenticator = CarbonUILoginUtil.getAuthenticator(request);
@@ -161,8 +159,7 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
            return true;
         }
 
-
-        String resourceURI = requestedURI.replaceFirst("/carbon/", "../");
+        String resourceURI = requestedURI.replaceFirst(context + "/carbon/", contextURIBuilder(context + "/carbon"));
 
         if (log.isDebugEnabled()) {
             log.debug("CarbonSecuredHttpContext -> handleSecurity() requestURI:" + requestedURI
@@ -293,7 +290,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      * @param indexPageURL
      * @return
      */
@@ -317,7 +313,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      * @param request
      * @param session
      * @param resourceURI
@@ -349,7 +344,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private void populateUrlsToBeBypassed() {
@@ -368,7 +362,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      * @param requestedURI
      * @param request
      * @param response
@@ -393,6 +386,7 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
                     || requestedURI.endsWith("/fileupload")
                     || requestedURI.contains("/fileupload/")
                     || requestedURI.contains("admin/jsp/WSRequestXSSproxy_ajaxprocessor.jsp")
+                    || requestedURI.contains("tryit/JAXRSRequestXSSproxy_ajaxprocessor.jsp")
                     || requestedURI.contains("registry/atom")
                     || requestedURI.contains("registry/tags") || requestedURI.contains("gadgets/")
                     || requestedURI.contains("registry/resource")) {
@@ -428,10 +422,8 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
                 }
                 return CarbonUILoginUtil.RETURN_TRUE;
             }
-            
             String enableHTTPAdminConsole = CarbonUIServiceComponent.getServerConfiguration()
                   .getFirstProperty(CarbonConstants.ENABLE_HTTP_ADMIN_CONSOLE);
-            
             if (enableHTTPAdminConsole == null || "false".equalsIgnoreCase(enableHTTPAdminConsole.trim())) {
                 String adminConsoleURL = CarbonUIUtil.getAdminConsoleURL(request);
                 if (adminConsoleURL != null) {
@@ -449,7 +441,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      * @param request
      * @param response
      * @return
@@ -472,7 +463,6 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
     }
 
     /**
-     * 
      */
     @SuppressWarnings("unchecked")
     private void populatehttpUrlsToBeByPassed() {
@@ -493,6 +483,22 @@ public class CarbonSecuredHttpContext extends SecuredComponentEntryHttpContext {
                 }
             }
         }
+    }
+
+    /**
+     *
+     * @param contextPath
+     * @return
+     */
+    private String contextURIBuilder(String contextPath){
+        int count = StringUtils.countMatches(contextPath, "/");
+        String depthOfContext="";
+        for(int i=0;i<count;i++){
+
+            depthOfContext =depthOfContext+"../";
+
+        }
+        return depthOfContext;
     }
 
 }

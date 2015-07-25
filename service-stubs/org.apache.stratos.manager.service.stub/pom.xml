@@ -46,9 +46,9 @@
                         <configuration>
                             <tasks>
                                 <path id="wsdl2java.classpath">
-                                    <pathelement location="${settings.localRepository}/org/apache/ws/commons/axiom/wso2/axiom/${axiom.wso2.version}/axiom-${axiom.wso2.version}.jar" />
-                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${axis2.wso2.client.version}/axis2-client-${axis2.wso2.client.version}.jar" />
-                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${axis2.wso2.version}/axis2-${axis2.wso2.version}.jar" />
+                                    <pathelement location="${settings.localRepository}/org/apache/ws/commons/axiom/wso2/axiom/${orbit.version.axiom}/axiom-${orbit.version.axiom}.jar" />
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2-client/${orbit.version.axis2.client}/axis2-client-${orbit.version.axis2.client}.jar" />
+                                    <pathelement location="${settings.localRepository}/org/apache/axis2/wso2/axis2/${orbit.version.axis2}/axis2-${orbit.version.axis2}.jar" />
                                 </path>
                                 <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
                                     <arg line="-uri src/main/resources/StratosManagerService.wsdl -u -uw -o target/generated-code -p org.apache.stratos.manager.service.stub -ns2p http://impl.services.manager.stratos.apache.org=org.apache.stratos.manager.service.stub.impl,http://domain.manager.stratos.apache.org/xsd=org.apache.stratos.manager.service.stub.domain,http://exception.manager.stratos.apache.org/xsd=org.apache.stratos.manager.service.stub.exceptions,http://signup.application.domain.messaging.stratos.apache.org/xsd=org.apache.stratos.manager.service.stub.domain.application.signup" />

@@ -1,35 +1,22 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
 package org.wso2.carbon.ui;
 
+import java.rmi.RemoteException;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.ServiceClient;
+import org.apache.axis2.context.ConfigurationContext;
 import org.wso2.carbon.CarbonConstants;
+import org.wso2.carbon.authenticator.proxy.AuthenticationAdminClient;
 import org.wso2.carbon.core.common.AuthenticationException;
 import org.wso2.carbon.ui.util.CarbonUIAuthenticationUtil;
 import org.wso2.carbon.utils.CarbonUtils;
+import org.wso2.carbon.utils.ServerConstants;
 import org.wso2.carbon.utils.multitenancy.MultitenantConstants;
 
 public class BasicAuthUIAuthenticator extends AbstractCarbonUIAuthenticator {
@@ -171,8 +158,31 @@ public class BasicAuthUIAuthenticator extends AbstractCarbonUIAuthenticator {
 
     @Override
     public void unauthenticate(Object object) throws Exception {
-        // TODO Auto-generated method stub
+        try {
+            getAuthenticationAdminCient(((HttpServletRequest) object)).logout();
+        } catch (AxisFault axisFault) {
+            String msg = "Failed to authenticate ";
+            log.error(msg, axisFault);
+            throw new Exception(msg, axisFault);
+        }
+    }
 
+    protected AuthenticationAdminClient getAuthenticationAdminCient(HttpServletRequest request)
+            throws AxisFault {
+        HttpSession session = request.getSession();
+        ServletContext servletContext = session.getServletContext();
+        String backendServerURL = request.getParameter("backendURL");
+        if (backendServerURL == null) {
+            backendServerURL = CarbonUIUtil.getServerURL(servletContext, request.getSession());
+        }
+        session.setAttribute(CarbonConstants.SERVER_URL, backendServerURL);
+
+        ConfigurationContext configContext = (ConfigurationContext) servletContext
+                .getAttribute(CarbonConstants.CONFIGURATION_CONTEXT);
+
+        String cookie = (String) session.getAttribute(ServerConstants.ADMIN_SERVICE_AUTH_TOKEN);
+
+        return new AuthenticationAdminClient(configContext, backendServerURL, cookie, session, true);
     }
 
     @Override

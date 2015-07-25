@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.wso2.andes.wso2</groupId>
             <artifactId>andes-client</artifactId>
-            <version>0.13.wso2v8</version>
+            <version>${andes.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,55 +1,30 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
+ * Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.wso2.carbon.ui.internal;
-
-import static org.wso2.carbon.CarbonConstants.PRODUCT_XML;
-import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_PROPERTIES;
-import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_PROPERTY;
-import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_WSO2CARBON;
-import static org.wso2.carbon.CarbonConstants.WSO2CARBON_NS;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.ContentHandler;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.StringTokenizer;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.xml.namespace.QName;
-import javax.xml.stream.FactoryConfigurationError;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.axis2.context.ConfigurationContext;
+import org.apache.catalina.Loader;
+import org.apache.catalina.core.DefaultInstanceManager;
+import org.apache.catalina.core.NamingContextListener;
+import org.apache.catalina.core.StandardContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.tomcat.InstanceManager;
 import org.eclipse.equinox.http.helper.ContextPathServletAdaptor;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -85,6 +60,34 @@ import org.wso2.carbon.ui.transports.FileUploadServlet;
 import org.wso2.carbon.ui.util.UIAnnouncementDeployer;
 import org.wso2.carbon.user.core.service.RealmService;
 import org.wso2.carbon.utils.ConfigurationContextService;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
+import javax.xml.namespace.QName;
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.ContentHandler;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+import static org.wso2.carbon.CarbonConstants.PRODUCT_XML;
+import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_PROPERTIES;
+import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_PROPERTY;
+import static org.wso2.carbon.CarbonConstants.PRODUCT_XML_WSO2CARBON;
+import static org.wso2.carbon.CarbonConstants.WSO2CARBON_NS;
 
 /**
  * @scr.component name="core.ui.dscomponent" immediate="true"
@@ -300,6 +303,10 @@ public class CarbonUIServiceComponent {
 
         ServletContext jspServletContext =
                 adaptedJspServlet.getServletConfig().getServletContext();
+
+        jspServletContext.setAttribute(
+                InstanceManager.class.getName(), getTomcatInstanceManager());
+
         jspServletContext.setAttribute("registry", registryService);
 
         jspServletContext.setAttribute(CarbonConstants.SERVER_CONFIGURATION, serverConfig);
@@ -335,6 +342,27 @@ public class CarbonUIServiceComponent {
 
         //read product.xml
         readProductXML(jspServletContext, uiBundleDeployer);
+    }
+
+    private InstanceManager getTomcatInstanceManager() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        String webContextRoot = getServerConfiguration().getFirstProperty("WebContextRoot");
+        NamingContextListener ncl = new NamingContextListener();
+        ncl.setName("/Catalina/localhost" + webContextRoot);
+        ncl.setExceptionOnFailedWrite(true);
+        javax.naming.Context context = ncl.getEnvContext();
+
+        Map<String, Map<String, String>> injectionMap = new HashMap<String, Map<String, String>>();
+        ClassLoader containerClassloader = this.getClass().getClassLoader();
+
+        //create a dummy context, and use it to create the tomcat InstanceManager instance.
+        org.apache.catalina.Context dummyCtx = new StandardContext();
+        dummyCtx.setName("carbon");
+        dummyCtx.setPath(webContextRoot);
+        dummyCtx.setDocBase(System.getProperty("java.io.tmpdir"));
+
+        dummyCtx.setLoader((Loader) Class.forName("org.apache.catalina.loader.WebappLoader").newInstance());
+
+        return new DefaultInstanceManager(context, injectionMap, dummyCtx, containerClassloader);
     }
 
     /**

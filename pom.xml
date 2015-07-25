@@ -18,7 +18,7 @@
     under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -125,8 +125,8 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
-                            <source>1.6</source>
-                            <target>1.6</target>
+                            <source>1.7</source>
+                            <target>1.7</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -169,7 +169,7 @@
                                 <exclude>**/scriptaculous/**/*</exclude>
                                 <exclude>**/prototype-1.6.js</exclude>
                                 <exclude>**/prototype.js</exclude>
-				<exclude>**/.gitmodules</exclude>
+                                <exclude>**/.gitmodules</exclude>
 
                                 <!-- Added following based on jclouds -->
                                 <exclude>**/src/test/resources/**/*.xml</exclude>
@@ -178,13 +178,13 @@
                                 <exclude>**/services/*ApiMetadata</exclude>
                                 <exclude>**/services/*ProviderMetadata</exclude>
                                 <exclude>**/dhtmlHistory.js</exclude>
-				
-				<!-- for ActivMQ test broker -->
+
+                                <!-- for ActivMQ test broker -->
                                 <exclude>**/db.data</exclude>
-				
-				<!-- WSDLs -->
-				<exclude>**/*.wsdl</exclude>
-				
+
+                                <!-- WSDLs -->
+                                <exclude>**/*.wsdl</exclude>
+
                             </excludes>
                             <excludeSubProjects>false</excludeSubProjects>
                         </configuration>
@@ -209,8 +209,8 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
-                            <source>1.6</source>
-                            <target>1.6</target>
+                            <source>1.7</source>
+                            <target>1.7</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -439,8 +439,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -509,14 +509,12 @@
                     <extensions>true</extensions>
                     <configuration>
                         <obrRepository>NONE</obrRepository>
-                        <!--<instructions>
-                          <_include>-osgi.bnd</_include>
-                        </instructions>-->
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1.2</version>
                     <executions>
                         <execution>
                             <id>attach-sources</id>
@@ -547,12 +545,114 @@
     </build>
 
     <properties>
-        <!-- Carbon related versions -->
-        <wso2carbon.version>4.2.0</wso2carbon.version>
-        <carbon.platform.package.import.version.range>[4.2.0, 5.0.0)</carbon.platform.package.import.version.range>
-        <carbon.platform.package.export.version>4.2.0</carbon.platform.package.export.version>
-        <axis2.osgi.version>1.6.1.wso2v10</axis2.osgi.version>
+        <!-- Carbon kernel version -->
+        <carbon.kernel.version>4.4.0</carbon.kernel.version>
+        <carbon.kernel.imp.pkg.version>[4.4.0, 4.5.0)</carbon.kernel.imp.pkg.version>
+        <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
+
+        <!-- Carbon Commons version -->
+        <carbon.commons.version>4.4.0</carbon.commons.version>
+        <carbon.commons.imp.pkg.version>[4.4.0, 4.5.0)</carbon.commons.imp.pkg.version>
+
+        <!-- Carbon Deployment version-->
+        <carbon.deployment.version>4.4.0</carbon.deployment.version>
+
+        <carbon.startup.version>4.2.0</carbon.startup.version>
+        <carbon.qos.version>4.2.0</carbon.qos.version>
+        <org.wso2.carbon.caching.version>4.2.0</org.wso2.carbon.caching.version>
+        <org.wso2.carbon.rm.version>4.2.0</org.wso2.carbon.rm.version>
+        <org.wso2.carbon.datasource.version>4.2.0</org.wso2.carbon.datasource.version>
+        <org.wso2.carbon.transport.version>4.2.0</org.wso2.carbon.transport.version>
+
+        <!-- Carbon Registry version-->
+        <carbon.registry.version>4.4.0</carbon.registry.version>
+        <carbon.registry.imp.pkg.version>[4.4.4, 4.5.0)</carbon.registry.imp.pkg.version>
+
+        <!-- Carbon mediation version -->
+        <carbon.mediation.version>4.4.2</carbon.mediation.version>
+        <carbon.mediation.exp.pkg.version>${carbon.mediation.version}</carbon.mediation.exp.pkg.version>
+        <carbon.mediation.imp.pkg.version>[4.3.0, 4.5.0)</carbon.mediation.imp.pkg.version>
+
+        <!-- Synapse Version -->
+        <synapse.version>2.1.3-wso2v3</synapse.version>
+        <synapse.core.version>2.1.1-wso2v4</synapse.core.version>
+
+        <!-- Axis2 versions -->
+        <orbit.version.axis2>1.6.1.wso2v12</orbit.version.axis2>
+        <orbit.version.axis2.client>1.6.1.wso2v12</orbit.version.axis2.client>
+        <axis2-transports.base.version>1.6.1-wso2v12</axis2-transports.base.version>
+        <axis2.osgi.version.range>[1.6.1.wso2v11, 1.7.0)</axis2.osgi.version.range>
+        <axis2.json.version>1.6.1-wso2v5</axis2.json.version>
+
+        <!-- JClouds versions -->
         <jclouds.version>1.8.1</jclouds.version>
-        <project.jclouds.stratos.version>1.8.1-stratos</project.jclouds.stratos.version>
+        <jclouds.stratos.version>1.8.1-stratos</jclouds.stratos.version>
+
+        <!-- Axiom Version -->
+        <orbit.version.axiom>1.2.11.wso2v6</orbit.version.axiom>
+        <axiom.osgi.version.range>[1.2.11.wso2v5, 1.3.0)</axiom.osgi.version.range>
+
+        <!--Carbon identity version-->
+        <carbon.identity.version>4.5.3</carbon.identity.version>
+        <carbon.identity.package.import.version.range>[4.5.0, 4.6.0)</carbon.identity.package.import.version.range>
+
+        <neethi.version>3.0.2</neethi.version>
+        <neethi.osgi.version>2.0.4.wso2v4</neethi.osgi.version>
+
+        <neethi.wso2.version>2.0.4.wso2v4</neethi.wso2.version>
+        <rampart.wso2.version>1.6.1.wso2v9</rampart.wso2.version>
+
+        <junit.version>4.11</junit.version>
+        <google.guava.wso2.version>12.0.0.wso2v1</google.guava.wso2.version>
+
+        <org.eclipse.osgi.version>3.7.0.v20110613</org.eclipse.osgi.version>
+        <tomcat.version>7.0.34</tomcat.version>
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
+        <orbit.version.geronimo-jms_1.1_spec.version>1.1.0.wso2v1</orbit.version.geronimo-jms_1.1_spec.version>
+        <geronimo-j2ee-management_1.1_spec.version>1.0.1</geronimo-j2ee-management_1.1_spec.version>
+        <activemq.version>5.10.0</activemq.version>
+        <eclipse-mqtt-client>0.4.0</eclipse-mqtt-client>
+        <google.guice.wso2.version>3.0.wso2v1</google.guice.wso2.version>
+        <commons-httpclient.version>3.0.1</commons-httpclient.version>
+        <imp.pkg.version.javax.servlet>[2.6.0, 3.0.0)</imp.pkg.version.javax.servlet>
+        <drools.version>5.5.0.Final</drools.version>
+        <orbit.version.drools>5.0.1.wso2v1</orbit.version.drools>
+        <servlet-api.version>2.4</servlet-api.version>
+        <wiremock.version>1.46</wiremock.version>
+        <wsdl4j.wso2.version>1.6.2.wso2v4</wsdl4j.wso2.version>
+        <xmlschema.wso2.version>1.4.7.wso2v2</xmlschema.wso2.version>
+
+        <gson.version>2.2.4</gson.version>
+        <com.google.guice.assistedinject.wso2.version>3.0.wso2v1</com.google.guice.assistedinject.wso2.version>
+        <sun.jersey.version>1.12</sun.jersey.version>
+        <exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <sonar-jacoco-listeners.version>1.2</sonar-jacoco-listeners.version>
+        <xstream.version>1.4.1</xstream.version>
+        <antlr.version>3.3</antlr.version>
+        <antlr-runtime.version>3.3</antlr-runtime.version>
+        <antlr-stringtemplate.version>3.2.1</antlr-stringtemplate.version>
+        <mvel2.version>2.1.3.Final</mvel2.version>
+        <orbit.version.mvel2>2.0.10.wso2v1</orbit.version.mvel2>
+        <eclipse-ecj.version>3.5.1</eclipse-ecj.version>
+        <xmlpull.version>1.1.3.1</xmlpull.version>
+        <xpp3.version>1.1.4c</xpp3.version>
+        <itext.version>2.1.2</itext.version>
+        <jsr94.version>1.1</jsr94.version>
+        <orbit.version.jsr94>1.1.0.wso2v1</orbit.version.jsr94>
+        <nimbus-jose-jwt.version>2.26.1.wso2v2</nimbus-jose-jwt.version>
+        <zip4j.version>1.3.2</zip4j.version>
+        <andes.version>2.6.0</andes.version>
+        <commons-io.version>2.0</commons-io.version>
+        <commons-exec.version>1.0.1</commons-exec.version>
+        <orbit.version.jgit>2.3.1.wso2v2</orbit.version.jgit>
+        <orbit.version.jsch>0.1.49.wso2v1</orbit.version.jsch>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 </project>

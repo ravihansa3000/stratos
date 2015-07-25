@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.wso2.andes.wso2</groupId>
             <artifactId>andes-client</artifactId>
-            <version>0.13.wso2v8</version>
+            <version>${andes.version}</version>
             <type>jar</type>
         </dependency>
         <!--dependency>
@@ -173,9 +173,9 @@
             <version>${carbon.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.sequences.common</artifactId>
-            <version>${carbon.version}</version>
+            <version>${carbon.mediation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -482,7 +482,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.wso2.carbon.ui</artifactId>
-            <version>4.2.0-stratos</version>
+            <version>4.4.0-stratos</version>
         </dependency>
     </dependencies>
     <build>
@@ -554,24 +554,28 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <copy todir="target/wso2carbon-core-4.2.0/dbscripts/identity" overwrite="false">
-                                    <fileset dir="${basedir}/../p2-profile-gen/target/wso2carbon-core-4.2.0/dbscripts/identity/" />
+                                <copy todir="target/wso2carbon-core-4.4.0/dbscripts/identity" overwrite="false">
+                                    <fileset
+                                            dir="${basedir}/../p2-profile-gen/target/wso2carbon-core-4.4.0/dbscripts/identity/" />
                                 </copy>
                                 <path id="h2.classpath">
                                     <path refid="maven.compile.classpath" />
                                 </path>
                                 <echo message="########### Adding identity , identity/application-mgt tables to WSO2Carbon DB ##############" />
-                                <sql driver="org.h2.Driver" url="jdbc:h2:${basedir}/target/wso2carbon-core-4.2.0/repository/database//WSO2CARBON_DB" userid="wso2carbon" password="wso2carbon" autocommit="true" onerror="continue">
+                                <sql driver="org.h2.Driver"
+                                     url="jdbc:h2:${basedir}/target/wso2carbon-core-4.4.0/repository/database//WSO2CARBON_DB" userid="wso2carbon" password="wso2carbon" autocommit="true" onerror="continue">
                                     <classpath>
                                         <path refid="h2.classpath" />
                                     </classpath>
-                                    <fileset file="target/wso2carbon-core-4.2.0/dbscripts/identity/application-mgt/h2.sql" />
+                                    <fileset
+                                            file="target/wso2carbon-core-4.4.0/dbscripts/identity/application-mgt/h2.sql" />
                                 </sql>
-                                <sql driver="org.h2.Driver" url="jdbc:h2:${basedir}/target/wso2carbon-core-4.2.0/repository/database/WSO2CARBON_DB" userid="wso2carbon" password="wso2carbon" autocommit="true" onerror="continue">
+                                <sql driver="org.h2.Driver"
+                                     url="jdbc:h2:${basedir}/target/wso2carbon-core-4.4.0/repository/database/WSO2CARBON_DB" userid="wso2carbon" password="wso2carbon" autocommit="true" onerror="continue">
                                     <classpath>
                                         <path refid="h2.classpath" />
                                     </classpath>
-                                    <fileset file="target/wso2carbon-core-4.2.0/dbscripts/identity/h2.sql" />
+                                    <fileset file="target/wso2carbon-core-4.4.0/dbscripts/identity/h2.sql" />
                                 </sql>
                             </tasks>
                         </configuration>

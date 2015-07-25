@@ -74,6 +74,7 @@
             <plugin>
                 <groupId>org.apache.axis2</groupId>
                 <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
+                <version>1.6.3</version>
                 <configuration>
                     <className>org.apache.stratos.cloud.controller.services.impl.CloudControllerServiceImpl</className>
                     <outputFileName>target/generated-resources/wsdl/CloudControllerService.wsdl</outputFileName>
@@ -94,12 +95,12 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
@@ -149,7 +150,7 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.securevault</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hectorclient.wso2</groupId>
@@ -165,17 +166,17 @@
         <dependency>
             <groupId>org.wso2.andes.wso2</groupId>
             <artifactId>andes-client</artifactId>
-            <version>0.13.wso2v3</version>
+            <version>${andes.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs.wso2</groupId>
             <artifactId>geronimo-jms_1.1_spec</artifactId>
-            <version>${orbit.version.geronimo-jms_1.1_spec}</version>
+            <version>${orbit.version.geronimo-jms_1.1_spec.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.analytics.hive.stub</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>4.2.0</version>
         </dependency>
         <!-- jclouds dependencies -->
         <dependency>
@@ -222,7 +223,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>aws-ec2</artifactId>
-            <version>${project.jclouds.stratos.version}</version>
+            <version>${jclouds.stratos.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
@@ -232,7 +233,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>openstack-neutron</artifactId>
-            <version>${project.jclouds.stratos.version}</version>
+            <version>${jclouds.stratos.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
@@ -247,12 +248,12 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>vcloud</artifactId>
-            <version>${project.jclouds.stratos.version}</version>
+            <version>${jclouds.stratos.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>gce</artifactId>
-            <version>${project.jclouds.stratos.version}</version>
+            <version>${jclouds.stratos.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jamesmurty.utils.wso2</groupId>
@@ -262,7 +263,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson2.version}</version>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guice.wso2</groupId>
@@ -295,14 +296,14 @@
             <version>1.7.0.R1-wso2v3</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.commons.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.ntask.core</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
@@ -320,10 +321,5 @@
             <version>2.1.11-stratosv1</version>
         </dependency>
     </dependencies>
-    <properties>
-        <gson2.version>2.2</gson2.version>
-        <com.google.guice.assistedinject.wso2.version>3.0.wso2v1</com.google.guice.assistedinject.wso2.version>
-        <sun.jersey.version>1.12</sun.jersey.version>
-    </properties>
 </project>
 

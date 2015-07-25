@@ -1,18 +1,17 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
+ *  Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *  WSO2 Inc. licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
+ * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
  */
@@ -136,13 +135,7 @@ public class DefaultCarbonAuthenticator extends BasicAuthUIAuthenticator {
      *
      */
     public void unauthenticate(Object object) throws Exception {
-        try {
-            getAuthenticationAdminCient(((HttpServletRequest) object)).logout();
-        } catch (Exception ignored) {
-            String msg = "Configuration context is null.";
-            log.error(msg);
-            throw new Exception(msg);
-        }
+        super.unauthenticate(object);
     }
 
     /**
@@ -152,29 +145,6 @@ public class DefaultCarbonAuthenticator extends BasicAuthUIAuthenticator {
         return AUTHENTICATOR_NAME;
     }
 
-    /**
-     * 
-     * @param request
-     * @return
-     * @throws AxisFault
-     */
-    private AuthenticationAdminClient getAuthenticationAdminCient(HttpServletRequest request)
-            throws AxisFault {
-        HttpSession session = request.getSession();
-        ServletContext servletContext = session.getServletContext();
-        String backendServerURL = request.getParameter("backendURL");
-        if (backendServerURL == null) {
-            backendServerURL = CarbonUIUtil.getServerURL(servletContext, request.getSession());
-        }
-        session.setAttribute(CarbonConstants.SERVER_URL, backendServerURL);
-
-        ConfigurationContext configContext = (ConfigurationContext) servletContext
-                .getAttribute(CarbonConstants.CONFIGURATION_CONTEXT);
-
-        String cookie = (String) session.getAttribute(ServerConstants.ADMIN_SERVICE_AUTH_TOKEN);
-
-        return new AuthenticationAdminClient(configContext, backendServerURL, cookie, session, true);
-    }
 
     @SuppressWarnings("rawtypes")
     @Override

@@ -1,20 +1,17 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
+ * Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.wso2.carbon.ui.deployment;
 
@@ -36,22 +33,17 @@ import org.osgi.service.http.NamespaceException;
 import org.osgi.util.tracker.ServiceTracker;
 import org.wso2.carbon.CarbonConstants;
 import org.wso2.carbon.CarbonException;
-import org.wso2.carbon.base.ServerConfiguration;
 import org.wso2.carbon.ui.BundleBasedUIResourceProvider;
 import org.wso2.carbon.ui.deployment.beans.CarbonUIDefinitions;
 import org.wso2.carbon.ui.deployment.beans.Component;
 import org.wso2.carbon.ui.deployment.beans.CustomUIDefenitions;
 import org.wso2.carbon.ui.deployment.beans.FileUploadExecutorConfig;
-import org.wso2.carbon.ui.deployment.beans.Menu;
 import org.wso2.carbon.ui.internal.CarbonUIServiceComponent;
 import org.wso2.carbon.ui.transports.fileupload.FileUploadExecutorManager;
 import org.wso2.carbon.ui.util.UIResourceProvider;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -66,10 +58,6 @@ public class UIBundleDeployer implements SynchronousBundleListener {
     private ServiceTracker fileUploadExecManagerTracker;
     private BundleBasedUIResourceProvider bundleBasedUIResourceProvider =
             new BundleBasedUIResourceProvider(bundleResourcePath);
-    /*
-     * Used to hide the menus in the management console.
-     */
-    private ArrayList<String> hideMenuIds = new ArrayList<String>();
 
     public UIResourceProvider getBundleBasedUIResourcePrvider() {
         return bundleBasedUIResourceProvider;
@@ -83,9 +71,6 @@ public class UIBundleDeployer implements SynchronousBundleListener {
                 FileUploadExecutorManager.class.getName(), null);
         fileUploadExecManagerTracker.open();
 
-        hideMenuIds.addAll(Arrays.asList(ServerConfiguration
-                                         .getInstance().getProperties("HideMenuItemIds.HideMenuItemId")));
-         
         //When Carbon starts up with existing set of bundles which contain component.xmls,
         //the bundleChanged() method does not get called. So calling processComponentXML()
         //method here seems to be the only solution.
@@ -220,20 +205,7 @@ public class UIBundleDeployer implements SynchronousBundleListener {
                     if (log.isDebugEnabled()) {
                         log.debug("Adding UI component using existing Carbon Definition");
                     }
-                    ArrayList<Menu> menusToAdd = new ArrayList<Menu>();
-					for (Menu menu : component.getMenus()) {
-						
-						// Prevent adding the menu if it is defined to be hidden.
-						if (!(hideMenuIds.contains(menu.getId()))) {
-							menusToAdd.add(menu);
-						}
-					}
-					if(menusToAdd.size() > 0) {
-						Menu[] menus = new Menu[menusToAdd.size()];
-						menus = menusToAdd.toArray(menus);
-						carbonUIDefinitions.addMenuItems(menus);
-					}
-
+                    carbonUIDefinitions.addMenuItems(component.getMenus());
                     carbonUIDefinitions.addServletItems(component.getServlets());
                     carbonUIDefinitions.addUnauthenticatedUrls(component.getUnauthenticatedUrlList());
                     carbonUIDefinitions.addSkipTilesUrls(component.getSkipTilesUrlList());

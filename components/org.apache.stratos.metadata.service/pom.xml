@@ -144,9 +144,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.ntask.core</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.commons.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
