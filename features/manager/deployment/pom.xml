@@ -16,9 +16,9 @@
   #  specific language governing permissions and limitations
   #  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-   <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-manager-features</artifactId>
         <version>4.1.0</version>
@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-       <plugins>
+        <plugins>
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
@@ -58,7 +58,7 @@
                                 <properties>
                                     <propertyDef>org.wso2.carbon.p2.category.type:console</propertyDef>
                                 </properties>
-                            </adviceFile>                            
+                            </adviceFile>
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.deployment</bundleDef>
                             </bundles>
@@ -68,5 +68,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

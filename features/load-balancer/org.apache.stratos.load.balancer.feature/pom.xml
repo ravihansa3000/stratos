@@ -19,8 +19,8 @@
 
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>loadbalancer-features</artifactId>
@@ -32,19 +32,15 @@
     <packaging>pom</packaging>
     <name>Apache Stratos - Load Balancer - Management Feature</name>
     <url>http://apache.org</url>
-    <description>This feature contains the required bundles for loadbalancer endpoint management functionality</description>
+    <description>This feature contains the required bundles for loadbalancer endpoint management functionality
+    </description>
 
     <dependencies>
-	<!--dependency>
-	    <groupId>org.wso2.carbon</groupId>
-	    <artifactId>org.wso2.carbon.lb.common</artifactId>
-	    <version>${project.version}</version>
-	</dependency-->
-	<dependency>
-	    <groupId>org.apache.stratos</groupId>
-	    <artifactId>org.apache.stratos.load.balancer</artifactId>
-	    <version>${project.version}</version>	
-	</dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.load.balancer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,10 +66,12 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.load.balancer:${project.version}</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.load.balancer:${project.version}
+                                </bundleDef>
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${wso2carbon.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                </importFeatureDef>
                                 <importFeatureDef>org.apache.synapse.wso2:${synapse.wso2.version}</importFeatureDef>
                             </importFeatures>
                         </configuration>
@@ -82,8 +80,4 @@
             </plugin>
         </plugins>
     </build>
-<properties>
-	<carbon.patch.version.4.1.1>4.1.1</carbon.patch.version.4.1.1>
-</properties>
-
 </project>

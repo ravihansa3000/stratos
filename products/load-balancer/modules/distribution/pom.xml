@@ -20,7 +20,6 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos.load.balancer</groupId>
         <artifactId>load-balancer-parent</artifactId>
@@ -93,31 +92,6 @@
             <version>${carbon.mediation.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.transport.mgt</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.transport.http</artifactId>
-            <version>${org.wso2.carbon.transport.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.transport.nhttp</artifactId>
-            <version>${org.wso2.carbon.transport.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.transport.https</artifactId>
-            <version>${org.wso2.carbon.transport.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.transport.mail</artifactId>
-            <version>${org.wso2.carbon.transport.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.sequences.common</artifactId>
             <version>${carbon.mediation.version}</version>
@@ -160,7 +134,7 @@
         <dependency>
             <groupId>jsr94.wso2</groupId>
             <artifactId>jsr94</artifactId>
-            <version>${orbit.version.jsr94}</version>
+            <version>${jsr94.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mvel.wso2</groupId>
@@ -170,17 +144,17 @@
         <dependency>
             <groupId>joda-time.wso2</groupId>
             <artifactId>joda-time</artifactId>
-            <version>1.6.0.wso2v1</version>
+            <version>${joda.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.antlr.wso2</groupId>
             <artifactId>antlr-runtime</artifactId>
-            <version>3.1.1.wso2v1</version>
+            <version>${antlr.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>janino.wso2</groupId>
             <artifactId>janino</artifactId>
-            <version>2.5.15.wso2v1</version>
+            <version>${janino.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
@@ -210,33 +184,28 @@
         <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-policy</artifactId>
-            <version>1.6.1.wso2v1</version>
+            <version>${rampart.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-trust</artifactId>
-            <version>1.6.1.wso2v1</version>
+            <version>${rampart.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.rampart.wso2</groupId>
             <artifactId>rampart-core</artifactId>
-            <version>1.6.1.wso2v1</version>
+            <version>${rampart.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.rampart</groupId>
             <artifactId>rampart</artifactId>
             <type>mar</type>
-            <version>1.6.1-wso2v1</version>
+            <version>${rampart-.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.policyeditor</artifactId>
             <version>${carbon.identity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.startup</artifactId>
-            <version>${carbon.startup.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
@@ -260,33 +229,13 @@
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.datasource</artifactId>
-            <version>${org.wso2.carbon.datasource.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.throttle</artifactId>
-            <version>${carbon.qos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.caching</artifactId>
-            <version>${org.wso2.carbon.caching.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.rm</artifactId>
-            <version>${org.wso2.carbon.rm.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.ui.menu.registry</artifactId>
             <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs.wso2</groupId>
             <artifactId>geronimo-jms_1.1_spec</artifactId>
-            <version>1.1.0.wso2v1</version>
+            <version>${orbit.version.geronimo-jms_1.1_spec.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.andes.wso2</groupId>
@@ -296,72 +245,67 @@
         <dependency>
             <groupId>commons-net.wso2</groupId>
             <artifactId>commons-net</artifactId>
-            <version>2.0.wso2v1</version>
+            <version>${commons-net.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>jsch.wso2</groupId>
             <artifactId>jsch</artifactId>
-            <version>0.1.41-wso2v1</version>
+            <version>${jsch.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents.wso2</groupId>
             <artifactId>httpcore-nio</artifactId>
-            <version>4.2.3.wso2v1</version>
+            <version>${httpcore-nio.wso2.verison}</version>
         </dependency>
         <dependency>
             <groupId>org.quartz-scheduler.wso2</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.1.1.wso2v1</version>
+            <version>${quartz.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.woodstox</groupId>
             <artifactId>wstx-asl</artifactId>
-            <version>3.2.1</version>
+            <version>${woodstox-wstx-asl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-stax-api_1.0_spec</artifactId>
-            <version>1.0.1</version>
+            <version>${geronimo-stax-api_1.0_spec.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.saxon.wso2</groupId>
             <artifactId>saxon</artifactId>
-            <version>8.9.0.wso2v1</version>
+            <version>${saxon.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.abdera.wso2</groupId>
             <artifactId>abdera</artifactId>
-            <version>1.0.wso2v1</version>
+            <version>${abdera.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ws.wso2</groupId>
             <artifactId>spring.framework</artifactId>
-            <version>2.5.1.wso2v1</version>
+            <version>${spring.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io.wso2</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.0.0.wso2v1</version>
+            <version>${commons-io.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-collections.wso2</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2.0.wso2v1</version>
+            <version>${commons.collections.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ws.savan.wso2</groupId>
             <artifactId>savan-core</artifactId>
-            <version>1.0.0-wso2v2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.caching</groupId>
-            <artifactId>wso2caching-core</artifactId>
-            <version>3.5.0</version>
+            <version>${ws.savan.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>bouncycastle</groupId>
             <artifactId>bcprov-jdk15</artifactId>
-            <version>132</version>
+            <version>${bcprov-jdk15.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.commons</groupId>
@@ -381,7 +325,7 @@
         <dependency>
             <groupId>org.fusesource.hawtbuf</groupId>
             <artifactId>hawtbuf</artifactId>
-            <version>1.9</version>
+            <version>${hawtbuf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -400,6 +344,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
@@ -423,7 +368,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -446,8 +390,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -472,5 +414,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

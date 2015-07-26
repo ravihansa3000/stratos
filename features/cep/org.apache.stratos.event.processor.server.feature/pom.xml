@@ -25,39 +25,36 @@
         <version>4.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-        <version>4.1.0</version>
     <artifactId>org.apache.stratos.event.processor.server.feature</artifactId>
     <packaging>pom</packaging>
-    <name>Apache Stratos  - Event Processor Server Feature</name>
+    <name>Apache Stratos - Event Processor Server Feature</name>
     <url>http://apache.org</url>
     <description>This feature contains the core bundles required for Back-end Event Processor functionality
     </description>
 
-
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.event-processing</groupId>
             <artifactId>org.wso2.carbon.event.processor.core</artifactId>
-            <version>${siddhi.event.processor.version}</version>
+            <version>${carbon.event.processing.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.event-processing</groupId>
             <artifactId>org.wso2.carbon.event.processor.admin</artifactId>
-            <version>${siddhi.event.processor.version}</version>
+            <version>${carbon.event.processing.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.event-processing</groupId>
             <artifactId>org.wso2.carbon.event.processor.siddhi.extension</artifactId>
-            <version>${siddhi.event.processor.version}</version>
+            <version>${carbon.event.processing.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.event-processing</groupId>
             <artifactId>org.wso2.carbon.event.processor.api</artifactId>
             <version>${siddhi.event.processor.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.wso2.siddhi</groupId>
             <artifactId>siddhi-core</artifactId>
@@ -93,8 +90,6 @@
                                     <directory>resources</directory>
                                     <includes>
                                         <include>build.properties</include>
-                                        <!--<include>conf/broker-manager-config.xml</include>-->
-                                        <!--<include>conf/broker-manager-config.xsd</include>-->
                                         <include>p2.inf</include>
                                     </includes>
                                 </resource>
@@ -126,13 +121,14 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.event.processor.core:${siddhi.event.processor.version}
+                                <bundleDef>
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.core:${carbon.event.processing.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.admin:${siddhi.event.processor.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.admin:${carbon.event.processing.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.siddhi.extension:${siddhi.event.processor.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.siddhi.extension:${carbon.event.processing.version}
                                 </bundleDef>
                                 <bundleDef>
                                     org.wso2.carbon:org.wso2.carbon.event.processor.api:${siddhi.event.processor.version}
@@ -148,7 +144,8 @@
                                 </bundleDef>
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${wso2carbon.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                </importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

@@ -41,7 +41,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -74,56 +73,45 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.ui</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.framework</artifactId>
-            <version>1.0.3</version>
+            <version>${felix.framework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.main</artifactId>
-            <version>1.0.3</version>
+            <version>${felix.framework.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.compendium</artifactId>
-            <version>1.0.0</version>
+            <version>${felix.osgi.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.equinox</groupId>
             <artifactId>org.eclipse.equinox.http.servlet</artifactId>
-            <version>2.2.2</version>
+            <version>${equinox.http.servlet.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.equinox</groupId>
             <artifactId>org.eclipse.equinox.http.helper</artifactId>
-            <version>1.0.0</version>
+            <version>${equinox.http.helper.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.equinox</groupId>
             <artifactId>org.eclipse.equinox.jsp.jasper</artifactId>
-            <version>1.0.1.R33x_v20070816</version>
+            <version>${equinox.jsp.jasper.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.equinox</groupId>
             <artifactId>javax.servlet.jsp</artifactId>
-            <version>2.0.0.v200706191603</version>
+            <version>${javax.servlet.jsp.version}</version>
         </dependency>
     </dependencies>
-    <properties>
-        <wso2carbon.version>4.2.0</wso2carbon.version>
-    </properties>
 </project>

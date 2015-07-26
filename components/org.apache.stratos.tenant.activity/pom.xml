@@ -30,7 +30,6 @@
     <name>Apache Stratos - TenantActivity</name>
 
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.felix</groupId>
@@ -87,7 +86,6 @@
                     </instructions>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
@@ -125,7 +123,7 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.cluster.mgt.core</artifactId>
-            <version>4.2.0</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
     </dependencies>
 </project>

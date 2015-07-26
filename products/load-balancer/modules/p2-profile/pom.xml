@@ -17,8 +17,8 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos.load.balancer</groupId>
         <artifactId>load-balancer-parent</artifactId>
@@ -27,7 +27,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>apache-stratos-load-balancer-p2-profile-gen</artifactId>
+    <artifactId>load-balancer-p2-profile-gen</artifactId>
     <packaging>pom</packaging>
     <name>Apache Stratos - Load Balancer - P2 Profile Generation</name>
     <url>http://www.apache.org</url>
@@ -37,6 +37,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
@@ -93,7 +94,7 @@
                                     org.wso2.carbon:org.wso2.carbon.datasource.server.feature:${carbon.kernel.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
-                                    org.wso2.carbon:org.apache.synapse.wso2.feature:${synapse.version}
+                                    org.wso2.carbon.mediation:org.apache.synapse.wso2.feature:${carbon.mediation.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
                                     org.wso2.carbon:org.apache.synapse.transport.nhttp.feature:${synapse.version}
@@ -137,12 +138,6 @@
                                 <featureArtifactDef>
                                     org.apache.stratos:org.apache.stratos.messaging.feature:${project.version}
                                 </featureArtifactDef>
-                                <!--featureArtifactDef>
-                                    org.wso2.carbon:org.wso2.carbon.coordination.server.feature:${carbon.version}
-                                </featureArtifactDef>
-                                <featureArtifactDef>
-                                    org.wso2.carbon:org.wso2.carbon.coordination.core.feature:${carbon.version}
-                                </featureArtifactDef-->
                                 <featureArtifactDef>
                                     org.wso2.carbon:org.wso2.carbon.registry.core.feature:${carbon.kernel.version}
                                 </featureArtifactDef>
@@ -187,7 +182,7 @@
                             <features>
                                 <feature>
                                     <id>org.apache.synapse.wso2.feature.group</id>
-                                    <version>${synapse.version}</version>
+                                    <version>${carbon.mediation.version}</version>
                                 </feature>
                                 <feature>
                                     <id>org.apache.synapse.transport.nhttp.feature.group</id>
@@ -274,8 +269,9 @@
                         <phase>package</phase>
                         <configuration>
                             <tasks>
-                                <replace token="false" value="true" dir="target/wso2carbon-core-${carbon.kernel.version}/repository/components/default/configuration/org.eclipse.equinox.simpleconfigurator">
-                                    <include name="**/bundles.info" />
+                                <replace token="false" value="true"
+                                         dir="target/wso2carbon-core-${carbon.kernel.version}/repository/components/default/configuration/org.eclipse.equinox.simpleconfigurator">
+                                    <include name="**/bundles.info"/>
                                 </replace>
                             </tasks>
                         </configuration>

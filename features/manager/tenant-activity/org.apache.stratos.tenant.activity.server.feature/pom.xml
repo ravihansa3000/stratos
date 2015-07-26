@@ -17,8 +17,8 @@
   #  specific language governing permissions and limitations
   #  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>tenant-activity-feature</artifactId>
@@ -42,22 +42,13 @@
     </dependencies>
 
     <build>
-        <plugins>           
- <plugin>
+        <plugins>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <executions>                  
+                <executions>
                 </executions>
             </plugin>
-
-            <plugin>
-		        <artifactId>maven-resources-plugin</artifactId>
-		        <executions>
-		           
-		        </executions>
-		    </plugin>
-
-
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
@@ -81,7 +72,8 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.tenant.activity:${project.version}</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.tenant.activity:${project.version}
+                                </bundleDef>
                             </bundles>
                             <importBundles>
                             </importBundles>
@@ -93,5 +85,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -39,7 +39,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -66,12 +65,10 @@
                     </instructions>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -79,7 +76,7 @@
         <dependency>
             <groupId>commons-codec.wso2</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.4.0.wso2v1</version>
+            <version>${commons-codec.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -102,7 +99,7 @@
         <dependency>
             <groupId>org.apache.ws.commons.axiom.wso2</groupId>
             <artifactId>axiom</artifactId>
-            <version>${axiom.wso2.version}</version>
+            <version>${orbit.version.axiom}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
@@ -112,16 +109,12 @@
         <dependency>
             <groupId>bouncycastle</groupId>
             <artifactId>bcprov-jdk15</artifactId>
-            <version>132</version>
+            <version>${bcprov-jdk15.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.security.mgt</artifactId>
-            <version>${carbon.kernel.version}</version>
+            <version>${carbon.identity.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <version.javax.servlet>3.0.0.v201112011016</version.javax.servlet>
-    </properties>
 </project>

@@ -21,7 +21,6 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>common-features</artifactId>
@@ -38,39 +37,39 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.identity.oauth</artifactId>
-            <version>4.2.3</version>
+            <version>${carbon.identity.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
-            <version>4.2.0</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core</artifactId>
-            <version>4.2.0</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core.services</artifactId>
-            <version>4.2.0</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>4.2.0</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>opensaml.wso2</groupId>
             <artifactId>opensaml2</artifactId>
-            <version>2.4.1.wso2v1</version>
+            <version>${opensaml2.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.nimbusds.wso2</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>2.26.1.wso2v2</version>
+            <version>${nimbus-jose-jwt.wso2.version}</version>
         </dependency>
     </dependencies>
 
@@ -97,8 +96,9 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.custom.handlers:${project.version}</bundleDef>
-                                <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:2.26.1.wso2v2</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.custom.handlers:${project.version}
+                                </bundleDef>
+                                <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:${nimbus-jose-jwt.wso2.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

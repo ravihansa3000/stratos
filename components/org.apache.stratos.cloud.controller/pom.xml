@@ -38,7 +38,6 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-scr-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -74,7 +73,7 @@
             <plugin>
                 <groupId>org.apache.axis2</groupId>
                 <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
-                <version>1.6.3</version>
+                <version>${axis2-java2wsdl-maven-plugin.wso2.version}</version>
                 <configuration>
                     <className>org.apache.stratos.cloud.controller.services.impl.CloudControllerServiceImpl</className>
                     <outputFileName>target/generated-resources/wsdl/CloudControllerService.wsdl</outputFileName>
@@ -120,27 +119,27 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>17.0</version>
+            <version>${google.guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch.agentproxy.jsch</artifactId>
-            <version>0.0.7</version>
+            <version>${jsch.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch.agentproxy.core</artifactId>
-            <version>0.0.7</version>
+            <version>${jsch.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch.agentproxy.connector-factory</artifactId>
-            <version>0.0.7</version>
+            <version>${jsch.version}</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.9-RC1</version>
+            <version>${reflections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
@@ -155,7 +154,7 @@
         <dependency>
             <groupId>org.hectorclient.wso2</groupId>
             <artifactId>hector-core</artifactId>
-            <version>1.1.0.wso2v1</version>
+            <version>${hector-core.wso2.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.guava.wso2</groupId>
@@ -173,12 +172,6 @@
             <artifactId>geronimo-jms_1.1_spec</artifactId>
             <version>${orbit.version.geronimo-jms_1.1_spec.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.analytics.hive.stub</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-        <!-- jclouds dependencies -->
         <dependency>
             <groupId>org.apache.jclouds</groupId>
             <artifactId>jclouds-core</artifactId>
@@ -258,7 +251,7 @@
         <dependency>
             <groupId>com.jamesmurty.utils.wso2</groupId>
             <artifactId>java-xmlbuilder</artifactId>
-            <version>0.4.wso2v1</version>
+            <version>${java-xmlbuilder.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -273,7 +266,7 @@
         <dependency>
             <groupId>com.google.guice.assistedinject.wso2</groupId>
             <artifactId>guice-assistedinject</artifactId>
-            <version>${com.google.guice.assistedinject.wso2.version}</version>
+            <version>${google.guice.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey</groupId>
@@ -283,17 +276,17 @@
         <dependency>
             <groupId>net.oauth.core</groupId>
             <artifactId>oauth</artifactId>
-            <version>20100527</version>
+            <version>${oauth.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io.wso2</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.0.0.wso2v1</version>
+            <version>${commons-io.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>rhino.wso2</groupId>
             <artifactId>js</artifactId>
-            <version>1.7.0.R1-wso2v3</version>
+            <version>${rhino.wso2-js.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.commons</groupId>
@@ -318,8 +311,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-api</artifactId>
-            <version>2.1.11-stratosv1</version>
+            <version>${kubernetes-api.stratos.version}</version>
         </dependency>
     </dependencies>
 </project>
-

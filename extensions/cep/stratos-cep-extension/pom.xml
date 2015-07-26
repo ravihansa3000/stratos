@@ -17,39 +17,30 @@
   #  specific language governing permissions and limitations
   #  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-extensions</artifactId>
         <version>4.1.0</version>
-	<relativePath>../../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
-    
-    <groupId>org.apache.stratos</groupId>
+
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>org.apache.stratos.cep.extension</artifactId>
     <name>Apache Stratos - CEP Extensions</name>
     <description>Apache Stratos CEP Extensions</description>
-
-    <repositories>
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <name>WSO2 Maven2 Repository</name>
-            <url>http://dist.wso2.org/maven2</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.siddhi</groupId>
             <artifactId>siddhi-core</artifactId>
-            <version>2.0.0-wso2v5</version>
+            <version>${siddhi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.messaging</artifactId>
-            <version>4.1.0</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
@@ -58,11 +49,10 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
         </plugins>
-
     </build>
 </project>

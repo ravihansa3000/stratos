@@ -61,7 +61,7 @@
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
-            <version>0.9.1</version>
+            <version>${libthrift.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.commons</groupId>

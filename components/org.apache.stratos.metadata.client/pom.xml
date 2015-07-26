@@ -18,35 +18,32 @@
   -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-components-parent</artifactId>
         <version>4.1.0</version>
     </parent>
 
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>org.apache.stratos.metadata.client</artifactId>
     <packaging>bundle</packaging>
-    <modelVersion>4.0.0</modelVersion>
-
     <name>Apache Stratos - Metadata Client</name>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
-            <version>1.9</version>
-            <!--    <scope>provided</scope>-->
+            <version>${commons-configuration.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.2.4</version>
+            <version>${gson.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,5 +78,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

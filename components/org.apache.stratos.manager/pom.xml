@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -86,7 +86,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -101,12 +100,12 @@
                         </Export-Package>
                         <Import-Package>
                             org.apache.stratos.cloud.controller.registry.*; version="${project.version}",
-                            org.apache.axis2.*; version="1.6.1-wso2v10",
+                            org.apache.axis2.*; version="${axis2.osgi.version.range}",
                             org.apache.axiom.*; version="${axiom.osgi.version.range}",
                             org.apache.stratos.autoscaler.stub; version="${project.version}",
-                            org.apache.neethi.*; version="2.0.4.wso2v4",
-                            javax.xml.stream.*; version="1.0.1",
-                            javax.wsdl.*; version="1.6.2",
+                            org.apache.neethi.*; version="${neethi.wso2.version}",
+                            javax.xml.stream.*; version="${javax.xml.stream.imp.pkg.version}",
+                            javax.wsdl.*; version="${wsdl4j.wso2.version}",
                             org.osgi.framework.*,
                             *;resolution:=optional
                         </Import-Package>
@@ -117,7 +116,7 @@
             <plugin>
                 <groupId>org.apache.axis2</groupId>
                 <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
-                <version>1.6.1-wso2v10</version>
+                <version>${axis2-java2wsdl-maven-plugin.wso2.version}</version>
                 <configuration>
                     <className>org.apache.stratos.manager.services.impl.StratosManagerServiceImpl</className>
                     <outputFileName>target/generated-resources/wsdl/StratosManagerService.wsdl</outputFileName>

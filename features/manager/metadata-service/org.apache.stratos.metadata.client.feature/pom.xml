@@ -21,7 +21,6 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-manager-features</artifactId>
@@ -40,37 +39,37 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson2.version}</version>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
-            <version>4.0-beta3</version>
+            <version>${httpasyncclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient-osgi</artifactId>
-            <version>4.3.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.3.2</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore-osgi</artifactId>
-            <version>4.3.2</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore-nio</artifactId>
-            <version>4.2.4</version>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
@@ -99,10 +98,10 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.metadata.client:${project.version}
                                 </bundleDef>
-                                <bundleDef>com.google.code.gson:gson:${gson2.version}</bundleDef>
-                                <bundleDef>org.apache.commons:commons-lang3:3.1</bundleDef>
-                                <bundleDef>org.apache.httpcomponents:httpclient-osgi:4.3.5</bundleDef>
-                                <bundleDef>org.apache.httpcomponents:httpcore-osgi:4.3.2</bundleDef>
+                                <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
+                                <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpclient-osgi:${httpclient.version}</bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpcore-osgi:${httpclient.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

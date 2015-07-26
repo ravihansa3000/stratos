@@ -19,8 +19,8 @@
 
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>loadbalancer-features</artifactId>
@@ -35,11 +35,11 @@
     <description>This feature contains the common bundle for loadbalancer features</description>
 
     <dependencies>
-	<dependency>
-	    <groupId>org.apache.stratos</groupId>
-	    <artifactId>org.apache.stratos.load.balancer.common</artifactId>
-	    <version>${project.version}</version>	
-	</dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.load.balancer.common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -65,12 +65,12 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <!--bundleDef>org.wso2.carbon:org.wso2.carbon.load.balance.agent.stub</bundleDef>
-                                -->
                                 <bundleDef>org.apache.stratos:org.apache.stratos.common:${project.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.load.balancer.common:${project.version}</bundleDef>
-                                <bundleDef>org.slf4j:slf4j-api:1.6.4</bundleDef>
-                                <bundleDef>org.slf4j:slf4j-log4j12:1.6.4</bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.load.balancer.common:${project.version}
+                                </bundleDef>
+                                <bundleDef>org.slf4j:slf4j-api:${slf4j.version}</bundleDef>
+                                <bundleDef>org.slf4j:slf4j-log4j12:${slf4j.version}</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.apache.synapse.wso2:${synapse.wso2.version}</importFeatureDef>
@@ -81,5 +81,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

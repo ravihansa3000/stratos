@@ -20,7 +20,6 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-features-parent</artifactId>
@@ -28,7 +27,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.apache.stratos</groupId>
     <artifactId>stratos-manager-features</artifactId>
     <packaging>pom</packaging>
     <name>Apache Stratos - Manager Features Aggregator Module</name>
@@ -46,40 +44,23 @@
         <module>metadata-service/org.apache.stratos.metadata.client.feature</module>
     </modules>
 
-    <properties>
-        <stratos.version>2.1.0</stratos.version>
-        <synapse.version>2.1.0-wso2v6</synapse.version>
-        <carbon.version>4.2.0</carbon.version>
-        <quartz.wso2.version>2.1.1.wso2v1</quartz.wso2.version>
-        <carbon.p2.plugin.version>1.5</carbon.p2.plugin.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.sample.installer</artifactId>
-                <version>${stratos.version}</version>
-            </dependency>
-            <dependency>
+            <!-- OLD DEPENDENCY -->
+            <!--dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.redirector.servlet</artifactId>
                 <version>2.2.1</version>
+            </dependency-->
+            <dependency>
+                <groupId>org.wso2.carbon.multitenancy</groupId>
+                <artifactId>org.wso2.carbon.tenant.redirector.servlet</artifactId>
+                <version>${carbon.multitenancy.version}</version>
             </dependency>
-            <!-- dependency>
-                <groupId>org.apache.stratos</groupId>
-                <artifactId>org.apache.stratos.redirector.servlet.ui</artifactId>
-                <version>2.2.0</version>
-            </dependency -->
             <dependency>
                 <groupId>org.apache.stratos</groupId>
                 <artifactId>org.apache.stratos.common</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.stratos.landing.page.deployer</artifactId>
-                <version>${stratos.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.stratos</groupId>
@@ -114,27 +95,22 @@
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.task</artifactId>
-                <version>${wso2carbon.version}</version>
+                <version>${carbon.kernel.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
                 <artifactId>org.wso2.carbon.application.upload</artifactId>
-                <version>${wso2carbon.version}</version>
+                <version>${carbon.kernel.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.synapse</groupId>
                 <artifactId>synapse-tasks</artifactId>
-                <version>${synapse.version}</version>
+                <version>${synapse.wso2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.stratos</groupId>
                 <artifactId>org.apache.stratos.sso.redirector.ui</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.google.analytics.ui</artifactId>
-                <version>${stratos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

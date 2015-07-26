@@ -20,7 +20,6 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-parent</artifactId>
@@ -69,7 +68,7 @@
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>1.1.1</version>
+                <version>${commons.logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.ws.commons.schema.wso2</groupId>
@@ -89,5 +88,3 @@
         </dependencies>
     </dependencyManagement>
 </project>
-
-

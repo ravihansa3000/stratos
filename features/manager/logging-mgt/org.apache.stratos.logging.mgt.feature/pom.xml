@@ -17,9 +17,9 @@
   #  specific language governing permissions and limitations
   #  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-   <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>logging-mgt-feature</artifactId>
         <version>4.1.0</version>
@@ -34,15 +34,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.logging.mgt.server.feature</artifactId>
-            <version>${carbon.platform.patch.version.4.1.1}</version>
+            <version>${carbon.commons.version}</version>
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.logging.admin.ui</artifactId>
-            <version>${wso2carbon.version.logging.mgt}</version>
+            <version>${carbon.commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
@@ -53,12 +53,12 @@
         <dependency>
             <groupId>org.apache.cassandra.wso2</groupId>
             <artifactId>apache-cassandra</artifactId>
-            <version>${cassandra.version}</version>
+            <version>${cassandra.wso2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.logging.view.stub</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.commons.version}</version>
         </dependency>
     </dependencies>
 
@@ -78,32 +78,35 @@
                         <configuration>
                             <id>org.apache.stratos.logging.mgt</id>
                             <propertiesFile>../../../etc/feature.properties</propertiesFile>
-			                <adviceFile>
+                            <adviceFile>
                                 <properties>
                                     <propertyDef>org.wso2.carbon.p2.category.type:console</propertyDef>
-                                    <propertyDef>org.eclipse.equinox.p2.type.group:false</propertyDef>                              
+                                    <propertyDef>org.eclipse.equinox.p2.type.group:false</propertyDef>
                                 </properties>
                             </adviceFile>
                             <bundles>
                                 <bundleDef>org.wso2.carbon:org.wso2.carbon.logging.admin.ui</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.logging.view.ui:${project.version}</bundleDef>
-                               <bundleDef>org.wso2.carbon:org.wso2.carbon.logging.admin.stub:${wso2carbon.version}</bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.logging.view.stub:${wso2carbon.version}</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.logging.view.ui:${project.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.logging.admin.stub:${carbon.commons.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.logging.view.stub:${carbon.commons.version}
+                                </bundleDef>
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.ui:${wso2carbon.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.core.ui:${carbon.kernel.version}</importFeatureDef>
                             </importFeatures>
                             <includedFeatures>
-                                <includedFeatureDef>org.wso2.carbon:org.wso2.carbon.logging.mgt.server.feature:4.2.1</includedFeatureDef>
-			    </includedFeatures>
+                                <includedFeatureDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.logging.mgt.server.feature:${carbon.commons.version}
+                                </includedFeatureDef>
+                            </includedFeatures>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-    <properties>
-	<carbon.platform.patch.version.4.1.1>4.1.1</carbon.platform.patch.version.4.1.1>
-        <cassandra.version>1.1.0.wso2v2</cassandra.version>
-    </properties>
 </project>

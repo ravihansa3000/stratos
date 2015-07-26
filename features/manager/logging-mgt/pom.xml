@@ -65,14 +65,14 @@
            <dependency>
                 <groupId>com.google.guava.wso2</groupId>
                 <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
+                <version>${google.guava.wso2.version}</version>
             </dependency>
           <!--Cassandra -->
 
             <dependency>
                 <groupId>org.apache.cassandra.wso2</groupId>
                 <artifactId>apache-cassandra</artifactId>
-                <version>${cassandra.version}</version>
+                <version>${cassandra.wso2.version}</version>
             </dependency>
 
             <!--Hector-->
@@ -132,7 +132,6 @@
         <perf4j.version>0.9.12.wso2v1</perf4j.version>
         <highscale.version>1.1.2.wso2v1</highscale.version>
         <slf4j.version>1.6.1</slf4j.version>
-        <guava.version>${google.guava.wso2.version}</guava.version>
 	<orbit.version.spring>3.1.0.wso2v1</orbit.version.spring>
    </properties>
 </project>

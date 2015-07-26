@@ -53,7 +53,6 @@
         </profile>
     </profiles>
 
-
     <build>
         <plugins>
             <plugin>
@@ -82,35 +81,34 @@
     </build>
 
     <dependencies>
-        <!-- Dependency scope is set to provided to avoid dependent jar files being packaged with the war file -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle</artifactId>
-            <version>2.7.7</version>
+            <version>${cxf.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.kernel.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.identity.oauth.stub</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.identity.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.multitenancy</groupId>
             <artifactId>org.wso2.carbon.tenant.mgt</artifactId>
-            <version>2.2.2</version>
+            <version>${carbon.multitenancy.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -150,15 +148,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.registry</groupId>
             <artifactId>org.wso2.carbon.registry.ws.stub</artifactId>
-            <version>${wso2carbon.version}</version>
+            <version>${carbon.registry.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.nimbusds.wso2</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>2.26.1.wso2v2</version>
+            <version>${nimbus-jose-jwt.wso2.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

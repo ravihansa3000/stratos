@@ -17,8 +17,8 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>autoscaler-features</artifactId>
@@ -34,12 +34,13 @@
     <description>This feature contains the required bundles for autoscaling functionality</description>
 
     <dependencies>
-         <dependency>
+        <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.autoscaler</artifactId>
             <version>${project.version}</version>
-         </dependency>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -63,9 +64,14 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.autoscaler:${project.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.autoscaler:${project.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
+                                </bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.server:${wso2carbon.version}</importFeatureDef>
@@ -76,6 +82,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
-

@@ -18,8 +18,8 @@
        under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-mgt-parent-feature</artifactId>
@@ -27,7 +27,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.apache.stratos.manager.server.feature</artifactId>    
+    <artifactId>org.apache.stratos.manager.server.feature</artifactId>
     <packaging>pom</packaging>
     <name>Apache Stratos - Management Core Feature</name>
     <url>http://apache.org</url>
@@ -39,46 +39,46 @@
             <artifactId>org.apache.stratos.manager</artifactId>
             <version>${project.version}</version>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.cloud.controller.service.stub</artifactId>
             <version>${project.version}</version>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>org.wso2.andes.wso2</groupId>
             <artifactId>andes-client</artifactId>
-	    <version>0.13.wso2v8</version>
+            <version>${andes.version}</version>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.manager.service.stub</artifactId>
             <version>${project.version}</version>
         </dependency>
-	<dependency>
+        <dependency>
             <groupId>com.gitblit</groupId>
             <artifactId>gitblit</artifactId>
-            <version>1.2.0.wso2v1</version>
+            <version>${gitblit.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.1</version>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jgit</groupId>
+            <groupId>org.eclipse.jgit.wso2</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
-            <version>2.1.0.wso2v1</version>
+            <version>${orbit.version.jgit}</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
-            <version>0.1.49.wso2v1</version>
+            <version>${orbit.version.jsch}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-             <plugin>
+            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -125,14 +125,18 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.manager:${project.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}</bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
+                                </bundleDef>
                                 <bundleDef>org.wso2.andes.wso2:andes-client:${andes.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}</bundleDef>
-                                <bundleDef>com.gitblit:gitblit:1.2.0.wso2v1</bundleDef>
-                                <bundleDef>com.google.code.gson:gson:2.1</bundleDef>
-                                <bundleDef>org.apache.commons:commons-lang3:3.1</bundleDef>
-                                <bundleDef>org.eclipse.jgit:org.eclipse.jgit:2.1.0.wso2v1</bundleDef>
-                                <bundleDef>com.jcraft:jsch:0.1.49.wso2v1</bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}
+                                </bundleDef>
+                                <bundleDef>com.gitblit:gitblit:${gitblit.wso2.version}</bundleDef>
+                                <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
+                                <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef>
+                                <bundleDef>org.eclipse.jgit:org.eclipse.jgit:${orbit.version.jgit}</bundleDef>
+                                <bundleDef>com.jcraft:jsch:${orbit.version.jsch}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

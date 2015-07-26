@@ -18,8 +18,8 @@
        under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-mgt-parent-feature</artifactId>
@@ -27,7 +27,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org.apache.stratos.manager.feature</artifactId>    
+    <artifactId>org.apache.stratos.manager.feature</artifactId>
     <packaging>pom</packaging>
     <name>Apache Stratos - Management Composite Feature</name>
     <url>http://apache.org</url>
@@ -59,10 +59,14 @@
                             <id>org.apache.stratos.manager</id>
                             <propertiesFile>../../../../etc/feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}</bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
+                                </bundleDef>
                             </bundles>
                             <includedFeatures>
-                                <includedFeatureDef>org.apache.stratos:org.apache.stratos.manager.server.feature:${project.version}</includedFeatureDef>
+                                <includedFeatureDef>
+                                    org.apache.stratos:org.apache.stratos.manager.server.feature:${project.version}
+                                </includedFeatureDef>
                             </includedFeatures>
                         </configuration>
                     </execution>
