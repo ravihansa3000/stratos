@@ -36,26 +36,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon.event-processing</groupId>
-            <artifactId>org.wso2.carbon.event.processor.core</artifactId>
-            <version>${carbon.event.processing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon.event-processing</groupId>
-            <artifactId>org.wso2.carbon.event.processor.admin</artifactId>
-            <version>${carbon.event.processing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon.event-processing</groupId>
-            <artifactId>org.wso2.carbon.event.processor.siddhi.extension</artifactId>
-            <version>${carbon.event.processing.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon.event-processing</groupId>
-            <artifactId>org.wso2.carbon.event.processor.api</artifactId>
-            <version>${siddhi.event.processor.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.siddhi</groupId>
             <artifactId>siddhi-core</artifactId>
             <version>${siddhi.version}</version>
@@ -122,16 +102,13 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.core:${carbon.event.processing.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.core:${carbon.event-processing.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.admin:${carbon.event.processing.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.admin:${carbon.event-processing.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.siddhi.extension:${carbon.event.processing.version}
-                                </bundleDef>
-                                <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.api:${siddhi.event.processor.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.siddhi.extension:${carbon.event-processing.version}
                                 </bundleDef>
                                 <bundleDef>
                                     org.wso2.siddhi:siddhi-core:${siddhi.version}

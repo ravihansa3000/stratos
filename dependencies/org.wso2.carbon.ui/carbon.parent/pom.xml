@@ -50,6 +50,10 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <modules>
+        <module>org.wso2.carbon.ui</module>
+    </modules>
+
     <build>
         <extensions>
             <extension>
@@ -1521,11 +1525,6 @@
                 <artifactId>woden-api</artifactId>
                 <version>${woden.api.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
-
-    <scm>
-        <tag>v4.4.0-RC1</tag>
-    </scm>
 </project>

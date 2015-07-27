@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.wso2.carbon.event-processing</groupId>
             <artifactId>org.wso2.carbon.event.processor.ui.feature</artifactId>
-            <version>${carbon.event.processing.version}</version>
+            <version>${carbon.event-processing.version}</version>
             <type>zip</type>
         </dependency>
     </dependencies>
@@ -75,7 +75,7 @@
                                     org.apache.stratos:org.apache.stratos.event.processor.server.feature:${project.version}
                                 </includedFeatureDef>
                                 <includedFeatureDef>
-                                    org.wso2.carbon:org.wso2.carbon.event.processor.ui.feature:${carbon.event.processing.version}
+                                    org.wso2.carbon:org.wso2.carbon.event.processor.ui.feature:${carbon.event-processing.version}
                                 </includedFeatureDef>
                             </includedFeatures>
                         </configuration>
