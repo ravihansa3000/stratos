@@ -19,7 +19,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.manager</groupId>
     <artifactId>cloud-services-icons</artifactId>
@@ -35,24 +34,23 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <executions>
                     <execution>
-			<id>war</id>
-			<phase>package</phase>
-			<goals>
-		            <goal>war</goal>
-			</goals>
+                        <id>war</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
                     </execution>
                 </executions>
                 <configuration>
-		    <warName>cloud-services-icons</warName>
-		    <failOnMissingWebXml>false</failOnMissingWebXml>  
-		    <webResources>
-		        <resource>
-	         	        <directory>.</directory>
-		        </resource>
-	            </webResources>
+                    <warName>cloud-services-icons</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <directory>.</directory>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

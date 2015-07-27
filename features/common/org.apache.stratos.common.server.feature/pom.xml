@@ -19,11 +19,10 @@
   -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>common-features</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -40,50 +39,15 @@
             <artifactId>org.apache.stratos.common</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!--dependency>
-                <groupId>org.apache.stratos</groupId>
-            <artifactId>org.apache.stratos.landing.page.deployer</artifactId>
-            <version>${project.version}</version>
-        </dependency-->
-        <!--<dependency>
-                <groupId>org.wso2.carbon</groupId>
-                <artifactId>org.wso2.carbon.sample.installer</artifactId>
-            <version>${stratos.version}</version>
-            </dependency>-->
-        <!--<dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.tenant.activity</artifactId>
-        </dependency>-->
-        <!--
-                <dependency>
-                    <groupId>org.apache.stratos</groupId>
-                    <artifactId>org.apache.stratos.tenant.dispatcher</artifactId>
-                <version>${project.version}</version>
-                </dependency>
-        -->
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.redirector.servlet</artifactId>
-            <version>2.2.1</version>
+            <groupId>org.wso2.carbon.multitenancy</groupId>
+            <artifactId>org.wso2.carbon.tenant.redirector.servlet</artifactId>
+            <version>${carbon.multitenancy.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.throttling.agent</artifactId>
-        </dependency>-->
-        <!--dependency>
-                <groupId>org.apache.stratos</groupId>
-                <artifactId>org.apache.stratos.throttling.agent.stub</artifactId>
-            <version>${project.version}</version>
-            </dependency-->
-        <!--<dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.usage.agent</artifactId>
-			<version>2.1.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.quartz-scheduler.wso2</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.1.1.wso2v1</version>
+            <version>${quartz.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
@@ -91,24 +55,20 @@
             <version>${carbon.mediation.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.application.upload</artifactId>
-            <version>${carbon.kernel.version}</version>
+            <version>${carbon.commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-tasks</artifactId>
             <version>${synapse.wso2.version}</version>
         </dependency>
-
-        <!--  Tenant Mgmt -->
         <dependency>
             <groupId>org.json.wso2</groupId>
             <artifactId>json</artifactId>
             <version>${json.wso2.version}</version>
         </dependency>
-
-
         <dependency>
             <groupId>kaptcha.wso2</groupId>
             <artifactId>kaptcha</artifactId>
@@ -156,7 +116,6 @@
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
-                <version>${carbon.p2.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>p2-feature-generation</id>
@@ -177,23 +136,28 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.common:${project.version}</bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.redirector.servlet:2.2.1</bundleDef>
-                                <bundleDef>org.quartz-scheduler.wso2:quartz</bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.task</bundleDef>
-                                <bundleDef>org.apache.synapse:synapse-tasks</bundleDef>
-                                <!-- Tenant Mgmt -->
-                                <bundleDef>org.json.wso2:json</bundleDef>
-                                <bundleDef>kaptcha.wso2:kaptcha</bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.keystore.mgt</bundleDef>
-                                <!-- End Tenant Mgmt -->
+                                <bundleDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.redirector.servlet:${carbon.multitenancy.version}
+                                </bundleDef>
+                                <bundleDef>org.quartz-scheduler.wso2:quartz:${quartz.wso2.version}</bundleDef>
+                                <bundleDef>org.wso2.carbon.mediation:org.wso2.carbon.task:${carbon.mediation.version}
+                                </bundleDef>
+                                <bundleDef>org.apache.synapse:synapse-tasks:${synapse.wso2.version}</bundleDef>
+                                <bundleDef>org.json.wso2:json:${json.version}</bundleDef>
+                                <bundleDef>kaptcha.wso2:kaptcha:${kaptcha.wso2.version}</bundleDef>
+                                <bundleDef>org.apache.stratos:org.apache.stratos.keystore.mgt:${project.version}
+                                </bundleDef>
                             </bundles>
                             <importBundles>
-                                <importBundleDef>org.wso2.carbon:org.wso2.carbon.application.upload</importBundleDef>
+                                <importBundleDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.application.upload:${carbon.commons.version}
+                                </importBundleDef>
                             </importBundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                </importFeatureDef>
                                 <importFeatureDef>
-                                    org.wso2.carbon.identity.authenticator.saml2.sso.server:${carbon.kernel.version}
+                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.feature:${carbon.identity.version}
                                 </importFeatureDef>
                             </importFeatures>
                         </configuration>

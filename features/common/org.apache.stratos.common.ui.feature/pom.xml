@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>common-features</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -61,7 +61,6 @@
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
-                <version>${carbon.p2.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>p2-feature-generation</id>
@@ -79,13 +78,21 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.tenant.redirector.servlet.ui</bundleDef>
                                 <bundleDef>
-                                    org.wso2.carbon:org.wso2.carbon.tenant.redirector.servlet.stub:${carbon.multitenancy.version}
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.redirector.servlet.ui:${carbon.multitenancy.version}
                                 </bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.tenant.sso.redirector.ui</bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.tenant.mgt.ui</bundleDef>
-                                <bundleDef>org.wso2.carbon:org.wso2.carbon.tenant.mgt.stub</bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.redirector.servlet.stub:${carbon.multitenancy.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.sso.redirector.ui:${carbon.multitenancy.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.mgt.ui:${carbon.multitenancy.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.mgt.stub:${carbon.multitenancy.version}
+                                </bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.ui:${carbon.kernel.version}</importFeatureDef>

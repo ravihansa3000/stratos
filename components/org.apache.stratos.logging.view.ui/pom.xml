@@ -21,11 +21,10 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-components-parent</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -39,7 +38,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -49,8 +47,7 @@
                             org.apache.stratos.logging.view.ui.*
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.logging.view.stub.*;
-                            version="${carbon.kernel.imp.pkg.version}",
+                            org.wso2.carbon.logging.view.stub.*;version="${carbon.kernel.imp.pkg.version}",
                             *;resolution:=optional
                         </Import-Package>
                         <Carbon-Component>UIBundle</Carbon-Component>

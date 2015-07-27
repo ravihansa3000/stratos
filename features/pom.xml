@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-parent</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -40,7 +40,6 @@
         <module>manager</module>
         <module>messaging</module>
         <module>common</module>
-        <module>cep</module>
     </modules>
 
     <build>

@@ -17,14 +17,12 @@
        specific language governing permissions and limitations
        under the License.
 -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-components-parent</artifactId>
-        <version>4.1.0</version>
+        <version>4.1.2-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -48,7 +46,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.1</version>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -58,7 +56,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
@@ -71,9 +69,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.multitenancy</groupId>
             <artifactId>org.wso2.carbon.tenant.mgt</artifactId>
-            <version>2.2.2</version>
+            <version>${carbon.multitenancy.version}</version>
         </dependency>
     </dependencies>
 
@@ -93,9 +91,7 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Private-Package>org.apache.stratos.manager.internal.*</Private-Package>
                         <Export-Package>
-                            org.apache.stratos.manager.domain.*,
-                            org.apache.stratos.manager.utils.*,
-                            org.apache.stratos.manager.service.*,
+                            !org.apache.stratos.manager.internal.*,
                             org.apache.stratos.manager.*
                         </Export-Package>
                         <Import-Package>
