@@ -40,21 +40,15 @@
         <module>org.apache.stratos.cloud.controller</module>
         <module>org.apache.stratos.kubernetes.client</module>
         <module>org.apache.stratos.manager</module>
-        <module>org.apache.stratos.deployment</module>
         <module>org.apache.stratos.cli</module>
         <module>org.apache.stratos.python.cartridge.agent</module>
         <module>org.apache.stratos.cartridge.agent</module>
         <module>org.apache.stratos.load.balancer.common</module>
         <module>org.apache.stratos.load.balancer</module>
         <module>org.apache.stratos.load.balancer.extension.api</module>
-        <module>org.apache.stratos.tenant.activity</module>
-        <module>org.apache.stratos.email.sender</module>
-        <module>org.apache.stratos.sso.redirector.ui</module>
-        <module>org.apache.stratos.keystore.mgt</module>
         <module>org.apache.stratos.logging.view.ui</module>
         <module>org.apache.stratos.rest.endpoint</module>
         <module>org.apache.stratos.manager.styles</module>
-        <module>org.apache.stratos.custom.handlers</module>
         <module>org.apache.stratos.metadata.service</module>
         <module>org.apache.stratos.metadata.client</module>
         <module>org.apache.stratos.mock.iaas</module>

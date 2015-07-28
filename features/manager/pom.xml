@@ -35,8 +35,6 @@
 
     <modules>
         <module>stratos-mgt</module>
-        <module>deployment</module>
-        <module>tenant-activity</module>
         <module>logging-mgt</module>
         <module>rest-endpoint/org.apache.stratos.rest.endpoint.feature</module>
         <module>styles/org.apache.stratos.manager.styles.feature</module>
@@ -59,11 +57,6 @@
             <dependency>
                 <groupId>org.apache.stratos</groupId>
                 <artifactId>org.apache.stratos.throttling.agent</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.stratos</groupId>
-                <artifactId>org.apache.stratos.tenant.activity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -100,11 +93,6 @@
                 <groupId>org.apache.synapse</groupId>
                 <artifactId>synapse-tasks</artifactId>
                 <version>${synapse.wso2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.stratos</groupId>
-                <artifactId>org.apache.stratos.sso.redirector.ui</artifactId>
-                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -377,6 +377,16 @@
 
     <pluginRepositories>
         <pluginRepository>
+            <id>wso2-nexus</id>
+            <name>WSO2 internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
             <id>wso2-maven2-repository-1</id>
             <url>http://dist.wso2.org/maven2</url>
         </pluginRepository>
@@ -557,6 +567,16 @@
             </plugins>
         </pluginManagement>
     </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wso2.maven</groupId>
+                <artifactId>carbon-p2-plugin</artifactId>
+                <version>${carbon.p2.plugin.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <properties>
         <!-- Carbon kernel version -->
@@ -569,7 +589,7 @@
         <carbon.commons.imp.pkg.version>[4.4.0, 4.5.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry version-->
-        <carbon.registry.version>4.4.0</carbon.registry.version>
+        <carbon.registry.version>4.4.1</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.4.4, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon mediation version -->
@@ -578,14 +598,14 @@
         <carbon.mediation.imp.pkg.version>[4.3.0, 4.5.0)</carbon.mediation.imp.pkg.version>
 
         <!--Carbon identity version-->
-        <carbon.identity.version>4.5.3</carbon.identity.version>
+        <carbon.identity.version>4.5.0</carbon.identity.version>
         <carbon.identity.imp.pkg.version>[4.4.0, 4.6.0)</carbon.identity.imp.pkg.version>
 
         <!-- Misc -->
-        <carbon.deployment.version>4.4.0</carbon.deployment.version>
+        <carbon.deployment.version>4.4.1</carbon.deployment.version>
         <carbon.multitenancy.version>4.4.0</carbon.multitenancy.version>
         <carbon.event-processing.version>2.0.4-SNAPSHOT</carbon.event-processing.version>
-        <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
+        <carbon.rule.version>4.4.0</carbon.rule.version>
         <org.wso2.securevault.version>1.0.0-wso2v2</org.wso2.securevault.version>
         <jaggeryjs.version>0.10.0</jaggeryjs.version>
         <caramel.module.version>1.0.1</caramel.module.version>
@@ -593,7 +613,7 @@
         <siddhi.version>3.0.0-SNAPSHOT</siddhi.version>
 
         <!-- Synapse Version -->
-        <synapse.wso2.version>2.1.3-wso2v3</synapse.wso2.version>
+        <synapse.wso2.version>2.1.3-wso2v5</synapse.wso2.version>
 
         <!-- Axis2 versions -->
         <orbit.version.axis2>1.6.1.wso2v12</orbit.version.axis2>
@@ -621,6 +641,7 @@
         <maven.war.plugin.version>2.6</maven.war.plugin.version>
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <maven.project-info-reports.plugin.version>2.4</maven.project-info-reports.plugin.version>
+        <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
 
         <!-- Misc -->
         <kaptcha.wso2.version>2.3.0.wso2v1</kaptcha.wso2.version>
@@ -666,7 +687,7 @@
         <sonar-jacoco-listeners.version>1.2</sonar-jacoco-listeners.version>
         <xstream.version>1.4.1</xstream.version>
         <antlr.version>3.3</antlr.version>
-        <antlr.wso2.version>3.1.1.wso2v1</antlr.wso2.version>
+        <antlr.wso2.version>3.2.0.wso2v1</antlr.wso2.version>
         <antlr.stringtemplate.version>3.2.1</antlr.stringtemplate.version>
         <mvel2.version>2.1.3.Final</mvel2.version>
         <orbit.version.mvel2>2.0.10.wso2v1</orbit.version.mvel2>
@@ -693,6 +714,7 @@
         <jsch.version>0.0.7</jsch.version>
         <reflections.version>0.9.9-RC1</reflections.version>
         <hector-core.wso2.version>1.1.0.wso2v1</hector-core.wso2.version>
+        <hector-core.version>1.1-0</hector-core.version>
         <java-xmlbuilder.wso2.version>0.4.wso2v1</java-xmlbuilder.wso2.version>
         <java-xmlbuilder.version>0.6</java-xmlbuilder.version>
         <oauth.version>20100527</oauth.version>
@@ -705,6 +727,7 @@
         <bcprov-jdk15.version>132</bcprov-jdk15.version>
         <version.javax.servlet>3.0.0.v201112011016</version.javax.servlet>
         <libthrift.version>0.9.1</libthrift.version>
+        <libthrift.wso2.version>0.7.wso2v1</libthrift.wso2.version>
         <javax.xml.stream.imp.pkg.version>[1.0.1, 1.1.0)</javax.xml.stream.imp.pkg.version>
         <axis2-java2wsdl-maven-plugin.wso2.version>1.6.1-wso2v10</axis2-java2wsdl-maven-plugin.wso2.version>
         <felix.framework.version>1.0.3</felix.framework.version>

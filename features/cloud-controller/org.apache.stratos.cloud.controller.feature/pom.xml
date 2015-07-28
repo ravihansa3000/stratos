@@ -370,15 +370,13 @@
                                 <bundleDef>jdom.wso2:jdom:${jdom.wso2.version}</bundleDef>
                                 <bundleDef>org.json.wso2:json:${json.wso2.version}</bundleDef>
                                 <bundleDef>org.apache.httpcomponents.wso2:httpcore:${httpcore.wso2.version}</bundleDef>
-                                <bundleDef>org.apache.httpcomponents.wso2:httpclient:${httpclient.wso2
-                                .version}
+                                <bundleDef>org.apache.httpcomponents.wso2:httpclient:${httpclient.wso2.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.jclouds.api:sts:${jclouds.version}</bundleDef>
                                 <bundleDef>javax.ws.rs:jsr311-api:${jsr311-api.version}</bundleDef>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.messaging:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.stratos:kubernetes-api:${kubernetes-api.stratos
-                                .version}
+                                <bundleDef>org.apache.stratos:kubernetes-api:${kubernetes-api.stratos.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.stratos:kubernetes-model:${kubernetes-model.stratos.version}
                                 </bundleDef>

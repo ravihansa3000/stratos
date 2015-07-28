@@ -19,8 +19,10 @@
 
 package org.apache.stratos.manager.utils;
 
+import org.apache.axiom.om.impl.dom.NamedNodeMapImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.NamedNodeMap;
 import org.wso2.carbon.utils.CarbonUtils;
 import org.wso2.securevault.SecretResolver;
 import org.wso2.securevault.SecretResolverFactory;
@@ -56,7 +58,8 @@ public class CartridgeConfigFileReader {
         if (log.isDebugEnabled()) {
             log.debug("Start reading properties and set it as system properties");
         }
-        SecretResolver secretResolver = SecretResolverFactory.create(properties);
+
+        SecretResolver secretResolver = SecretResolverFactory.create(properties, "");
         for (String name : properties.stringPropertyNames()) {
             String value = properties.getProperty(name);
             if (log.isDebugEnabled()) {

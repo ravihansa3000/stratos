@@ -206,7 +206,9 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Private-Package>org.apache.stratos.autoscaler.internal.*</Private-Package>
-                        <Export-Package>!org.apache.stratos.autoscaler.internal.*,org.apache.stratos.autoscaler.*
+                        <Export-Package>
+                            !org.apache.stratos.autoscaler.internal.*,
+                            org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>
                             org.osgi.framework.*;resolution:=optional,

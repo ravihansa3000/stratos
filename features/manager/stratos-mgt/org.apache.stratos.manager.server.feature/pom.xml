@@ -133,7 +133,7 @@
                                 <bundleDef>com.gitblit:gitblit:${gitblit.wso2.version}</bundleDef>
                                 <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
                                 <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef>
-                                <bundleDef>org.eclipse.jgit:org.eclipse.jgit:${orbit.version.jgit}</bundleDef>
+                                <bundleDef>org.eclipse.jgit.wso2:org.eclipse.jgit:${orbit.version.jgit}</bundleDef>
                                 <bundleDef>com.jcraft:jsch:${orbit.version.jsch}</bundleDef>
                             </bundles>
                         </configuration>

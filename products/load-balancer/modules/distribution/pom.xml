@@ -44,32 +44,32 @@
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-commons</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-nhttp-transport</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-pipe-transport</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-core</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-tasks</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-extensions</artifactId>
-            <version>${synapse.version}</version>
+            <version>${synapse.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>

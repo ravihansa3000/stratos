@@ -49,6 +49,7 @@
                             org.apache.stratos.common.domain.*,
                             org.apache.stratos.common.client.*,
                             org.apache.stratos.common.services.*,
+                            org.apache.stratos.common.threading.*,
                             org.apache.stratos.common.statistics.publisher.*,
                             org.apache.stratos.common.concurrent.locks.*,
                         </Export-Package>

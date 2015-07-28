@@ -60,7 +60,7 @@
             <dependency>
                 <groupId>org.springframework.ws.wso2</groupId>
                 <artifactId>spring.framework</artifactId>
-                <version>${spring.version}</version>
+                <version>${spring.wso2.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava.wso2</groupId>
@@ -75,12 +75,12 @@
             <dependency>
                 <groupId>org.hectorclient</groupId>
                 <artifactId>hector-core</artifactId>
-                <version>${hector-core.wso2.version}</version>
+                <version>${hector-core.version}</version>
             </dependency>
             <dependency>
                 <groupId>libthrift.wso2</groupId>
                 <artifactId>libthrift</artifactId>
-                <version>${libthrift.version}</version>
+                <version>${libthrift.wso2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.perf4j.wso2</groupId>

@@ -71,7 +71,7 @@
                                 <bundleDef>org.slf4j:slf4j-log4j12:${slf4j.version}</bundleDef>
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.apache.synapse.wso2:${synapse.wso2.version}</importFeatureDef>
+                                <importFeatureDef>org.apache.synapse.wso2:${carbon.mediation.version}</importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

@@ -89,7 +89,8 @@
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.mock.iaas.client.*,
+                            !org.apache.stratos.mock.iaas.client.internal,
+                            org.apache.stratos.mock.iaas.client.*
                         </Export-Package>
                         <Private-Package>
                             org.apache.stratos.mock.iaas.client.internal;
