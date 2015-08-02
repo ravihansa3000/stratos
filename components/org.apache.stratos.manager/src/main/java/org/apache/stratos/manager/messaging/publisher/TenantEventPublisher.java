@@ -82,6 +82,11 @@ public class TenantEventPublisher implements TenantMgtListener {
     }
 
     @Override
+    public void onTenantDelete(int i) {
+
+    }
+
+    @Override
     public void onTenantRename(int tenantId, String oldDomainName, String newDomainName) throws StratosException {
     }
 
@@ -104,5 +109,10 @@ public class TenantEventPublisher implements TenantMgtListener {
     @Override
     public int getListenerOrder() {
         return EXEC_ORDER;
+    }
+
+    @Override
+    public void onPreDelete(int i) throws StratosException {
+
     }
 }

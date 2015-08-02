@@ -35,7 +35,7 @@
     <description>Apache Stratos Load Balancer</description>
 
     <modules>
-        <module>modules/p2-profile</module>
+        <module>modules/p2-profile-gen</module>
         <module>modules/distribution</module>
     </modules>
 

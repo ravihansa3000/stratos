@@ -82,6 +82,11 @@ public class TenantUserRoleManager implements TenantMgtListener {
     }
 
     @Override
+    public void onTenantDelete(int i) {
+
+    }
+
+    @Override
     public void onTenantRename(int tenantId, String oldDomainName, String newDomainName)
             throws StratosException {
 
@@ -111,5 +116,10 @@ public class TenantUserRoleManager implements TenantMgtListener {
     @Override
     public int getListenerOrder() {
         return 0;
+    }
+
+    @Override
+    public void onPreDelete(int i) throws StratosException {
+
     }
 }

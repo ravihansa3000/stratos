@@ -68,7 +68,7 @@
 
         <!-- Copying p2 profile and osgi bundles-->
         <fileSet>
-            <directory>../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/components</directory>
+            <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/components</directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/components</outputDirectory>
             <excludes>
                 <exclude>**/eclipse.ini</exclude>
@@ -85,7 +85,7 @@
             </outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>../p2-profile/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/etc/</directory>
+            <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/etc/</directory>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc</outputDirectory>
             <includes>
                 <include>*.xsd</include>

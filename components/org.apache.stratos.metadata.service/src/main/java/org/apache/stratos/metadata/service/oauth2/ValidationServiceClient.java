@@ -24,6 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.cxf.rs.security.oauth2.utils.OAuthConstants;
 import org.wso2.carbon.identity.oauth2.stub.OAuth2TokenValidationServiceStub;
 import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationRequestDTO;
+import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationRequestDTO_OAuth2AccessToken;
 import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationResponseDTO;
 import org.wso2.carbon.utils.CarbonUtils;
 
@@ -52,8 +53,11 @@ public class ValidationServiceClient {
     public OAuth2TokenValidationResponseDTO validateAuthenticationRequest(String accessToken)
             throws Exception {
         OAuth2TokenValidationRequestDTO oauthReq = new OAuth2TokenValidationRequestDTO();
-        oauthReq.setAccessToken(accessToken);
-        oauthReq.setTokenType(OAuthConstants.BEARER_TOKEN_TYPE);
+        OAuth2TokenValidationRequestDTO_OAuth2AccessToken oAuth2AccessToken = new
+                OAuth2TokenValidationRequestDTO_OAuth2AccessToken();
+        oAuth2AccessToken.setIdentifier(accessToken);
+        oAuth2AccessToken.setTokenType(OAuthConstants.BEARER_TOKEN_TYPE);
+        oauthReq.setAccessToken(oAuth2AccessToken);
         try {
             return stub.validate(oauthReq);
         } catch (RemoteException e) {

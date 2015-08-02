@@ -55,7 +55,7 @@ public class CartridgeConfigFileReader {
         if (log.isDebugEnabled()) {
             log.debug("Start reading properties and set it as system properties");
         }
-        SecretResolver secretResolver = SecretResolverFactory.create(properties);
+        SecretResolver secretResolver = SecretResolverFactory.create(properties, "");
         for (String name : properties.stringPropertyNames()) {
             String value = properties.getProperty(name);
             if (log.isDebugEnabled()) {
