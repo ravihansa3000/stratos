@@ -130,11 +130,11 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.quartz-scheduler.wso2:quartz:${quartz.wso2.version}</bundleDef>
+                                <!--bundleDef>org.quartz-scheduler.wso2:quartz:${quartz.wso2.version}</bundleDef>
                                 <bundleDef>
                                     org.wso2.carbon.mediation:org.wso2.carbon.task:${carbon.mediation.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.synapse:synapse-tasks:${synapse.wso2.version}</bundleDef>
+                                <bundleDef>org.apache.synapse:synapse-tasks:${synapse.wso2.version}</bundleDef-->
                                 <bundleDef>org.json.wso2:json:${json.wso2.version}</bundleDef>
                                 <bundleDef>kaptcha.wso2:kaptcha:${kaptcha.wso2.version}</bundleDef>
                                 <bundleDef>

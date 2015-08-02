@@ -68,6 +68,11 @@
                                     <propertyDef>org.eclipse.equinox.p2.type.group:true</propertyDef>
                                 </properties>
                             </adviceFile>
+                            <bundles>
+                                <bundleDef>org.json.wso2:json:${json.wso2.version}</bundleDef>
+                                <bundleDef>org.slf4j:slf4j-api:${slf4j.version}</bundleDef>
+                                <bundleDef>org.slf4j:slf4j-log4j12:${slf4j.version}</bundleDef>
+                            </bundles>
                             <includedFeatures>
                                 <includedFeatureDef>
                                     org.apache.stratos:org.apache.stratos.common.server.feature:${project.version}

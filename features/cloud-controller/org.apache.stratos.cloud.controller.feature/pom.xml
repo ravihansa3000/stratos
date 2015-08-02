@@ -33,8 +33,13 @@
     <url>http://apache.org</url>
     <description>This feature contains the required bundles for the functionality of Cloud Controller</description>
 
-    <!--dependencies>
+    <dependencies>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google.guava.version}</version>
+        </dependency>
+        <!--dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.cloud.controller</artifactId>
             <version>${project.version}</version>
@@ -259,8 +264,8 @@
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-model</artifactId>
             <version>${kubernetes-model.stratos.version}</version>
-        </dependency>
-    </dependencies-->
+        </dependency-->
+    </dependencies>
 
     <build>
         <plugins>
@@ -312,11 +317,12 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.cloud.controller:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.kubernetes.client:${project.version}
+                                <!--bundleDef>org.apache.stratos:org.apache.stratos.kubernetes.client:${project.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.mock.iaas.client:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.jclouds.driver:jclouds-bouncycastle:${jclouds.version}</bundleDef>
+                                <bundleDef>org.apache.jclouds.driver:jclouds-bouncycastle:${jclouds
+                                .version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-sshj:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-enterprise:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds:jclouds-core:${jclouds.version}</bundleDef>
@@ -337,13 +343,16 @@
                                 <bundleDef>
                                     org.apache.servicemix.bundles:org.apache.servicemix.bundles.jsch-agentproxy-jsch:${servicemix.bundles.jsch}
                                 </bundleDef>
+                                <bundleDef>
+                                    org.apache.servicemix.bundles:org.apache.servicemix.bundles.jsch:0.1.51_1
+                                </bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.connector-factory:${jsch.version}</bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.sshagent:${jsch.version}</bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.usocket-nc:${jsch.version}</bundleDef>
                                 <bundleDef>com.jcraft:jsch.agentproxy.core:${jsch.version}</bundleDef>
                                 <bundleDef>net.java.dev.jna:jna:${jna.version}</bundleDef>
                                 <bundleDef>
-                                    org.apache.servicemix.bundles:org.apache.servicemix.bundles.jsch-agentproxy-sshj:${servicemix.bundles.jsch}
+                                    org.apache.servicemix.bundles:org.apache.servicemix.bundles.jsch-agentproxy-sshj:${servicemix.bundles.sshj}
                                 </bundleDef>
                                 <bundleDef>net.schmizz:sshj:${sshj.version}</bundleDef>
                                 <bundleDef>
@@ -357,15 +366,12 @@
                                 <bundleDef>com.sun.jersey:jersey-core:${sun.jersey.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds:jclouds-scriptbuilder:${jclouds.version}</bundleDef>
                                 <bundleDef>org.99soft.guice.wso2:rocoto:${nnsoft.guice.version}</bundleDef>
-                                <!--bundleDef>org.bouncycastle.wso2:bcprov-jdk16:${bcprov-jdk16.wso2.version}</bundleDef-->
                                 <bundleDef>org.bouncycastle.wso2:bcprov-jdk15on:${bouncycastle.wso2.version}</bundleDef>
                                 <bundleDef>org.bouncycastle.wso2:bcpkix-jdk15on:${bouncycastle.wso2.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-joda:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-netty:${jclouds.version}</bundleDef>
-                                <!--bundleDef>io.netty:netty:${netty.version}</bundleDef-->
+                                <bundleDef>io.netty:netty:${netty.version}</bundleDef>
                                 <bundleDef>commons-io.wso2:commons-io:${commons-io.wso2.version}</bundleDef>
-                                <!--bundleDef>org.slf4j:slf4j-api:${slf4j.version}</bundleDef>
-                                <bundleDef>org.slf4j:slf4j-log4j12:${slf4j.version}</bundleDef-->
                                 <bundleDef>org.apache.jclouds.driver:jclouds-slf4j:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-log4j:${jclouds.version}</bundleDef>
                                 <bundleDef>com.google.common.wso2:google-collect:${google.collect.osgi.version}
@@ -380,7 +386,7 @@
                                 <bundleDef>org.apache.stratos:kubernetes-api:${kubernetes-api.stratos.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.stratos:kubernetes-model:${kubernetes-model.stratos.version}
-                                </bundleDef>
+                                </bundleDef-->
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}

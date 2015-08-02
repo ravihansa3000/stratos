@@ -103,6 +103,9 @@
                                 </bundleDef>
                                 <bundleDef>org.apache.httpcomponents:httpcore-osgi:${httpcore.version}</bundleDef>
                                 <bundleDef>commons-codec:commons-codec:${commons-codec.version}</bundleDef>
+                                <bundleDef>
+                                    org.apache.servicemix.bundles:org.apache.servicemix.bundles.commons-configuration:${commons-configuration.bundle.version}
+                                </bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

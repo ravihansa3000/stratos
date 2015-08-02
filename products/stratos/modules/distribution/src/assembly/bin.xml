@@ -443,8 +443,8 @@
         </file>
 
         <file>
-            <source>src/main/conf/identity.xml</source>
-            <outputDirectory>${distribution.name}-${pom.version}/repository/conf</outputDirectory>
+            <source>src/main/conf/identity/identity.xml</source>
+            <outputDirectory>${distribution.name}-${pom.version}/repository/conf/identity</outputDirectory>
             <filtered>true</filtered>
             <fileMode>600</fileMode>
         </file>
@@ -461,13 +461,13 @@
             <outputDirectory>${distribution.name}-${pom.version}/repository/conf/security/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-        <file>
+        <!--file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/sso-idp-config.xml
             </source>
             <outputDirectory>${distribution.name}-${pom.version}/repository/conf/identity/</outputDirectory>
             <fileMode>644</fileMode>
-        </file>
+        </file-->
         <file>
             <source>src/main/resources/client-truststore.jks</source>
             <outputDirectory>${distribution.name}-${pom.version}/repository/resources/security/</outputDirectory>

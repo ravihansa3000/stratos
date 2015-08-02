@@ -62,6 +62,8 @@
                             *; resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
+                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Embed-Directory>lib</Embed-Directory>
                         <Axis2Deployer>CloudControllerDeployer</Axis2Deployer>
                     </instructions>
                 </configuration>
