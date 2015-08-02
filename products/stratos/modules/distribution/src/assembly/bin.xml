@@ -132,11 +132,11 @@
                 <exclude>**/README</exclude>
             </excludes>
         </fileSet>
-        <fileSet>
+        <!--fileSet>
             <directory>../../../../components/org.apache.stratos.manager.console/sso</directory>
             <outputDirectory>${distribution.name}-${pom.version}/repository/deployment/server/jaggeryapps/sso
             </outputDirectory>
-        </fileSet>
+        </fileSet-->
         <fileSet>
             <directory>../../../../components/org.apache.stratos.manager.console/modules/console</directory>
             <outputDirectory>${distribution.name}-${pom.version}/modules/console</outputDirectory>

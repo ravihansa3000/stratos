@@ -19,10 +19,8 @@
 
 package org.apache.stratos.manager.utils;
 
-import org.apache.axiom.om.impl.dom.NamedNodeMapImpl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.w3c.dom.NamedNodeMap;
 import org.wso2.carbon.utils.CarbonUtils;
 import org.wso2.securevault.SecretResolver;
 import org.wso2.securevault.SecretResolverFactory;
@@ -33,9 +31,8 @@ import java.util.Properties;
 
 public class CartridgeConfigFileReader {
 
-    private static String carbonHome = CarbonUtils.getCarbonHome();
-
     private static final Log log = LogFactory.getLog(CartridgeConfigFileReader.class);
+    private static String carbonHome = CarbonUtils.getCarbonHome();
 
     /**
      * Reads cartridge-config.properties file and assign properties to system
@@ -58,8 +55,7 @@ public class CartridgeConfigFileReader {
         if (log.isDebugEnabled()) {
             log.debug("Start reading properties and set it as system properties");
         }
-
-        SecretResolver secretResolver = SecretResolverFactory.create(properties, "");
+        SecretResolver secretResolver = SecretResolverFactory.create(properties);
         for (String name : properties.stringPropertyNames()) {
             String value = properties.getProperty(name);
             if (log.isDebugEnabled()) {

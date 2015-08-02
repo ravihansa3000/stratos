@@ -24,7 +24,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.cxf.rs.security.oauth2.utils.OAuthConstants;
 import org.wso2.carbon.identity.oauth2.stub.OAuth2TokenValidationServiceStub;
 import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationRequestDTO;
-import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationRequestDTO_OAuth2AccessToken;
 import org.wso2.carbon.identity.oauth2.stub.dto.OAuth2TokenValidationResponseDTO;
 import org.wso2.carbon.utils.CarbonUtils;
 
@@ -43,8 +42,7 @@ public class ValidationServiceClient {
         try {
             stub = new OAuth2TokenValidationServiceStub(serviceURL);
             CarbonUtils.setBasicAccessSecurityHeaders(username, password, true, stub._getServiceClient());
-        }
-        catch (AxisFault e) {
+        } catch (AxisFault e) {
             log.error("Error initializing OAuth2 Client");
             throw new Exception("Error initializing OAuth Client", e);
         }
@@ -53,17 +51,15 @@ public class ValidationServiceClient {
 
     public OAuth2TokenValidationResponseDTO validateAuthenticationRequest(String accessToken) throws Exception {
         OAuth2TokenValidationRequestDTO oauthReq = new OAuth2TokenValidationRequestDTO();
-        OAuth2TokenValidationRequestDTO_OAuth2AccessToken oauthAccessToken = new
-                OAuth2TokenValidationRequestDTO_OAuth2AccessToken();
-        oauthAccessToken.setIdentifier(accessToken);
-        oauthAccessToken.setTokenType(OAuthConstants.BEARER_TOKEN_TYPE);
-        oauthReq.setAccessToken(oauthAccessToken);
+        oauthReq.setAccessToken(accessToken);
+        oauthReq.setTokenType(OAuthConstants.BEARER_TOKEN_TYPE);
         try {
             return stub.validate(oauthReq);
-        }
-        catch (RemoteException e) {
+        } catch (RemoteException e) {
             log.error("Error while validating OAuth2 request");
             throw new Exception("Error while validating OAuth2 request", e);
         }
     }
+
+
 }

@@ -309,7 +309,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-api</artifactId>
-            <version>${kubernetes-api.stratos.version}</version>
+            <version>${kubernetes.api.stratos.version}</version>
         </dependency>
     </dependencies>
 </project>

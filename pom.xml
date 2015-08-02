@@ -606,7 +606,7 @@
         <carbon.event-processing.version>2.0.4-SNAPSHOT</carbon.event-processing.version>
         <carbon.rule.version>4.4.0</carbon.rule.version>
         <org.wso2.securevault.version>1.0.0-wso2v2</org.wso2.securevault.version>
-        <jaggeryjs.version>0.10.0</jaggeryjs.version>
+        <jaggeryjs.version>0.10.1</jaggeryjs.version>
         <caramel.module.version>1.0.1</caramel.module.version>
         <carbon.analytics-common.version>2.0.0-SNAPSHOT</carbon.analytics-common.version>
         <siddhi.version>3.0.0-SNAPSHOT</siddhi.version>
@@ -720,8 +720,9 @@
         <java-xmlbuilder.version>0.6</java-xmlbuilder.version>
         <oauth.version>20100527</oauth.version>
         <rhino.wso2-js.version>1.7.0.R1-wso2v3</rhino.wso2-js.version>
-        <kubernetes-api.stratos.version>2.1.11-stratosv1</kubernetes-api.stratos.version>
-        <kubernetes-model.stratos.version>2.1.11-stratosv1</kubernetes-model.stratos.version>
+        <kubernetes.api.stratos.version>2.2.16-stratosv1</kubernetes.api.stratos.version>
+        <kubernetes.api.version>2.2.16</kubernetes.api.version>
+        <kubernetes.model.version>1.0.2</kubernetes.model.version>
         <json-smart.version>1.3</json-smart.version>
         <commons-codec.wso2.version>1.4.0.wso2v1</commons-codec.wso2.version>
         <commons-codec.version>1.9</commons-codec.version>
@@ -738,7 +739,7 @@
         <javax.servlet.jsp.version>2.0.0.v200706191603</javax.servlet.jsp.version>
         <commons.collections.wso2.version>3.2.0.wso2v1</commons.collections.wso2.version>
         <commons.collections.version>3.2.1</commons.collections.version>
-        <cxf.version>2.7.7</cxf.version>
+        <cxf.version>2.7.6</cxf.version>
         <cxf-xjc.version>2.6.2</cxf-xjc.version>
         <fabric8.version>2.1.11</fabric8.version>
         <com.fasterxml.jackson.version>2.4.1</com.fasterxml.jackson.version>
@@ -802,6 +803,7 @@
         <h2.version>1.4.187</h2.version>
         <netty.version>3.3.0.Final</netty.version>
         <nnsoft.guice.version>6.1.wso2v1</nnsoft.guice.version>
+        <opensaml2.wso2.version>2.4.1.wso2v1</opensaml2.wso2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>

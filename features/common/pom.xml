@@ -35,5 +35,6 @@
         <module>org.apache.stratos.common.feature</module>
         <module>org.apache.stratos.common.server.feature</module>
         <module>org.apache.stratos.common.ui.feature</module>
+        <module>org.apache.stratos.custom.handlers.feature</module>
     </modules>
 </project>

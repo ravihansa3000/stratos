@@ -35,6 +35,7 @@
 
     <modules>
         <module>org.apache.stratos.common</module>
+        <module>org.apache.stratos.custom.handlers</module>
         <module>org.apache.stratos.messaging</module>
         <module>org.apache.stratos.autoscaler</module>
         <module>org.apache.stratos.cloud.controller</module>

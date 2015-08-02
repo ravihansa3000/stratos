@@ -19,6 +19,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-dependencies-fabric8</artifactId>
@@ -27,20 +28,31 @@
     </parent>
 
     <artifactId>kubernetes-api</artifactId>
-    <version>2.1.11-stratosv1</version>
+    <version>${kubernetes.api.stratos.version}</version>
     <packaging>bundle</packaging>
+
     <name>Fabric8 :: Kubernetes API</name>
+    <description>
+        This is a wrapper bundle for Fabric8 Kubernetes API for exposing proper bundle import
+        &amp; export statements and packaging apache cxf dependencies which cannot be imported into
+        carbon runtime as separate bundles at the moment.
+    </description>
 
     <dependencies>
         <dependency>
             <groupId>io.fabric8</groupId>
-            <artifactId>cxf-utils</artifactId>
-            <version>${fabric8.version}</version>
+            <artifactId>kubernetes-api</artifactId>
+            <version>${kubernetes.api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.stratos</groupId>
+            <groupId>io.fabric8</groupId>
+            <artifactId>cxf-utils</artifactId>
+            <version>${kubernetes.api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8</groupId>
             <artifactId>kubernetes-model</artifactId>
-            <version>${kubernetes-model.stratos.version}</version>
+            <version>${kubernetes.model.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -95,8 +107,9 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-util</artifactId>
-            <version>9.1.5.v20140505</version>
+            <version>${jetty-io.version}</version>
         </dependency>
+        <!-- testing -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -113,7 +126,7 @@
         <dependency>
             <groupId>io.fabric8</groupId>
             <artifactId>kubernetes-codegen</artifactId>
-            <version>${fabric8.version}</version>
+            <version>${kubernetes.api.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -124,11 +137,14 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <extensions>true</extensions>
+                <version>2.3.7</version>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>
-                            io.fabric8.kubernetes.api.*,
+                            io.fabric8.kubernetes.api.*;version=${kubernetes.api.stratos.version},
+                            io.fabric8.kubernetes.api.model.*;version=${kubernetes.api.stratos.version},
+                            io.fabric8.kubernetes.internal.*,
                         </Export-Package>
                         <Import-Package>
                             !javax.xml.bind.annotation.adapters,
@@ -136,7 +152,6 @@
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
-                        <!-- Embedding apache cxf dependencies as they cannot be imported into carbon runtime at the moment -->
                         <Embed-Dependency>
                             jackson-annotations,jackson-core,jackson-databind,jackson-jaxrs-base,jackson-jaxrs-json-provider,
                             jackson-module-jaxb-annotations,jackson-dataformat-yaml,javax.annotation-api,javax.ws.rs-api,
@@ -165,40 +180,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>trigger</id>
-            <properties>
-                <build>console-build</build>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>${exec-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <executable>java</executable>
-                            <classpathScope>test</classpathScope>
-                            <!-- TODO for some reason this fails when running inside maven - wacky! -->
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>io.fabric8.kubernetes.api.TriggerBuild</argument>
-                                <argument>${build}</argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
