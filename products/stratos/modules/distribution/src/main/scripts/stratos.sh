@@ -17,7 +17,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 # ----------------------------------------------------------------------------
-# Main Script for the Apache Stratos
+# Main Script for the Apache Stratos (incubating)
 #
 # Environment Variable Prerequisites
 #
@@ -276,8 +276,7 @@ while [ "$status" = "$START_EXIT_STATUS" ]
 do
     $JAVACMD \
     -Xbootclasspath/a:"$CARBON_XBOOTCLASSPATH" \
-    -Xms256m -Xmx1024m -XX:MaxPermSize=256m \
-    -server \
+    -Xms256m -Xmx1024m -XX:MaxPermSize=256m -Xss4m \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:HeapDumpPath="$CARBON_HOME/repository/logs/heap-dump.hprof" \
     $JAVA_OPTS \
@@ -290,7 +289,6 @@ do
     -Dcarbon.registry.root=/ \
     -Djava.command="$JAVACMD" \
     -Dcarbon.home="$CARBON_HOME" \
-    -Dloadbalancer.conf.file="$CARBON_HOME/repository/conf/loadbalancer.conf" \
     -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
     -Dcarbon.config.dir.path="$CARBON_HOME/repository/conf" \
     -Djava.util.logging.config.file="$CARBON_HOME/repository/conf/etc/logging-bridge.properties" \
@@ -308,8 +306,8 @@ do
     -Djava.net.preferIPv4Stack=true \
     -Dcom.ibm.cacheLocalHost=true \
     -Djndi.properties.dir="$CARBON_HOME/repository/conf" \
-    -Dthrift.client.config.file.path="$CARBON_HOME/repository/conf/thrift-client-config.xml" \
-    -Dwso2.loadbalancer=true \
+    -Dstratos.component.startup.synchronizer.enabled=true \
+    -Dread.write.lock.monitor.enabled=false \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done

@@ -17,7 +17,6 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
@@ -33,7 +32,7 @@
     <name>Apache Stratos - Mock IaaS API Feature</name>
     <description>This feature packs mock iaas capability</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle</artifactId>
@@ -209,7 +208,7 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <resources>

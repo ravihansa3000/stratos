@@ -110,11 +110,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.messaging,
-                            org.apache.stratos.messaging.*,
-                            org.apache.stratos.messaging.topology,
-                            org.apache.stratos.messaging.topology.*,
-                            org.apache.stratos.messaging.util.MessagingConstants,
+                            org.apache.stratos.messaging.*
                         </Export-Package>
                         <Import-Package>
                             !org.apache.commons.logging,

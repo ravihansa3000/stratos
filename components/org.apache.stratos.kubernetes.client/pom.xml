@@ -42,10 +42,12 @@
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
+            <version>${commons.logging.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -66,11 +68,10 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.kubernetes.client,
-                            org.apache.stratos.kubernetes.client.exceptions,
+                            org.apache.stratos.kubernetes.client.*,
                         </Export-Package>
                         <Import-Package>
-                            io.fabric8.kubernetes.api.*;version="${kubernetes-api.stratos.version}",
+                            io.fabric8.kubernetes.api.*; version="${kubernetes-api.stratos.version}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

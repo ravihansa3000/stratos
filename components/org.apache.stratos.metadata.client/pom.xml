@@ -32,9 +32,14 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <artifactId>httpclient-osgi</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
+        <!--dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore-osgi</artifactId>
+            <version>${httpcore.version}</version>
+        </dependency-->
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
@@ -62,13 +67,15 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.metadata.client.*,
+                            org.apache.stratos.metadata.client.*
                         </Export-Package>
                         <Import-Package>
-                            !org.apache.stratos.metadata.client,
-                            org.apache.commons.logging; version=0.0.0,
-                            org.apache.commons.configuration; version=0.0.0,
-                            org.apache.http.conn.ssl;version=0.0.0,
+                            !org.apache.stratos.metadata.client.*,
+                            org.apache.commons.logging.*; version=0.0.0,
+                            org.apache.commons.configuration.*; version=0.0.0,
+                            org.apache.http.*; version=${httpclient.version},
+                            org.apache.http.conn.ssl.*; version=${httpclient.version},
+                            org.apache.commons.codec.binary.*; version=${commons-codec.version},
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

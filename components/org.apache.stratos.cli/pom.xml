@@ -95,9 +95,9 @@
             <version>${gson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
+            <groupId>org.apache.httpcomponents.wso2</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
+            <version>${httpclient.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>

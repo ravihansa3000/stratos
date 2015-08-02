@@ -74,13 +74,11 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.load.balancer.endpoint,
-                            org.apache.stratos.load.balancer,
-                            org.apache.stratos.load.balancer.topology,
-                            org.apache.stratos.load.balancer.mediators,
+                            !org.apache.stratos.load.balancer.internal.*,
+                            org.apache.stratos.load.balancer.*,
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.registry.core.service; version="${carbon.kernel.registry.imp.pkg.version}",
+                            org.wso2.carbon.registry.core.service.*; version="${carbon.kernel.registry.imp.pkg.version}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

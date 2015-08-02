@@ -33,7 +33,7 @@
     <name>Apache Stratos - Meta Data Service feature</name>
     <description>This feature packs the Meta Data Service of stratos</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle</artifactId>
@@ -225,7 +225,7 @@
             <version>${carbon.multitenancy.version}</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <resources>
@@ -286,13 +286,10 @@
                                     <propertyDef>org.eclipse.equinox.p2.type.group:false</propertyDef>
                                 </properties>
                             </adviceFile>
-                            <bundles>
-                                <bundleDef>
-                                    org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
-                                </bundleDef>
-                            </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core:${carbon.kernel.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.identity.oauth.server:${carbon.identity.version}
+                                </importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

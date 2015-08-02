@@ -17,7 +17,6 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
@@ -35,14 +34,13 @@
 
     <modules>
         <module>stratos-mgt</module>
-        <module>logging-mgt</module>
         <module>rest-endpoint/org.apache.stratos.rest.endpoint.feature</module>
         <module>styles/org.apache.stratos.manager.styles.feature</module>
         <module>metadata-service/org.apache.stratos.metadata.service.feature</module>
         <module>metadata-service/org.apache.stratos.metadata.client.feature</module>
     </modules>
 
-    <dependencyManagement>
+    <!--dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.wso2.carbon.multitenancy</groupId>
@@ -95,5 +93,5 @@
                 <version>${synapse.wso2.version}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement-->
 </project>

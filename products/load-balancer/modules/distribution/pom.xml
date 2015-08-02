@@ -28,14 +28,14 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>apache-stratos-load-balancer</artifactId>
+    <artifactId>load-balancer-distribution</artifactId>
     <packaging>pom</packaging>
     <name>Apache Stratos - Load Balancer - Distribution</name>
     <url>http://apache.org</url>
     <description>Apache Stratos Load Balancer Distribution</description>
 
     <dependencies>
-        <dependency>
+        <!--dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>wso2carbon-core</artifactId>
             <version>${carbon.kernel.version}</version>
@@ -196,12 +196,7 @@
             <artifactId>rampart-core</artifactId>
             <version>${rampart.wso2.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.rampart</groupId>
-            <artifactId>rampart</artifactId>
-            <type>mar</type>
-            <version>${rampart-.wso2.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.policyeditor</artifactId>
@@ -336,6 +331,17 @@
             <groupId>org.eclipse.paho</groupId>
             <artifactId>mqtt-client</artifactId>
             <version>${eclipse-mqtt-client}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.wso2.carbon.ui</artifactId>
+            <version>${org.wso2.carbon.ui.stratos.version}</version>
+        </dependency-->
+        <dependency>
+            <groupId>org.apache.rampart</groupId>
+            <artifactId>rampart</artifactId>
+            <version>${rampart.mar.version}</version>
+            <type>mar</type>
         </dependency>
     </dependencies>
 

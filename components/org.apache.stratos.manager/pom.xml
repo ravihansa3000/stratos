@@ -51,6 +51,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -96,9 +97,10 @@
                         </Export-Package>
                         <Import-Package>
                             org.apache.stratos.cloud.controller.registry.*; version="${project.version}",
+                            org.apache.stratos.common.*; version="${project.version}",
+                            org.apache.stratos.autoscaler.stub.*; version="${project.version}",
                             org.apache.axis2.*; version="${axis2.osgi.version.range}",
                             org.apache.axiom.*; version="${axiom.osgi.version.range}",
-                            org.apache.stratos.autoscaler.stub; version="${project.version}",
                             org.apache.neethi.*; version="${neethi.wso2.version}",
                             javax.xml.stream.*; version="${javax.xml.stream.imp.pkg.version}",
                             javax.wsdl.*; version="${wsdl4j.wso2.version}",

@@ -32,7 +32,7 @@
     <url>http://apache.org</url>
     <description>This feature contains the core bundles required for Stratos Manager</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.manager</artifactId>
@@ -73,11 +73,11 @@
             <artifactId>jsch</artifactId>
             <version>${orbit.version.jsch}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
-            <plugin>
+            <!--plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -101,7 +101,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
@@ -126,16 +126,24 @@
                                 <bundleDef>
                                     org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.wso2.andes.wso2:andes-client:${andes.version}</bundleDef>
+                                <!--bundleDef>org.wso2.andes.wso2:andes-client:${andes.version}</bundleDef-->
                                 <bundleDef>
                                     org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}
                                 </bundleDef>
-                                <bundleDef>com.gitblit:gitblit:${gitblit.wso2.version}</bundleDef>
+                                <!--bundleDef>com.gitblit:gitblit:${gitblit.wso2.version}</bundleDef>
                                 <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
-                                <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef>
-                                <bundleDef>org.eclipse.jgit.wso2:org.eclipse.jgit:${orbit.version.jgit}</bundleDef>
-                                <bundleDef>com.jcraft:jsch:${orbit.version.jsch}</bundleDef>
+                                <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef-->
+                                <!--bundleDef>org.eclipse.jgit.wso2:org.eclipse.jgit:${orbit.version.jgit}</bundleDef-->
+                                <!--bundleDef>com.jcraft:jsch:${orbit.version.jsch}</bundleDef>
+                                <bundleDef>com.jcraft:jsch:${orbit.version.jsch}</bundleDef-->
+                                <!--bundleDef>com.google.guava:guava:${google.guava.version}</bundleDef-->
                             </bundles>
+                            <importFeatures>
+                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                </importFeatureDef>
+                                <importFeatureDef>org.apache.stratos.common:${project.version}</importFeatureDef>
+                                <importFeatureDef>org.apache.stratos.messaging:${project.version}</importFeatureDef>
+                            </importFeatures>
                         </configuration>
                     </execution>
                 </executions>

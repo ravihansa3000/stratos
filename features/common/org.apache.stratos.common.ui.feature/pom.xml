@@ -33,7 +33,7 @@
     <url>http://apache.org</url>
     <description>This feature contains the bundles required for Front-end servlet functionality</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.wso2.carbon.multitenancy</groupId>
             <artifactId>org.wso2.carbon.tenant.redirector.servlet.ui</artifactId>
@@ -54,7 +54,7 @@
             <artifactId>org.wso2.carbon.tenant.mgt.ui</artifactId>
             <version>${carbon.multitenancy.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
@@ -79,6 +79,9 @@
                             </adviceFile>
                             <bundles>
                                 <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.common:${project.version}
+                                </bundleDef>
+                                <bundleDef>
                                     org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.redirector.servlet.ui:${carbon.multitenancy.version}
                                 </bundleDef>
                                 <bundleDef>
@@ -94,12 +97,16 @@
                                     org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.mgt.stub:${carbon.multitenancy.version}
                                 </bundleDef>
                             </bundles>
-                            <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.ui:${carbon.kernel.version}</importFeatureDef>
+                            <importBundles>
+                                <importBundleDef>
+                                    org.apache.stratos:org.wso2.carbon.ui:${org.wso2.carbon.ui.stratos.version}
+                                </importBundleDef>
+                            </importBundles>
+                            <!--importFeatures>
                                 <importFeatureDef>
                                     org.wso2.carbon.identity.authenticator.saml2.sso.ui:${carbon.identity.version}
                                 </importFeatureDef>
-                            </importFeatures>
+                            </importFeatures-->
                         </configuration>
                     </execution>
                 </executions>

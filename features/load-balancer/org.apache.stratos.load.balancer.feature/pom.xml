@@ -34,13 +34,13 @@
     <description>This feature contains the required bundles for loadbalancer endpoint management functionality
     </description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.load.balancer</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
@@ -66,6 +66,8 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.load.balancer:${project.version}
                                 </bundleDef>
+                                <bundleDef>org.apache.ws.security:wss4j:${wss4j.wso2.version}</bundleDef>
+                                <bundleDef>org.apache.santuario:xmlsec:${xmlsec.version}</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}

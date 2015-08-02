@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>carbon-parent</artifactId>
-        <version>4.4.0-stratos</version>
+        <version>4.4.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,6 @@
     <packaging>bundle</packaging>
     <name>WSO2 Carbon - UI</name>
     <description>org.wso2.carbon.ui patch version for apache stratos</description>
-    <version>4.4.0-stratos</version>
     <url>http://wso2.org</url>
 
     <dependencies>

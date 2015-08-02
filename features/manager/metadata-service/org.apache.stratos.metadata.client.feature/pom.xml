@@ -35,7 +35,7 @@
     <url>http://apache.org</url>
     <description/>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -71,7 +71,7 @@
             <artifactId>httpcore-nio</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
@@ -99,8 +99,10 @@
                                 </bundleDef>
                                 <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
                                 <bundleDef>org.apache.commons:commons-lang3:${commons-lang3.version}</bundleDef>
-                                <bundleDef>org.apache.httpcomponents:httpclient-osgi:${httpclient.version}</bundleDef>
-                                <bundleDef>org.apache.httpcomponents:httpcore-osgi:${httpclient.version}</bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpclient-osgi:${httpclient.version}
+                                </bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpcore-osgi:${httpcore.version}</bundleDef>
+                                <bundleDef>commons-codec:commons-codec:${commons-codec.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

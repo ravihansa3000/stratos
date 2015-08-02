@@ -63,6 +63,11 @@
                         <configuration>
                             <id>org.apache.stratos.common</id>
                             <propertiesFile>../../../../etc/feature.properties</propertiesFile>
+                            <adviceFile>
+                                <properties>
+                                    <propertyDef>org.eclipse.equinox.p2.type.group:true</propertyDef>
+                                </properties>
+                            </adviceFile>
                             <includedFeatures>
                                 <includedFeatureDef>
                                     org.apache.stratos:org.apache.stratos.common.server.feature:${project.version}

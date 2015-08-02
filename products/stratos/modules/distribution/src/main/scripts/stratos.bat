@@ -1,26 +1,29 @@
 @echo off
 
+REM ---------------------------------------------------------------------------
+REM  Licensed to the Apache Software Foundation (ASF) under one
+REM  or more contributor license agreements. See the NOTICE file
+REM  distributed with this work for additional information
+REM  regarding copyright ownership. The ASF licenses this file
+REM  to you under the Apache License, Version 2.0 (the
+REM  "License"); you may not use this file except in compliance
+REM  with the License. You may obtain a copy of the License at
+REM
+REM  http://www.apache.org/licenses/LICENSE-2.0
+REM
+REM  Unless required by applicable law or agreed to in writing,
+REM  software distributed under the License is distributed on an
+REM  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+REM  specific language governing permissions and limitations
+REM  under the License.
+
 rem ---------------------------------------------------------------------------
-rem  Licensed to the Apache Software Foundation (ASF) under one
-rem  or more contributor license agreements.  See the NOTICE file
-rem  distributed with this work for additional information
-rem  regarding copyright ownership.  The ASF licenses this file
-rem  to you under the Apache License, Version 2.0 (the
-rem  "License"); you may not use this file except in compliance
-rem  with the License.  You may obtain a copy of the License at
+rem Main Script for WSO2 Carbon
 rem
-rem    http://www.apache.org/licenses/LICENSE-2.0
+rem Environment Variable Prequisites
 rem
-rem  Unless required by applicable law or agreed to in writing,
-rem  software distributed under the License is distributed on an
-rem  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-rem  KIND, either express or implied.  See the License for the
-rem  specific language governing permissions and limitations
-rem  under the License.
-rem ---------------------------------------------------------------------------
-rem  Main Script for Apache Stratos
-rem
-rem  Environment Variable Prerequisites
+rem   CARBON_HOME   Home of CARBON installation. If not set I will  try
+rem                   to figure it out.
 rem
 rem   JAVA_HOME       Must point at your Java Development Kit installation.
 rem
@@ -161,7 +164,11 @@ set CARBON_CLASSPATH=.\lib;%CARBON_CLASSPATH%
 
 set JAVA_ENDORSED=".\lib\endorsed";"%JAVA_HOME%\jre\lib\endorsed";"%JAVA_HOME%\lib\endorsed"
 
-set CMD_LINE_ARGS=-Xbootclasspath/a:%CARBON_XBOOTCLASSPATH% -Xms256m -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="%CARBON_HOME%\repository\logs\heap-dump.hprof"  -Dcom.sun.management.jmxremote -classpath %CARBON_CLASSPATH% %JAVA_OPTS% -Djava.endorsed.dirs=%JAVA_ENDORSED% -Dcarbon.registry.root=/ -Dcarbon.home="%CARBON_HOME%" -Dwso2.server.standalone=true -Djava.command="%JAVA_HOME%\bin\java" -Djava.opts="%JAVA_OPTS%" -Djava.io.tmpdir="%CARBON_HOME%\tmp" -Dcatalina.base="%CARBON_HOME%\lib\tomcat" -Dwso2.carbon.xml=%CARBON_HOME%\repository\conf\carbon.xml -Dwso2.registry.xml="%CARBON_HOME%\repository\conf\registry.xml" -Dwso2.user.mgt.xml="%CARBON_HOME%\repository\conf\user-mgt.xml" -Dwso2.transports.xml="%CARBON_HOME%\repository\conf\mgt-transports.xml" -Djava.util.logging.config.file="%CARBON_HOME%\repository\conf\etc\logging-bridge.properties" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dcarbon.config.dir.path="%CARBON_HOME%\repository\conf"  -Dcomponents.repo="%CARBON_HOME%\repository\components" -Dconf.location="%CARBON_HOME%\repository\conf" -Dcom.atomikos.icatch.file="%CARBON_HOME%\lib\transactions.properties" -Dcom.atomikos.icatch.hide_init_file_path="true" -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dcom.sun.jndi.ldap.connect.pool.authentication=simple -Dcom.sun.jndi.ldap.connect.pool.timeout=3000 -Dorg.terracotta.quartz.skipUpdateCheck=true -Dcarbon.classpath=%CARBON_CLASSPATH% -Dfile.encoding=UTF8
+set CMD_LINE_ARGS=-Xbootclasspath/a:%CARBON_XBOOTCLASSPATH% -Xms256m -Xmx1024m -XX:MaxPermSize=256m -Xss4m
+-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="%CARBON_HOME%\repository\logs\heap-dump.hprof"  -Dcom.sun
+.management.jmxremote -classpath %CARBON_CLASSPATH% %JAVA_OPTS% -Djava.endorsed.dirs=%JAVA_ENDORSED% -Dcarbon
+.registry.root=/ -Dcarbon.home="%CARBON_HOME%" -Dwso2.server.standalone=true -Djava.command="%JAVA_HOME%\bin\java"
+-Djava.opts="%JAVA_OPTS%" -Djava.io.tmpdir="%CARBON_HOME%\tmp" -Dcatalina.base="%CARBON_HOME%\lib\tomcat" -Dwso2.carbon.xml=%CARBON_HOME%\repository\conf\carbon.xml -Dwso2.registry.xml="%CARBON_HOME%\repository\conf\registry.xml" -Dwso2.user.mgt.xml="%CARBON_HOME%\repository\conf\user-mgt.xml" -Dwso2.transports.xml="%CARBON_HOME%\repository\conf\mgt-transports.xml" -Djava.util.logging.config.file="%CARBON_HOME%\repository\conf\etc\logging-bridge.properties" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dcarbon.config.dir.path="%CARBON_HOME%\repository\conf"  -Dcomponents.repo="%CARBON_HOME%\repository\components" -Dconf.location="%CARBON_HOME%\repository\conf" -Dcom.atomikos.icatch.file="%CARBON_HOME%\lib\transactions.properties" -Dcom.atomikos.icatch.hide_init_file_path="true" -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dcom.sun.jndi.ldap.connect.pool.authentication=simple -Dcom.sun.jndi.ldap.connect.pool.timeout=3000 -Dorg.terracotta.quartz.skipUpdateCheck=true -Dcarbon.classpath=%CARBON_CLASSPATH% -Dfile.encoding=UTF8 -Djndi.properties.dir="$CARBON_HOME/repository/conf" -Dstratos.component.startup.synchronizer.enabled=true -Dread.write.lock.monitor.enabled=false
 
 :runJava
 echo JAVA_HOME environment variable is set to %JAVA_HOME%

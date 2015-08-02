@@ -33,7 +33,7 @@
     <url>http://apache.org</url>
     <description>This feature contains the core bundles required for Back-end servlet functionality</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
@@ -74,11 +74,11 @@
             <artifactId>kaptcha</artifactId>
             <version>${kaptcha.wso2.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
-            <plugin>
+            <!--plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -107,7 +107,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
             <plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
@@ -130,29 +130,30 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.common:${project.version}</bundleDef>
-                                <bundleDef>
-                                    org.wso2.carbon.multitenancy:org.wso2.carbon.tenant.redirector.servlet:${carbon.multitenancy.version}
-                                </bundleDef>
                                 <bundleDef>org.quartz-scheduler.wso2:quartz:${quartz.wso2.version}</bundleDef>
-                                <bundleDef>org.wso2.carbon.mediation:org.wso2.carbon.task:${carbon.mediation.version}
+                                <bundleDef>
+                                    org.wso2.carbon.mediation:org.wso2.carbon.task:${carbon.mediation.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.synapse:synapse-tasks:${synapse.wso2.version}</bundleDef>
                                 <bundleDef>org.json.wso2:json:${json.wso2.version}</bundleDef>
                                 <bundleDef>kaptcha.wso2:kaptcha:${kaptcha.wso2.version}</bundleDef>
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.common:${project.version}
+                                </bundleDef>
                             </bundles>
-                            <importBundles>
+                            <!--importBundles>
                                 <importBundleDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.application.upload:${carbon.commons.version}
                                 </importBundleDef>
-                            </importBundles>
-                            <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                            </importBundles-->
+                            <!--importFeatures>
+                                <importFeatureDef>
+                                    org.wso2.carbon.core.server:${carbon.kernel.version}
                                 </importFeatureDef>
                                 <importFeatureDef>
-                                    org.wso2.carbon.identity:org.wso2.carbon.identity.authenticator.saml2.sso.feature:${carbon.identity.version}
+                                    org.wso2.carbon.identity.authenticator.saml2.sso:${carbon.identity.version}
                                 </importFeatureDef>
-                            </importFeatures>
+                            </importFeatures-->
                         </configuration>
                     </execution>
                 </executions>

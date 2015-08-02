@@ -46,7 +46,6 @@
         <module>org.apache.stratos.load.balancer.common</module>
         <module>org.apache.stratos.load.balancer</module>
         <module>org.apache.stratos.load.balancer.extension.api</module>
-        <module>org.apache.stratos.logging.view.ui</module>
         <module>org.apache.stratos.rest.endpoint</module>
         <module>org.apache.stratos.manager.styles</module>
         <module>org.apache.stratos.metadata.service</module>
@@ -100,7 +99,7 @@
         </profile>
     </profiles>
 
-    <dependencyManagement>
+    <!--dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.codehaus.sonar-plugins.java</groupId>
@@ -174,9 +173,9 @@
                 <version>${carbon.kernel.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.wso2.carbon.identity</groupId>
+                <groupId>org.wso2.carbon.commons</groupId>
                 <artifactId>org.wso2.carbon.user.mgt</artifactId>
-                <version>${carbon.identity.version}</version>
+                <version>${carbon.commons.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.wso2.carbon</groupId>
@@ -210,5 +209,5 @@
                 <scope>test</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement-->
 </project>

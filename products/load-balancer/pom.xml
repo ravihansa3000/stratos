@@ -74,9 +74,8 @@
         </profile>
     </profiles>
 
-    <dependencyManagement>
+    <!--dependencyManagement>
         <dependencies>
-            <!-- Dependencies for dashboard ui -->
             <dependency>
                 <groupId>org.apache.axis2.wso2</groupId>
                 <artifactId>axis2</artifactId>
@@ -92,7 +91,6 @@
                 <artifactId>commons-logging</artifactId>
                 <version>${commons.logging.version}</version>
             </dependency>
-            <!-- Dependencies for login ui -->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
@@ -119,5 +117,5 @@
                 <version>${carbon.identity.version}</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement-->
 </project>

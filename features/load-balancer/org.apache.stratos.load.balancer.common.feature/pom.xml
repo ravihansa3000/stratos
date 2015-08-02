@@ -33,13 +33,13 @@
     <url>http://apache.org</url>
     <description>This feature contains the common bundle for loadbalancer features</description>
 
-    <dependencies>
+    <!--dependencies>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.load.balancer.common</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+    </dependencies-->
 
     <build>
         <plugins>
@@ -63,15 +63,13 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.common:${project.version}</bundleDef>
                                 <bundleDef>
                                     org.apache.stratos:org.apache.stratos.load.balancer.common:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.slf4j:slf4j-api:${slf4j.version}</bundleDef>
-                                <bundleDef>org.slf4j:slf4j-log4j12:${slf4j.version}</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.apache.synapse.wso2:${carbon.mediation.version}</importFeatureDef>
+                                <importFeatureDef>org.apache.stratos.common:${project.version}</importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

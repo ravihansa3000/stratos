@@ -76,8 +76,6 @@
                         <Export-Package>
                             !org.apache.stratos.mock.iaas.internal,
                             org.apache.stratos.mock.iaas.*,
-                            org.apache.stratos.mock.iaas.domain.*,
-                            org.apache.stratos.mock.iaas.services.MockIaasService,
                         </Export-Package>
                         <Private-Package>
                             org.apache.stratos.mock.iaas.internal;
