@@ -19,15 +19,16 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache.jclouds</groupId>
         <artifactId>jclouds-project</artifactId>
         <version>1.8.1</version>
     </parent>
+
+    <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.stratos</groupId>
     <artifactId>aws-ec2</artifactId>
-    <version>1.8.1-stratos</version>
+    <version>1.8.1-stratosv1-SNAPSHOT</version>
     <name>jclouds Amazon EC2 provider</name>
     <description>EC2 implementation targeted to Amazon Web Services</description>
     <packaging>bundle</packaging>
@@ -131,7 +132,7 @@
                                     <goal>test</goal>
                                 </goals>
                                 <configuration>
-                                    <systemPropertyVariables>
+                                    <systemProperties>
                                         <test.aws-ec2.endpoint>${test.aws-ec2.endpoint}</test.aws-ec2.endpoint>
                                         <test.aws-ec2.api-version>${test.aws-ec2.api-version}</test.aws-ec2.api-version>
                                         <test.aws-ec2.build-version>${test.aws-ec2.build-version}
@@ -145,7 +146,7 @@
                                         </test.aws-ec2.windows-template>
                                         <test.aws-ec2.windows-owner>${test.aws-ec2.windows-owner}
                                         </test.aws-ec2.windows-owner>
-                                    </systemPropertyVariables>
+                                    </systemProperties>
                                 </configuration>
                             </execution>
                         </executions>
@@ -154,7 +155,4 @@
             </build>
         </profile>
     </profiles>
-
-
 </project>
-

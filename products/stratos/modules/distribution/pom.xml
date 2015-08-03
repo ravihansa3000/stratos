@@ -446,7 +446,6 @@
                                     <goal>attached</goal>
                                 </goals>
                                 <configuration>
-                                    <appendAssemblyId>false</appendAssemblyId>
                                     <finalName>${distribution.name}-${pom.version}</finalName>
                                     <filters>
                                         <filter>${basedir}/src/assembly/filter.properties</filter>
@@ -483,7 +482,6 @@
                                     <goal>attached</goal>
                                 </goals>
                                 <configuration>
-                                    <appendAssemblyId>false</appendAssemblyId>
                                     <finalName>${distribution.name}-${pom.version}</finalName>
                                     <filters>
                                         <filter>${basedir}/src/assembly/filter.properties</filter>
@@ -501,7 +499,6 @@
                                     <goal>attached</goal>
                                 </goals>
                                 <configuration>
-                                    <appendAssemblyId>false</appendAssemblyId>
                                     <finalName>${distribution.name}-${pom.version}</finalName>
                                     <filters>
                                         <filter>${basedir}/src/assembly/filter.properties</filter>
@@ -509,6 +506,7 @@
                                     <descriptors>
                                         <descriptor>${basedir}/src/assembly/bin.xml</descriptor>
                                     </descriptors>
+                                    <appendAssemblyId>false</appendAssemblyId>
                                 </configuration>
                             </execution>
                         </executions>

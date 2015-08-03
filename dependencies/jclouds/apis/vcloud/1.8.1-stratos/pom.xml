@@ -19,15 +19,16 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache.jclouds</groupId>
         <artifactId>jclouds-project</artifactId>
         <version>1.8.1</version>
     </parent>
+
+    <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.stratos</groupId>
     <artifactId>vcloud</artifactId>
-    <version>1.8.1-stratos</version>
+    <version>1.8.1-stratosv1-SNAPSHOT</version>
     <name>jclouds vcloud api</name>
     <description>jclouds components to access an implementation of VMWare vCloud</description>
     <packaging>bundle</packaging>
@@ -109,7 +110,7 @@
                                     <goal>test</goal>
                                 </goals>
                                 <configuration>
-                                    <systemPropertyVariables>
+                                    <systemProperties>
                                         <test.vcloud.endpoint>${test.vcloud.endpoint}</test.vcloud.endpoint>
                                         <test.vcloud.api-version>${test.vcloud.api-version}</test.vcloud.api-version>
                                         <test.vcloud.build-version>${test.vcloud.build-version}
@@ -117,7 +118,7 @@
                                         <test.vcloud.identity>${test.vcloud.identity}</test.vcloud.identity>
                                         <test.vcloud.credential>${test.vcloud.credential}</test.vcloud.credential>
                                         <test.vcloud.template>${test.vcloud.template}</test.vcloud.template>
-                                    </systemPropertyVariables>
+                                    </systemProperties>
                                 </configuration>
                             </execution>
                         </executions>

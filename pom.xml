@@ -624,7 +624,7 @@
 
         <!-- JClouds versions -->
         <jclouds.version>1.8.1</jclouds.version>
-        <jclouds.stratos.version>1.8.1-stratos</jclouds.stratos.version>
+
 
         <!-- Axiom Version -->
         <orbit.version.axiom>1.2.11.wso2v6</orbit.version.axiom>
@@ -642,6 +642,11 @@
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <maven.project-info-reports.plugin.version>2.4</maven.project-info-reports.plugin.version>
         <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
+
+        <!-- Stratos dependencies modules -->
+        <kubernetes.api.stratos.version>2.2.16-stratosv1-SNAPSHOT</kubernetes.api.stratos.version>
+        <org.wso2.carbon.ui.stratos.version>4.4.0-stratosv1-SNAPSHOT</org.wso2.carbon.ui.stratos.version>
+        <jclouds.stratos.version>1.8.1-stratosv1-SNAPSHOT</jclouds.stratos.version>
 
         <!-- Misc -->
         <kaptcha.wso2.version>2.3.0.wso2v1</kaptcha.wso2.version>
@@ -720,7 +725,6 @@
         <java-xmlbuilder.version>0.6</java-xmlbuilder.version>
         <oauth.version>20100527</oauth.version>
         <rhino.wso2-js.version>1.7.0.R1-wso2v3</rhino.wso2-js.version>
-        <kubernetes.api.stratos.version>2.2.16-stratosv1</kubernetes.api.stratos.version>
         <kubernetes.api.version>2.2.16</kubernetes.api.version>
         <kubernetes.model.version>1.0.2</kubernetes.model.version>
         <json-smart.version>1.3</json-smart.version>
@@ -793,7 +797,6 @@
         <eclipse.swt.version>3.2.0</eclipse.swt.version>
         <eclipse.jface.version>3.2.0</eclipse.jface.version>
         <resteasy.version>2.2.0.GA</resteasy.version>
-        <org.wso2.carbon.ui.stratos.version>4.4.0</org.wso2.carbon.ui.stratos.version>
         <testng.version>6.1.1</testng.version>
         <store.version>1.0.1</store.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>

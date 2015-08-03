@@ -407,6 +407,7 @@
                             <goal>attached</goal>
                         </goals>
                         <configuration>
+                            <finalName>${distribution.name}-${pom.version}</finalName>
                             <filters>
                                 <filter>${basedir}/src/main/assembly/filter.properties</filter>
                             </filters>
@@ -420,4 +421,7 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <distribution.name>apache-stratos-load-balancer</distribution.name>
+    </properties>
 </project>

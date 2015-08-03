@@ -43,7 +43,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Import-Package>
-                            org.wso2.carbon.ui.*; version="${org.wso2.carbon.ui.stratos.version}",
+                            org.wso2.carbon.ui.*; version="${carbon.kernel.version}",
                             *;resolution:=optional
                         </Import-Package>
                         <Fragment-Host>org.wso2.carbon.ui</Fragment-Host>
