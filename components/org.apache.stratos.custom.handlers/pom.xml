@@ -104,7 +104,6 @@
                             *;resolution:=optional,
                         </Import-Package>
                         <Export-Package>
-                            !org.wso2.carbon.identity.authenticator.signedjwt.internal,
                             org.apache.stratos.custom.handlers.*,
                         </Export-Package>
                         <Embed-Dependency>

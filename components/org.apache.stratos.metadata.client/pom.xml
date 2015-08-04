@@ -70,8 +70,6 @@
                             org.apache.stratos.metadata.client.*
                         </Export-Package>
                         <Import-Package>
-                            !org.apache.stratos.metadata.client.*,
-                            org.apache.commons.logging.*; version=0.0.0,
                             org.apache.commons.configuration.*; version=${commons-configuration.version},
                             org.apache.http.*; version=${httpclient.version},
                             org.apache.http.conn.ssl.*; version=${httpclient.version},

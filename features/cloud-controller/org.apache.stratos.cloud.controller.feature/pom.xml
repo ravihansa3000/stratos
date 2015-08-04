@@ -317,12 +317,11 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.cloud.controller:${project.version}
                                 </bundleDef>
-                                <!--bundleDef>org.apache.stratos:org.apache.stratos.kubernetes.client:${project.version}
+                                <bundleDef>org.apache.stratos:org.apache.stratos.kubernetes.client:${project.version}
                                 </bundleDef>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.mock.iaas.client:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.jclouds.driver:jclouds-bouncycastle:${jclouds
-                                .version}</bundleDef>
+                                <bundleDef>org.apache.jclouds.driver:jclouds-bouncycastle:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-sshj:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds.driver:jclouds-enterprise:${jclouds.version}</bundleDef>
                                 <bundleDef>org.apache.jclouds:jclouds-core:${jclouds.version}</bundleDef>
@@ -383,9 +382,9 @@
                                 </bundleDef>
                                 <bundleDef>org.apache.jclouds.api:sts:${jclouds.version}</bundleDef>
                                 <bundleDef>javax.ws.rs:jsr311-api:${jsr311-api.version}</bundleDef>
-                                <bundleDef>org.apache.stratos:kubernetes-api:${kubernetes-api.stratos.version}
+                                <bundleDef>org.apache.stratos:kubernetes-api:${kubernetes.api.stratos.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.stratos:kubernetes-model:${kubernetes-model.stratos.version}
+                                <!--bundleDef>org.apache.stratos:kubernetes-model:${kubernetes-model.stratos.version}
                                 </bundleDef-->
                             </bundles>
                             <importFeatures>

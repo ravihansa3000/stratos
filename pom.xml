@@ -579,7 +579,7 @@
 
     <properties>
         <!-- Carbon kernel version -->
-        <carbon.kernel.version>4.4.0</carbon.kernel.version>
+        <carbon.kernel.version>4.4.1</carbon.kernel.version>
         <carbon.kernel.imp.pkg.version>[4.4.0, 4.5.0)</carbon.kernel.imp.pkg.version>
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
@@ -592,8 +592,7 @@
         <carbon.registry.imp.pkg.version>[4.4.4, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon mediation version -->
-        <carbon.mediation.version>4.4.2</carbon.mediation.version>
-        <carbon.mediation.exp.pkg.version>${carbon.mediation.version}</carbon.mediation.exp.pkg.version>
+        <carbon.mediation.version>4.4.3-SNAPSHOT</carbon.mediation.version>
         <carbon.mediation.imp.pkg.version>[4.3.0, 4.5.0)</carbon.mediation.imp.pkg.version>
 
         <!--Carbon identity version-->
@@ -613,6 +612,9 @@
         <handlebars.module.version>1.0.0</handlebars.module.version>
         <markdown.module.verion>1.0.0</markdown.module.verion>
         <carbon.module.version>1.1.0</carbon.module.version>
+        <process.module.version>1.0.0</process.module.version>
+        <sso.module.version>1.3.0</sso.module.version>
+        <i18n.module.version>1.0.0</i18n.module.version>
 
         <!-- Synapse Version -->
         <synapse.wso2.version>2.1.3-wso2v5</synapse.wso2.version>
@@ -645,7 +647,7 @@
 
         <!-- Stratos dependencies modules -->
         <kubernetes.api.stratos.version>2.2.16-stratosv1-SNAPSHOT</kubernetes.api.stratos.version>
-        <org.wso2.carbon.ui.stratos.version>4.4.0-stratosv1-SNAPSHOT</org.wso2.carbon.ui.stratos.version>
+        <org.wso2.carbon.ui.stratos.version>4.4.1-stratosv1-SNAPSHOT</org.wso2.carbon.ui.stratos.version>
         <jclouds.stratos.version>1.8.1-stratosv1-SNAPSHOT</jclouds.stratos.version>
 
         <!-- Misc -->
@@ -654,8 +656,7 @@
         <httpcore.version>4.4.1</httpcore.version>
         <neethi.version>3.0.2</neethi.version>
         <neethi.wso2.version>2.0.4.wso2v4</neethi.wso2.version>
-        <rampart.wso2.version>1.6.1.wso2v15</rampart.wso2.version>
-        <rampart.mar.version>1.6.1-wso2v15</rampart.mar.version>
+        <rampart.mar.version>1.6.1-wso2v14</rampart.mar.version>
         <wss4j.wso2.version>1.5.11-wso2v9</wss4j.wso2.version>
         <junit.version>4.11</junit.version>
         <google.guava.wso2.version>12.0.0.wso2v1</google.guava.wso2.version>

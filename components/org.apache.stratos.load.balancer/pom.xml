@@ -73,6 +73,9 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Private-Package>
+                            org.apache.stratos.load.balancer.internal.*
+                        </Private-Package>
                         <Export-Package>
                             !org.apache.stratos.load.balancer.internal.*,
                             org.apache.stratos.load.balancer.*,

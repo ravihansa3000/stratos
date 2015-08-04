@@ -132,6 +132,9 @@
                                 <featureArtifactDef>
                                     org.wso2.carbon.commons:org.wso2.carbon.application.mgt.feature:${carbon.commons.version}
                                 </featureArtifactDef>
+                                <featureArtifactDef>
+                                    org.wso2.carbon.commons:org.wso2.carbon.ntask.core.feature:${carbon.commons.version}
+                                </featureArtifactDef>
 
                                 <!-- Carbon registry features -->
                                 <featureArtifactDef>
@@ -258,7 +261,7 @@
                                     org.apache.stratos:org.apache.stratos.custom.handlers.feature:${project.version}
                                 </featureArtifactDef>
 
-                                <!-- Misc -->
+                                <!-- Jaggery core and extensions features -->
                                 <featureArtifactDef>
                                     org.jaggeryjs:org.jaggeryjs.feature:${jaggeryjs.version}
                                 </featureArtifactDef>
@@ -271,6 +274,12 @@
                                     org.jaggeryjs.modules:handlebars.feature:${handlebars.module.version}
                                 </featureArtifactDef>
                                 <featureArtifactDef>org.jaggeryjs.modules:markdown.feature:${markdown.module.verion}
+                                </featureArtifactDef>
+                                <featureArtifactDef>org.jaggeryjs.modules:process.feature:${process.module.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>org.jaggeryjs.modules:sso.feature:${sso.module.version}
+                                </featureArtifactDef>
+                                <featureArtifactDef>org.jaggeryjs.modules:i18n.feature:${i18n.module.version}
                                 </featureArtifactDef>
 
                                 <!-- CEP features -->
@@ -473,6 +482,10 @@
                                     <id>org.wso2.carbon.application.mgt.feature.group</id>
                                     <version>${carbon.commons.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
 
                                 <!-- Carbon deployment features -->
                                 <feature>
@@ -622,8 +635,16 @@
                                     <version>${markdown.module.verion}</version>
                                 </feature>
                                 <feature>
+                                    <id>org.jaggeryjs.modules.process.feature.group</id>
+                                    <version>${process.module.version}</version>
+                                </feature>
+                                <feature>
                                     <id>org.jaggeryjs.modules.carbon.feature.group</id>
                                     <version>${carbon.module.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.jaggeryjs.modules.sso.feature.group</id>
+                                    <version>${sso.module.version}</version>
                                 </feature>
                             </features>
                         </configuration>
@@ -685,6 +706,10 @@
                                 </feature>
 
                                 <!-- Carbon commons features -->
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
                                 <!--feature>
                                     <id>org.wso2.carbon.ntask.feature.group</id>
                                     <version>${carbon.commons.version}</version>
@@ -761,6 +786,10 @@
                                 </feature>
 
                                 <!-- Carbon commons features -->
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
                                 <feature>
                                     <id>org.wso2.carbon.logging.mgt.feature.group</id>
                                     <version>${carbon.commons.version}</version>
@@ -967,6 +996,10 @@
                                 </feature>
 
                                 <!-- Carbon commons features -->
+                                <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.commons.version}</version>
+                                </feature>
                                 <!--feature>
                                     <id>org.wso2.carbon.ntask.feature.group</id>
                                     <version>${carbon.commons.version}</version>
@@ -1189,8 +1222,20 @@
                                     <version>${markdown.module.verion}</version>
                                 </feature>
                                 <feature>
+                                    <id>org.jaggeryjs.modules.process.feature.group</id>
+                                    <version>${process.module.version}</version>
+                                </feature>
+                                <feature>
                                     <id>org.jaggeryjs.modules.carbon.feature.group</id>
                                     <version>${carbon.module.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.jaggeryjs.modules.i18n.feature.group</id>
+                                    <version>${i18n.module.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.jaggeryjs.modules.sso.feature.group</id>
+                                    <version>${sso.module.version}</version>
                                 </feature>
 
                                 <!-- Carbon analytics features -->

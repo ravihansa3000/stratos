@@ -53,8 +53,6 @@
                             org.apache.stratos.cloud.controller.internal.*,
                         </Private-Package>
                         <Import-Package>
-                            !org.apache.commons.logging,
-                            org.apache.commons.logging.*; version=0.0.0,
                             org.apache.commons.io.*; version="${commons-io.wso2.version}",
                             org.wso2.carbon.utils.*; version="${carbon.kernel.imp.pkg.version}",
                             org.apache.stratos.kubernetes.client.*; version="${project.version}",
@@ -62,8 +60,8 @@
                             *; resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
-                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
-                        <Embed-Directory>lib</Embed-Directory>
+                        <!--Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Embed-Directory>lib</Embed-Directory-->
                         <Axis2Deployer>CloudControllerDeployer</Axis2Deployer>
                     </instructions>
                 </configuration>

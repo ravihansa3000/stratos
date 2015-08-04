@@ -93,11 +93,9 @@
                             org.apache.stratos.load.balancer.common.*,
                         </Export-Package>
                         <Private-Package>
-                            org.apache.stratos.load.balancer.common.internal;
+                            org.apache.stratos.load.balancer.common.internal
                         </Private-Package>
                         <Import-Package>
-                            !org.apache.commons.logging,
-                            org.apache.commons.logging; version=0.0.0,
                             org.apache.stratos.common.*; version="${project.version}",
                             *;resolution:=optional
                         </Import-Package>
