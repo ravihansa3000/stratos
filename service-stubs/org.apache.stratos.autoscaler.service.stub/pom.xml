@@ -87,17 +87,8 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.autoscaler.stub.pojo.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.deployment.policy.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.autoscale.policy.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.deployment.partition.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.exception.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.api.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.*; version=${project.version},
-                            org.apache.stratos.autoscaler.stub.partition.*; version=${project.version},
+                            org.apache.stratos.autoscaler.stub.*; version=${project.version}
                         </Export-Package>
-                        <Private-Package>
-                        </Private-Package>
                         <Import-Package>
                             *;resolution:=optional
                         </Import-Package>

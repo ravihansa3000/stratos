@@ -573,6 +573,36 @@
                 <artifactId>carbon-p2-plugin</artifactId>
                 <version>${carbon.p2.plugin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automation</groupId>
+                <artifactId>org.wso2.carbon.automation.test.utils</artifactId>
+                <version>${carbon.automation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automation</groupId>
+                <artifactId>org.wso2.carbon.automation.engine</artifactId>
+                <version>${carbon.automation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automation</groupId>
+                <artifactId>org.wso2.carbon.automation.extensions</artifactId>
+                <version>${carbon.automation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automationutils</groupId>
+                <artifactId>org.wso2.carbon.integration.common.extensions</artifactId>
+                <version>${carbon.automationutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automationutils</groupId>
+                <artifactId>org.wso2.carbon.integration.common.utils</artifactId>
+                <version>${carbon.automationutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.automationutils</groupId>
+                <artifactId>org.wso2.carbon.integration.common.admin.client</artifactId>
+                <version>${carbon.automationutils.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -584,15 +614,15 @@
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
         <!-- Carbon Commons version -->
-        <carbon.commons.version>4.4.3</carbon.commons.version>
+        <carbon.commons.version>4.4.4</carbon.commons.version>
         <carbon.commons.imp.pkg.version>[4.4.0, 4.5.0)</carbon.commons.imp.pkg.version>
 
         <!-- Carbon Registry version-->
-        <carbon.registry.version>4.4.1</carbon.registry.version>
+        <carbon.registry.version>4.4.4</carbon.registry.version>
         <carbon.registry.imp.pkg.version>[4.4.4, 4.5.0)</carbon.registry.imp.pkg.version>
 
         <!-- Carbon mediation version -->
-        <carbon.mediation.version>4.4.3-SNAPSHOT</carbon.mediation.version>
+        <carbon.mediation.version>4.4.4-SNAPSHOT</carbon.mediation.version>
         <carbon.mediation.imp.pkg.version>[4.3.0, 4.5.0)</carbon.mediation.imp.pkg.version>
 
         <!--Carbon identity version-->
@@ -644,10 +674,11 @@
         <maven.compiler.plugin.version>2.3.1</maven.compiler.plugin.version>
         <maven.project-info-reports.plugin.version>2.4</maven.project-info-reports.plugin.version>
         <carbon.p2.plugin.version>1.5.4</carbon.p2.plugin.version>
+        <carbon.automation.version>4.4.1</carbon.automation.version>
+        <carbon.automationutils.version>4.4.1</carbon.automationutils.version>
 
         <!-- Stratos dependencies modules -->
-        <kubernetes.api.stratos.version>2.2.16-stratosv1-SNAPSHOT</kubernetes.api.stratos.version>
-        <org.wso2.carbon.ui.stratos.version>4.4.1-stratosv1-SNAPSHOT</org.wso2.carbon.ui.stratos.version>
+        <kubernetes.api.version>2.2.16</kubernetes.api.version>
         <jclouds.stratos.version>1.8.1-stratosv1-SNAPSHOT</jclouds.stratos.version>
 
         <!-- Misc -->
@@ -656,8 +687,8 @@
         <httpcore.version>4.4.1</httpcore.version>
         <neethi.version>3.0.2</neethi.version>
         <neethi.wso2.version>2.0.4.wso2v4</neethi.wso2.version>
-        <rampart.mar.version>1.6.1-wso2v14</rampart.mar.version>
-        <wss4j.wso2.version>1.5.11-wso2v9</wss4j.wso2.version>
+        <rampart.mar.version>1.6.1-wso2v15</rampart.mar.version>
+        <wss4j.wso2.version>1.5.11.wso2v10</wss4j.wso2.version>
         <junit.version>4.11</junit.version>
         <google.guava.wso2.version>12.0.0.wso2v1</google.guava.wso2.version>
         <google.guava.version>17.0</google.guava.version>
@@ -726,7 +757,6 @@
         <java-xmlbuilder.version>0.6</java-xmlbuilder.version>
         <oauth.version>20100527</oauth.version>
         <rhino.wso2-js.version>1.7.0.R1-wso2v3</rhino.wso2-js.version>
-        <kubernetes.api.version>2.2.16</kubernetes.api.version>
         <kubernetes.model.version>1.0.2</kubernetes.model.version>
         <json-smart.version>1.3</json-smart.version>
         <commons-codec.wso2.version>1.4.0.wso2v1</commons-codec.wso2.version>

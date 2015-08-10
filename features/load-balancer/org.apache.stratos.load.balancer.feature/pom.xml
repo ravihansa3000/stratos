@@ -66,10 +66,10 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.load.balancer:${project.version}
                                 </bundleDef>
-                                <bundleDef>org.apache.ws.security:wss4j:${wss4j.wso2.version}</bundleDef>
+                                <bundleDef>org.apache.ws.security.wso2:wss4j:${wss4j.wso2.version}</bundleDef>
                                 <bundleDef>org.apache.santuario:xmlsec:${xmlsec.version}</bundleDef>
                                 <bundleDef>
-                                    org.apache.stratos:org.wso2.carbon.ui:${org.wso2.carbon.ui.stratos.version}
+                                    org.apache.stratos:org.wso2.carbon.ui:${project.version}
                                 </bundleDef>
                             </bundles>
                             <importFeatures>

@@ -99,7 +99,7 @@
                             </bundles>
                             <importBundles>
                                 <importBundleDef>
-                                    org.apache.stratos:org.wso2.carbon.ui:${org.wso2.carbon.ui.stratos.version}
+                                    org.apache.stratos:org.wso2.carbon.ui:${project.version}
                                 </importBundleDef>
                             </importBundles>
                             <!--importFeatures>

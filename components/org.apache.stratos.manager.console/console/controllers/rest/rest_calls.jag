@@ -20,295 +20,295 @@
  *
  */
 
-RESTCalls = new function(){
+RESTCalls = new function () {
     var log = new Log('RESTCalls');
 
-    this.getTenants = function(){
-        return this.sendReceive("GET","/tenants",{});
+    this.getTenants = function () {
+        return this.sendReceive("GET", "/tenants", {});
     };
 
-    this.deployPartitionDefinition = function(partitionDefinition){
-        return this.send("POST","/networkPartitions", partitionDefinition);
+    this.deployPartitionDefinition = function (partitionDefinition) {
+        return this.send("POST", "/networkPartitions", partitionDefinition);
     };
 
-    this.updatePartitionDefinition = function(partitionDefinition){
-        return this.send("PUT","/networkPartitions", partitionDefinition);
+    this.updatePartitionDefinition = function (partitionDefinition) {
+        return this.send("PUT", "/networkPartitions", partitionDefinition);
     };
 
-    this.deployCartridgeDefinition = function(cartridgeDefinition){
-        return this.send("POST","/cartridges", cartridgeDefinition);
+    this.deployCartridgeDefinition = function (cartridgeDefinition) {
+        return this.send("POST", "/cartridges", cartridgeDefinition);
     };
 
-    this.updateCartridgeDefinition = function(cartridgeDefinition){
-        return this.send("PUT","/cartridges", cartridgeDefinition);
+    this.updateCartridgeDefinition = function (cartridgeDefinition) {
+        return this.send("PUT", "/cartridges", cartridgeDefinition);
     };
 
-    this.deletePartiions = function(networkPartitionId){
-        return this.send("DELETE","/networkPartitions/" + networkPartitionId,{});
+    this.deletePartiions = function (networkPartitionId) {
+        return this.send("DELETE", "/networkPartitions/" + networkPartitionId, {});
     };
 
-    this.deleteCartridgeDefinition = function(cartridgeType){
-        return this.send("DELETE","/cartridges/" + cartridgeType,{});
+    this.deleteCartridgeDefinition = function (cartridgeType) {
+        return this.send("DELETE", "/cartridges/" + cartridgeType, {});
     };
 
-    this.activateTenant = function(tenantDomain){
-        return this.sendReceive("PUT","/tenants/activate/" + tenantDomain,{});
+    this.activateTenant = function (tenantDomain) {
+        return this.sendReceive("PUT", "/tenants/activate/" + tenantDomain, {});
     };
 
-    this.deactivateTenant = function(tenantDomain){
-        return this.sendReceive("PUT","/tenants/deactivate/" + tenantDomain,{});
-    };
-
-
-    this.deleteUser = function(userName){
-        return this.sendReceive("DELETE","/users/" + userName,{});
-    };
-
-    this.checkAvailability = function(tenantDomain){
-        return this.send("POST","/tenant/availability/" + tenantDomain,{});
-    };
-
-    this.deployApplicationDeployment = function(applicationID, applicationPolicyId){
-        return this.send("POST","/applications/"+applicationID+"/deploy/"+applicationPolicyId,{});
-    };
-
-    this.deployDeploymentPolicyDefinition = function(policyDefinition){
-        return this.send("POST","/deploymentPolicies", policyDefinition);
-    };
-
-    this.updateDeploymentPolicyDefinition = function(policyDefinition){
-        return this.send("PUT","/deploymentPolicies", policyDefinition);
-    };
-
-    this.deployAutoscalePolicyDefinition = function(policyDefinition){
-        return this.send("POST","/autoscalingPolicies",policyDefinition);
-    };
-
-    this.updateAutoscalePolicyDefinition = function(policyDefinition){
-        return this.send("PUT","/autoscalingPolicies",policyDefinition);
-    };
-
-    this.deleteDeploymentPolicyDefinition = function(deploymentPolicyId){
-        return this.send("DELETE","/deploymentPolicies/" + deploymentPolicyId,{});
-    };
-
-    this.deleteAutoscalePolicyDefinition = function(autoscalePolicyId){
-        return this.send("DELETE","/autoscalingPolicies/" + autoscalePolicyId,{});
-    };
-
-    this.deployKubernetesClusterDefinition = function(clusterDefinition){
-        return this.send("POST","/kubernetesClusters",clusterDefinition);
-    };
-
-    this.updateKubernetesClusterDefinition = function(clusterDefinition){
-        return this.send("PUT","/kubernetesClusters",clusterDefinition);
-    };
-
-    this.deleteKubernetesClusterDefinition = function(kubernetesClusterId){
-        return this.send("DELETE","/kubernetesClusters/" + kubernetesClusterId , {});
-    };
-
-    this.deployGroupDefinition = function(groupDefinition){
-        return this.send("POST","/cartridgeGroups", groupDefinition);
-    };
-
-    this.updateGroupDefinition = function(groupDefinition){
-        return this.send("PUT","/cartridgeGroups", groupDefinition);
-    };
-
-    this.deployApplicationDefinition = function(applicationDefinition){
-        return this.send("POST","/applications", applicationDefinition);
-    };
-
-    this.deployApplicationPolicyDefinition = function(applicationPolicyDefinition){
-        return this.send("POST","/applicationPolicies", applicationPolicyDefinition);
-    };
-
-    this.updateApplicationPolicyDefinition = function(applicationPolicyDefinition){
-        return this.send("PUT","/applicationPolicies", applicationPolicyDefinition);
-    };
-
-    this.deleteApplication = function(applicationId){
-        return this.send("DELETE","/applications/" + applicationId,{});
-    };
-
-    this.deleteApplicationPolicyDefinition = function(applicationPolicyId){
-        return this.send("DELETE","/applicationPolicies/" + applicationPolicyId,{});
-    };
-
-    this.undeployApplication = function(applicationId){
-        return this.send("POST","/applications/"+applicationId+"/undeploy",{});
-    };
-
-    this.forceUndeployApplication = function(applicationId){
-        return this.send("POST","/applications/"+applicationId+"/undeploy?force=true",{});
-    };
-
-    this.deleteGroup = function(groupName){
-        return this.send("DELETE","/cartridgeGroups/" + groupName,{});
-    };
-
-    this.subscribeToCartridge = function(cartridgeBeanInfo){
-        return this.sendReceive("POST","/cartridge/subscribe", cartridgeBeanInfo);
-    };
-
-    this.addTenant = function(tenantInfoBean){
-        return this.sendReceive("POST","/tenants",tenantInfoBean);
+    this.deactivateTenant = function (tenantDomain) {
+        return this.sendReceive("PUT", "/tenants/deactivate/" + tenantDomain, {});
     };
 
 
-    this.addUser = function(userInfoBean){
-        return this.sendReceive("POST","/users", userInfoBean);
+    this.deleteUser = function (userName) {
+        return this.sendReceive("DELETE", "/users/" + userName, {});
     };
 
-    this.syncRepo = function(alias){
-        return this.send("POST","/cartridge/sync",alias);
+    this.checkAvailability = function (tenantDomain) {
+        return this.send("POST", "/tenant/availability/" + tenantDomain, {});
     };
 
-    this.getPartitions = function(){
-        return this.sendReceive("GET","/networkPartitions/",{});
+    this.deployApplicationDeployment = function (applicationID, applicationPolicyId) {
+        return this.send("POST", "/applications/" + applicationID + "/deploy/" + applicationPolicyId, {});
     };
 
-    this.getPartition = function(networkpartionId){
-        return this.sendReceive("GET","/networkPartitions/"+networkpartionId,{});
+    this.deployDeploymentPolicyDefinition = function (policyDefinition) {
+        return this.send("POST", "/deploymentPolicies", policyDefinition);
     };
 
-    this.getAutoScalePolicies = function(){
-        return this.sendReceive("GET","/policy/autoscale",{});
+    this.updateDeploymentPolicyDefinition = function (policyDefinition) {
+        return this.send("PUT", "/deploymentPolicies", policyDefinition);
     };
 
-    this.getDeploymentPolicies = function(){
-        return this.sendReceive("GET","/policy/deployment",{});
+    this.deployAutoscalePolicyDefinition = function (policyDefinition) {
+        return this.send("POST", "/autoscalingPolicies", policyDefinition);
     };
 
-    this.getKubernetesClusters = function(){
-        return this.sendReceive("GET","/kubernetesClusters",{});
+    this.updateAutoscalePolicyDefinition = function (policyDefinition) {
+        return this.send("PUT", "/autoscalingPolicies", policyDefinition);
     };
 
-    this.getKubernetesCluster = function(kubernetesClusterId){
-        return this.sendReceive("GET","/kubernetesClusters/"+kubernetesClusterId,{});
+    this.deleteDeploymentPolicyDefinition = function (deploymentPolicyId) {
+        return this.send("DELETE", "/deploymentPolicies/" + deploymentPolicyId, {});
     };
 
-    this.getApplicableDeploymentPolicies = function(cartridgeType){
-        return this.sendReceive("GET","/" + cartridgeType + "/policy/deployment/",{});
+    this.deleteAutoscalePolicyDefinition = function (autoscalePolicyId) {
+        return this.send("DELETE", "/autoscalingPolicies/" + autoscalePolicyId, {});
     };
 
-    this.getSingleTenantCartridgeInfo = function(cartridgeType){
-        return this.sendReceive("GET","/cartridge/available/info/" + cartridgeType,{});
+    this.deployKubernetesClusterDefinition = function (clusterDefinition) {
+        return this.send("POST", "/kubernetesClusters", clusterDefinition);
     };
 
-    this.getServiceInfo = function(cartridgeType){
-        return this.sendReceive("GET","/service/" + cartridgeType,{});
+    this.updateKubernetesClusterDefinition = function (clusterDefinition) {
+        return this.send("PUT", "/kubernetesClusters", clusterDefinition);
     };
 
-    this.getPolicyAutoScales = function(){
-        return this.sendReceive("GET","/autoscalingPolicies",{});
+    this.deleteKubernetesClusterDefinition = function (kubernetesClusterId) {
+        return this.send("DELETE", "/kubernetesClusters/" + kubernetesClusterId, {});
     };
 
-    this.getPolicyApplication = function(applicationPolicyId){
-        return this.sendReceive("GET","/applicationPolicies/"+applicationPolicyId,{});
+    this.deployGroupDefinition = function (groupDefinition) {
+        return this.send("POST", "/cartridgeGroups", groupDefinition);
     };
 
-    this.getPolicyCartridgeGroup = function(cartridgeGroupId){
-        return this.sendReceive("GET","/cartridgeGroups/"+cartridgeGroupId,{});
+    this.updateGroupDefinition = function (groupDefinition) {
+        return this.send("PUT", "/cartridgeGroups", groupDefinition);
     };
 
-    this.getPolicyAutoScale = function(autoscalePolicyId){
-        return this.sendReceive("GET","/autoscalingPolicies/"+autoscalePolicyId,{});
-    };
-    this.getPolicyDeployment = function(deployemntPolicyId){
-        return this.sendReceive("GET","/deploymentPolicies/" + deployemntPolicyId ,{});
+    this.deployApplicationDefinition = function (applicationDefinition) {
+        return this.send("POST", "/applications", applicationDefinition);
     };
 
-    this.getPolicyDeployments = function(){
-        return this.sendReceive("GET","/deploymentPolicies",{});
-    };
-    this.unsubscribeCartridge = function(alias){
-        return this.send("POST","/cartridge/unsubscribe",alias);
-    };
-    this.getCartridges = function(){
-        return this.sendReceive("GET","/cartridges",{});
+    this.deployApplicationPolicyDefinition = function (applicationPolicyDefinition) {
+        return this.send("POST", "/applicationPolicies", applicationPolicyDefinition);
     };
 
-    this.getCartridge = function(cartridgeType){
-        return this.sendReceive("GET","/cartridges/"+cartridgeType,{});
+    this.updateApplicationPolicyDefinition = function (applicationPolicyDefinition) {
+        return this.send("PUT", "/applicationPolicies", applicationPolicyDefinition);
     };
 
-    this.getGroups = function(){
-        return this.sendReceive("GET","/cartridgeGroups",{});
+    this.deleteApplication = function (applicationId) {
+        return this.send("DELETE", "/applications/" + applicationId, {});
     };
 
-    this.getIaaSProviders = function(){
-        return this.sendReceive("GET","/iaasProviders",{});
+    this.deleteApplicationPolicyDefinition = function (applicationPolicyId) {
+        return this.send("DELETE", "/applicationPolicies/" + applicationPolicyId, {});
     };
 
-    this.getApplications = function(){
-        return this.sendReceive("GET","/applications",{});
+    this.undeployApplication = function (applicationId) {
+        return this.send("POST", "/applications/" + applicationId + "/undeploy", {});
     };
 
-    this.getApplicationPolicies = function(){
-        return this.sendReceive("GET","/applicationPolicies",{});
+    this.forceUndeployApplication = function (applicationId) {
+        return this.send("POST", "/applications/" + applicationId + "/undeploy?force=true", {});
     };
 
-    this.getApplicationTopology = function(appId){
-        return this.sendReceive("GET","/applications/" + appId + '/runtime',{});
+    this.deleteGroup = function (groupName) {
+        return this.send("DELETE", "/cartridgeGroups/" + groupName, {});
     };
 
-    this.getApplicationJSON = function(appId){
-        return this.sendReceive("GET","/applications/"+appId ,{});
+    this.subscribeToCartridge = function (cartridgeBeanInfo) {
+        return this.sendReceive("POST", "/cartridge/subscribe", cartridgeBeanInfo);
     };
 
-    this.getApplicationPartitions = function(appId){
-        return this.sendReceive("GET","/applications/"+appId + "/networkPartitions" ,{});
+    this.addTenant = function (tenantInfoBean) {
+        return this.sendReceive("POST", "/tenants", tenantInfoBean);
     };
 
-    this.getClusterInfo = function(clusterId){
-        return this.sendReceive("GET","/cluster/clusterId/" + clusterId,{});
+
+    this.addUser = function (userInfoBean) {
+        return this.sendReceive("POST", "/users", userInfoBean);
     };
 
-    this.getClusterInfoWithAlias = function(cartridgeType, alias){
-        return this.sendReceive("GET","/cluster/" + cartridgeType + "/" + alias,{});
+    this.syncRepo = function (alias) {
+        return this.send("POST", "/cartridge/sync", alias);
     };
-    this.getCartridgeInfo = function(alias){
-        return this.sendReceive("GET","/cartridge/info/"+alias,{});
+
+    this.getPartitions = function () {
+        return this.sendReceive("GET", "/networkPartitions/", {});
     };
-    this.validateCaptcha = function(captchaText){
-        return this.sendReceive("POST","/captcha",captchaText);
+
+    this.getPartition = function (networkpartionId) {
+        return this.sendReceive("GET", "/networkPartitions/" + networkpartionId, {});
     };
-    this.getCaptcha = function(){
-        return this.sendReceiveImage("Get","/simpleImg",{});
+
+    this.getAutoScalePolicies = function () {
+        return this.sendReceive("GET", "/policy/autoscale", {});
     };
-    this.undeployCartridge = function(cartridgeType){
-        return this.sendReceive("DELETE","/cartridge/definition/"+cartridgeType,{});
+
+    this.getDeploymentPolicies = function () {
+        return this.sendReceive("GET", "/policy/deployment", {});
     };
-    this.getUserList = function(){
+
+    this.getKubernetesClusters = function () {
+        return this.sendReceive("GET", "/kubernetesClusters", {});
+    };
+
+    this.getKubernetesCluster = function (kubernetesClusterId) {
+        return this.sendReceive("GET", "/kubernetesClusters/" + kubernetesClusterId, {});
+    };
+
+    this.getApplicableDeploymentPolicies = function (cartridgeType) {
+        return this.sendReceive("GET", "/" + cartridgeType + "/policy/deployment/", {});
+    };
+
+    this.getSingleTenantCartridgeInfo = function (cartridgeType) {
+        return this.sendReceive("GET", "/cartridge/available/info/" + cartridgeType, {});
+    };
+
+    this.getServiceInfo = function (cartridgeType) {
+        return this.sendReceive("GET", "/service/" + cartridgeType, {});
+    };
+
+    this.getPolicyAutoScales = function () {
+        return this.sendReceive("GET", "/autoscalingPolicies", {});
+    };
+
+    this.getPolicyApplication = function (applicationPolicyId) {
+        return this.sendReceive("GET", "/applicationPolicies/" + applicationPolicyId, {});
+    };
+
+    this.getPolicyCartridgeGroup = function (cartridgeGroupId) {
+        return this.sendReceive("GET", "/cartridgeGroups/" + cartridgeGroupId, {});
+    };
+
+    this.getPolicyAutoScale = function (autoscalePolicyId) {
+        return this.sendReceive("GET", "/autoscalingPolicies/" + autoscalePolicyId, {});
+    };
+    this.getPolicyDeployment = function (deployemntPolicyId) {
+        return this.sendReceive("GET", "/deploymentPolicies/" + deployemntPolicyId, {});
+    };
+
+    this.getPolicyDeployments = function () {
+        return this.sendReceive("GET", "/deploymentPolicies", {});
+    };
+    this.unsubscribeCartridge = function (alias) {
+        return this.send("POST", "/cartridge/unsubscribe", alias);
+    };
+    this.getCartridges = function () {
+        return this.sendReceive("GET", "/cartridges", {});
+    };
+
+    this.getCartridge = function (cartridgeType) {
+        return this.sendReceive("GET", "/cartridges/" + cartridgeType, {});
+    };
+
+    this.getGroups = function () {
+        return this.sendReceive("GET", "/cartridgeGroups", {});
+    };
+
+    this.getIaaSProviders = function () {
+        return this.sendReceive("GET", "/iaasProviders", {});
+    };
+
+    this.getApplications = function () {
+        return this.sendReceive("GET", "/applications", {});
+    };
+
+    this.getApplicationPolicies = function () {
+        return this.sendReceive("GET", "/applicationPolicies", {});
+    };
+
+    this.getApplicationTopology = function (appId) {
+        return this.sendReceive("GET", "/applications/" + appId + '/runtime', {});
+    };
+
+    this.getApplicationJSON = function (appId) {
+        return this.sendReceive("GET", "/applications/" + appId, {});
+    };
+
+    this.getApplicationPartitions = function (appId) {
+        return this.sendReceive("GET", "/applications/" + appId + "/networkPartitions", {});
+    };
+
+    this.getClusterInfo = function (clusterId) {
+        return this.sendReceive("GET", "/cluster/clusterId/" + clusterId, {});
+    };
+
+    this.getClusterInfoWithAlias = function (cartridgeType, alias) {
+        return this.sendReceive("GET", "/cluster/" + cartridgeType + "/" + alias, {});
+    };
+    this.getCartridgeInfo = function (alias) {
+        return this.sendReceive("GET", "/cartridge/info/" + alias, {});
+    };
+    this.validateCaptcha = function (captchaText) {
+        return this.sendReceive("POST", "/captcha", captchaText);
+    };
+    this.getCaptcha = function () {
+        return this.sendReceiveImage("Get", "/simpleImg", {});
+    };
+    this.undeployCartridge = function (cartridgeType) {
+        return this.sendReceive("DELETE", "/cartridge/definition/" + cartridgeType, {});
+    };
+    this.getUserList = function () {
         return this.sendReceive("GET", "/users", {});
     }
-    this.getConfigStatus = function(){
+    this.getConfigStatus = function () {
         var configStatus = {};
         var error;
-        var par_res = this.sendReceive("GET","/policy/autoscale",{});
+        var par_res = this.sendReceive("GET", "/policy/autoscale", {});
         var get_status = session.get("get-status");
-        if(par_res.errorCode != undefined){
+        if (par_res.errorCode != undefined) {
             error = par_res.errorCode;
             configStatus.first_use = true;
-        }else{
-            if(get_status.status == "success") {
-                if(par_res.autoscalePolicy.length == 0){
+        } else {
+            if (get_status.status == "success") {
+                if (par_res.autoscalePolicy.length == 0) {
                     configStatus.first_use = true;
-                }else{
-                    var car_res = this.sendReceive("GET","/cartridge/available/list",{});
-                    if(car_res.errorCode != undefined){
-                        error=car_res.errorCode;
+                } else {
+                    var car_res = this.sendReceive("GET", "/cartridge/available/list", {});
+                    if (car_res.errorCode != undefined) {
+                        error = car_res.errorCode;
                         configStatus.first_use = false;
                         configStatus.not_complete = true;
-                    }else{
+                    } else {
                         get_status = session.get("get-status");
-                        if(get_status.status == "success") {
-                            if(car_res.cartridge.length == 0){
+                        if (get_status.status == "success") {
+                            if (car_res.cartridge.length == 0) {
                                 configStatus.first_use = false;
                                 configStatus.not_complete = true;
-                            }else{
+                            } else {
 
                                 configStatus.not_complete = false;
                                 configStatus.first_use = false;
@@ -323,31 +323,31 @@ RESTCalls = new function(){
         return configStatus;
     };
 
-    this.getRequestHeaders = function(ssoEnabled){
+    this.getRequestHeaders = function (ssoEnabled) {
         var requestHeaders;
-        if(ssoEnabled){
+        if (ssoEnabled) {
             var accessToken = this.getAccessTokenFromSession();
             requestHeaders = {
-                "Authorization": "Bearer "+accessToken,
+                "Authorization": "Bearer " + accessToken,
                 "Content-Type": "application/json"
             };
-        }else{
+        } else {
             requestHeaders = {
                 "Content-Type": "application/json",
-                "Cookie": "JSESSIONID="+session.get("JSESSIONID")
+                "Cookie": "JSESSIONID=" + session.get("JSESSIONID")
             };
         }
         return requestHeaders;
     };
 
     // refactor sendRecive and send method. duplicate code...
-    this.sendReceive = function(httpMethod,urlPostFix,data){
+    this.sendReceive = function (httpMethod, urlPostFix, data) {
         var config = require('/config/console.js').config();
         var backendServerURL = config.backendServerConfiguration.url;
         //handle url null issue
-        if(backendServerURL.indexOf('null') >= 0 ){
-           return request.getContextPath()+'/login/';
-        }else {
+        if (backendServerURL.indexOf('null') >= 0) {
+            return request.getContextPath() + '/login/';
+        } else {
             // getting the access token from the session.
             var endpoint = backendServerURL + urlPostFix;
             var headers = this.getRequestHeaders(false); //NEED TO FIX THIS
@@ -370,19 +370,19 @@ RESTCalls = new function(){
             }
             if (responseREST.xhr.status >= 200 && responseREST.xhr.status < 300) { //if success
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("get-status", { "message": parse(responseREST.data).message, "status": "success" });
+                    session.put("get-status", {"message": parse(responseREST.data).message, "status": "success"});
                 }
             } else if (responseREST.xhr.status >= 300 && responseREST.xhr.status < 400) { //if redirects
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("get-status", { "message": parse(responseREST.data).message, "status": "warning" });
+                    session.put("get-status", {"message": parse(responseREST.data).message, "status": "warning"});
                 }
             } else if (responseREST.xhr.status >= 400 && responseREST.xhr.status < 500) { //if client error
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("get-status", { "message": parse(responseREST.data).message, "status": "error" });
+                    session.put("get-status", {"message": parse(responseREST.data).message, "status": "error"});
                 }
             } else if (responseREST.xhr.status >= 500 && responseREST.xhr.status < 600) { //if server error
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("get-status", { "message": parse(responseREST.data).message, "status": "error" });
+                    session.put("get-status", {"message": parse(responseREST.data).message, "status": "error"});
                 }
             } else {
                 session.put("get-status", "Unknown response!");
@@ -399,13 +399,13 @@ RESTCalls = new function(){
     };
 
 
-    this.send = function(httpMethod,urlPostFix,data){
+    this.send = function (httpMethod, urlPostFix, data) {
         var config = require('/config/console.js').config();
         var backendServerURL = config.backendServerConfiguration.url;
         //handle url null issue
-        if(backendServerURL.indexOf('null') >= 0){
-            return  request.getContextPath()+'/login/';
-        }else {
+        if (backendServerURL.indexOf('null') >= 0) {
+            return request.getContextPath() + '/login/';
+        } else {
             // getting the access token from the session.
             var endpoint = backendServerURL + urlPostFix;
             var headers = this.getRequestHeaders(false); //NEED TO FIX THIS
@@ -428,19 +428,19 @@ RESTCalls = new function(){
             }
             if (responseREST.xhr.status >= 200 && responseREST.xhr.status < 300) { //if success
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("deploy-status", { "message": parse(responseREST.data).message, "status": "success" });
+                    session.put("deploy-status", {"message": parse(responseREST.data).message, "status": "success"});
                 }
             } else if (responseREST.xhr.status >= 300 && responseREST.xhr.status < 400) { //if redirects
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("deploy-status", { "message": parse(responseREST.data).message, "status": "warning" });
+                    session.put("deploy-status", {"message": parse(responseREST.data).message, "status": "warning"});
                 }
             } else if (responseREST.xhr.status >= 400 && responseREST.xhr.status < 500) { //if client error
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("deploy-status", { "message": parse(responseREST.data).message, "status": "error"});
+                    session.put("deploy-status", {"message": parse(responseREST.data).message, "status": "error"});
                 }
             } else if (responseREST.xhr.status >= 500 && responseREST.xhr.status < 600) { //if server error
                 if (responseREST.data != null && responseREST.data != undefined) {
-                    session.put("deploy-status", { "message": parse(responseREST.data).message, "status": "error"});
+                    session.put("deploy-status", {"message": parse(responseREST.data).message, "status": "error"});
                 }
             } else {
                 session.put("deploy-status", "Unknown response!");
@@ -456,24 +456,112 @@ RESTCalls = new function(){
     };
 
 
-    this.getSession = function(userName, password){
+    this.getSession = function (userName, password) {
         var config = require('/config/console.js').config();
         var backendServerURL = config.backendServerConfiguration.url;
         var endpoint = backendServerURL + "/session";
-        var sso = require("sso"); //TODO: get rid of this...
-        var basicAuthToken = sso.client.b64encode(userName + ":" + password);
+        var Base64 = {
+            _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+            encode: function (e) {
+                var t = "";
+                var n, r, i, s, o, u, a;
+                var f = 0;
+                e = Base64._utf8_encode(e);
+                while (f < e.length) {
+                    n = e.charCodeAt(f++);
+                    r = e.charCodeAt(f++);
+                    i = e.charCodeAt(f++);
+                    s = n >> 2;
+                    o = (n & 3) << 4 | r >> 4;
+                    u = (r & 15) << 2 | i >> 6;
+                    a = i & 63;
+                    if (isNaN(r)) {
+                        u = a = 64
+                    } else if (isNaN(i)) {
+                        a = 64
+                    }
+                    t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a)
+                }
+                return t
+            },
+            decode: function (e) {
+                var t = "";
+                var n, r, i;
+                var s, o, u, a;
+                var f = 0;
+                e = e.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+                while (f < e.length) {
+                    s = this._keyStr.indexOf(e.charAt(f++));
+                    o = this._keyStr.indexOf(e.charAt(f++));
+                    u = this._keyStr.indexOf(e.charAt(f++));
+                    a = this._keyStr.indexOf(e.charAt(f++));
+                    n = s << 2 | o >> 4;
+                    r = (o & 15) << 4 | u >> 2;
+                    i = (u & 3) << 6 | a;
+                    t = t + String.fromCharCode(n);
+                    if (u != 64) {
+                        t = t + String.fromCharCode(r)
+                    }
+                    if (a != 64) {
+                        t = t + String.fromCharCode(i)
+                    }
+                }
+                t = Base64._utf8_decode(t);
+                return t
+            },
+            _utf8_encode: function (e) {
+                e = e.replace(/\r\n/g, "\n");
+                var t = "";
+                for (var n = 0; n < e.length; n++) {
+                    var r = e.charCodeAt(n);
+                    if (r < 128) {
+                        t += String.fromCharCode(r)
+                    } else if (r > 127 && r < 2048) {
+                        t += String.fromCharCode(r >> 6 | 192);
+                        t += String.fromCharCode(r & 63 | 128)
+                    } else {
+                        t += String.fromCharCode(r >> 12 | 224);
+                        t += String.fromCharCode(r >> 6 & 63 | 128);
+                        t += String.fromCharCode(r & 63 | 128)
+                    }
+                }
+                return t
+            },
+            _utf8_decode: function (e) {
+                var t = "";
+                var n = 0;
+                var r = c1 = c2 = 0;
+                while (n < e.length) {
+                    r = e.charCodeAt(n);
+                    if (r < 128) {
+                        t += String.fromCharCode(r);
+                        n++
+                    } else if (r > 191 && r < 224) {
+                        c2 = e.charCodeAt(n + 1);
+                        t += String.fromCharCode((r & 31) << 6 | c2 & 63);
+                        n += 2
+                    } else {
+                        c2 = e.charCodeAt(n + 1);
+                        c3 = e.charCodeAt(n + 2);
+                        t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63);
+                        n += 3
+                    }
+                }
+                return t
+            }
+        }
+        var basicAuthToken = Base64.encode(userName + ":" + password);
         var headers = {
-            "Authorization": "Basic "+basicAuthToken,
+            "Authorization": "Basic " + basicAuthToken,
             "Content-Type": "application/json"
         };
-        var responseREST = get(endpoint,{},headers,"json");
+        var responseREST = get(endpoint, {}, headers, "json");
         return responseREST;
     };
 
-    this.getAccessTokenFromSession = function(){
+    this.getAccessTokenFromSession = function () {
         return session.get("access_token");
     };
-
 
 
 };

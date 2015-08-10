@@ -47,13 +47,14 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
                             !org.apache.stratos.cloud.controller.internal.*,
-                            org.apache.stratos.cloud.controller.*,
+                            !org.apache.stratos.cloud.controller.stub.*,
+                            org.apache.stratos.cloud.controller.*
                         </Export-Package>
                         <Private-Package>
                             org.apache.stratos.cloud.controller.internal.*,
                         </Private-Package>
                         <Import-Package>
-                            org.apache.commons.io.*; version="${commons-io.wso2.version}",
+                            org.apache.commons.io.*,
                             org.wso2.carbon.utils.*; version="${carbon.kernel.imp.pkg.version}",
                             org.apache.stratos.kubernetes.client.*; version="${project.version}",
                             org.apache.stratos.common.*; version="${project.version}",
@@ -307,7 +308,7 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-api</artifactId>
-            <version>${kubernetes.api.stratos.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

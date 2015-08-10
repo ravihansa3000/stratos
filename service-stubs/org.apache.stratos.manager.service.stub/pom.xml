@@ -96,9 +96,7 @@
                         <Private-Package>
                         </Private-Package>
                         <Export-Package>
-                            org.apache.stratos.manager.service.stub.*; version="${project.version}",
-                            org.apache.stratos.manager.service.stub.domain.*; version="${project.version}",
-                            org.apache.stratos.manager.exception.*; version="${project.version}"
+                            org.apache.stratos.manager.service.stub.*; version="${project.version}"
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional

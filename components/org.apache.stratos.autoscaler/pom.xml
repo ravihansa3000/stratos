@@ -208,6 +208,7 @@
                         <Private-Package>org.apache.stratos.autoscaler.internal.*</Private-Package>
                         <Export-Package>
                             !org.apache.stratos.autoscaler.internal.*,
+                            !org.apache.stratos.autoscaler.stub.*,
                             org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>

@@ -41,7 +41,7 @@
                 <exclude>**/LICENSE.txt</exclude>
                 <exclude>**/NOTICE</exclude>
                 <exclude>**/release-notes.html</exclude>
-                <!--exclude>**/launch.ini</exclude-->
+                <exclude>**/launch.ini</exclude>
                 <exclude>**/carbon.xml</exclude>
                 <exclude>**/README*</exclude>
                 <exclude>**/log4j.properties</exclude>
@@ -69,8 +69,7 @@
             </includes>
         </fileSet>
 
-        <!-- Copy osgi bundles from generated p2 profile
-             Exclude non-Apache2 compliant dependency from repository/components directory -->
+        <!-- Copy osgi bundles from generated p2 profile -->
         <fileSet>
             <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/components
             </directory>
@@ -80,7 +79,12 @@
                 <exclude>**/*.lock</exclude>
                 <exclude>**/.data</exclude>
                 <exclude>**/.settings</exclude>
+                <!-- Exclude non-Apache2 compliant dependency. We have installed our forked Carbon UI feature instead -->
                 <exclude>**/org.wso2.carbon.ui_4.4.1.jar</exclude>
+                <!-- Exclude duplicate jars to prevent NPE in OSGi runtime -->
+                <exclude>**/nimbus-jose-jwt_2.26.1.wso2v2.jar</exclude>
+                <exclude>**/wss4j_1.5.11.wso2v9.jar</exclude>
+                <exclude>**/net.minidev.json-smart_1.2.0.jar</exclude>
             </excludes>
         </fileSet>
 
@@ -434,7 +438,7 @@
 
         <file>
             <source>src/main/conf/identity/identity.xml</source>
-            <outputDirectory>${distribution.name}-${pom.version}/repository/conf/</outputDirectory>
+            <outputDirectory>${distribution.name}-${pom.version}/repository/conf/identity/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>600</fileMode>
         </file>
@@ -483,12 +487,12 @@
             <outputDirectory>${distribution.name}-${pom.version}/repository/conf/security/</outputDirectory>
             <filtered>true</filtered>
         </file>
-        <!--file>
-            <source>src/main/resources/launch.ini</source>
+        <file>
+            <source>src/main/conf/etc/launch.ini</source>
             <outputDirectory>${distribution.name}-${pom.version}/repository/conf/etc</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
-        </file-->
+        </file>
         <file>
             <source>src/main/conf/cartridge-config.properties</source>
             <outputDirectory>${distribution.name}-${pom.version}/repository/conf</outputDirectory>

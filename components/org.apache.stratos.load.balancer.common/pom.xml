@@ -89,7 +89,7 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            !org.apache.stratos.load.balancer.internal.*,
+                            !org.apache.stratos.load.balancer.common.internal.*,
                             org.apache.stratos.load.balancer.common.*,
                         </Export-Package>
                         <Private-Package>

@@ -106,9 +106,9 @@
                         <Export-Package>
                             org.apache.stratos.custom.handlers.*,
                         </Export-Package>
-                        <Embed-Dependency>
+                        <!--Embed-Dependency>
                             nimbus-jose-jwt|json-smart;scope=compile|runtime;inline=false
-                        </Embed-Dependency>
+                        </Embed-Dependency-->
                         <!--<DynamicImport-Package>*</DynamicImport-Package>-->
                     </instructions>
                 </configuration>

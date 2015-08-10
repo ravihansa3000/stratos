@@ -70,10 +70,10 @@
                             org.apache.stratos.metadata.client.*
                         </Export-Package>
                         <Import-Package>
-                            org.apache.commons.configuration.*; version=${commons-configuration.version},
-                            org.apache.http.*; version=${httpclient.version},
-                            org.apache.http.conn.ssl.*; version=${httpclient.version},
-                            org.apache.commons.codec.binary.*; version=${commons-codec.version},
+                            org.apache.commons.configuration.*,
+                            org.apache.http.*,
+                            org.apache.http.conn.ssl.*,
+                            org.apache.commons.codec.binary.*,
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

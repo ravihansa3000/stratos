@@ -86,12 +86,8 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.cloud.controller.stub.exception.*; version=${project.version},
-                            org.apache.stratos.cloud.controller.stub.domain.*; version=${project.version},
-                            org.apache.stratos.cloud.controller.stub.services.impl.*; version=${project.version},
-                            org.apache.stratos.cloud.controller.stub.kubernetes.*; version=${project.version},
                             org.apache.stratos.cloud.controller.stub.*; version=${project.version},
-                            org.apache.stratos.common.partition.xsd.*; version=${project.version},
+                            org.apache.stratos.common.domain.xsd.*; version=${project.version}
                         </Export-Package>
                         <Import-Package>
                             *;resolution:=optional
