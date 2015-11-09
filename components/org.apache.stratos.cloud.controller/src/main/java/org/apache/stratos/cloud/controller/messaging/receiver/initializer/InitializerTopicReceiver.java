@@ -54,11 +54,7 @@ public class InitializerTopicReceiver {
                     log.debug("Handling CompleteTopologyRequestEvent");
                 }
                 try {
-                    if (TopologyHolder.getTopology() != null) {
-                        TopologyEventPublisher.sendCompleteTopologyEvent(TopologyHolder.getTopology());
-                    } else {
-                        log.warn("Could not load topology. CompleteTopologyRequestEvent is ignored.");
-                    }
+                    TopologyEventPublisher.sendCompleteTopologyEvent(TopologyHolder.getTopology());
                 } catch (Exception e) {
                     log.error("Failed to process CompleteTopologyRequestEvent", e);
                 }

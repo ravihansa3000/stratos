@@ -53,10 +53,8 @@ public class TopologyEventSynchronizer implements Runnable {
 
         try {
             // Publish complete topology event
-            if (TopologyHolder.getTopology() != null) {
-                CloudControllerContext.getInstance().setTopologySyncRunning(true);
-                TopologyEventPublisher.sendCompleteTopologyEvent(TopologyHolder.getTopology());
-            }
+            CloudControllerContext.getInstance().setTopologySyncRunning(true);
+            TopologyEventPublisher.sendCompleteTopologyEvent(TopologyHolder.getTopology());
         } finally {
             CloudControllerContext.getInstance().setTopologySyncRunning(false);
         }
