@@ -319,7 +319,7 @@ public class TopologyEventPublisher {
         try {
             CompleteTopologyEvent completeTopologyEvent = new CompleteTopologyEvent(topology);
             if (log.isDebugEnabled()) {
-                log.debug("Publishing complete topology event");
+                log.debug("Publishing complete topology event...");
             }
             publishEvent(completeTopologyEvent);
         } finally {
