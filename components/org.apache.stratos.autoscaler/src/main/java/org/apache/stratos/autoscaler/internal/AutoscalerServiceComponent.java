@@ -230,7 +230,7 @@ public class AutoscalerServiceComponent {
             componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
                 @Override
                 public void activated(Component component) {
-                    if (component == Component.StratosManager) {
+                    if (component == Component.Autoscaler) {
                         scheduleEventSynchronizers();
                     }
                 }

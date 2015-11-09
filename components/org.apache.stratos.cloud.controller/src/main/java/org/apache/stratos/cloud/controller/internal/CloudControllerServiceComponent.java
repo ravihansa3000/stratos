@@ -26,10 +26,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.cloud.controller.context.CloudControllerContext;
 import org.apache.stratos.cloud.controller.exception.CloudControllerException;
+import org.apache.stratos.cloud.controller.messaging.publisher.TopologyEventPublisher;
 import org.apache.stratos.cloud.controller.messaging.publisher.TopologyEventSynchronizer;
 import org.apache.stratos.cloud.controller.messaging.receiver.application.ApplicationEventReceiver;
 import org.apache.stratos.cloud.controller.messaging.receiver.cluster.status.ClusterStatusTopicReceiver;
+import org.apache.stratos.cloud.controller.messaging.receiver.initializer.InitializerTopicReceiver;
 import org.apache.stratos.cloud.controller.messaging.receiver.instance.status.InstanceStatusTopicReceiver;
+import org.apache.stratos.cloud.controller.messaging.topology.TopologyHolder;
 import org.apache.stratos.cloud.controller.services.CloudControllerService;
 import org.apache.stratos.cloud.controller.services.impl.CloudControllerServiceImpl;
 import org.apache.stratos.common.Component;
@@ -79,6 +82,7 @@ public class CloudControllerServiceComponent {
     private ClusterStatusTopicReceiver clusterStatusTopicReceiver;
     private InstanceStatusTopicReceiver instanceStatusTopicReceiver;
     private ApplicationEventReceiver applicationEventReceiver;
+    private InitializerTopicReceiver initializerTopicReceiver;
     private ExecutorService executorService;
     private ScheduledExecutorService scheduler;
 
@@ -166,6 +170,14 @@ public class CloudControllerServiceComponent {
             log.info("Instance status event receiver thread started");
         }
 
+        initializerTopicReceiver = new InitializerTopicReceiver();
+        initializerTopicReceiver.setExecutorService(executorService);
+        initializerTopicReceiver.execute();
+
+        if (log.isInfoEnabled()) {
+            log.info("Initializer event receiver thread started");
+        }
+
         if (log.isInfoEnabled()) {
             log.info("Scheduling topology synchronizer task");
         }
@@ -176,7 +188,7 @@ public class CloudControllerServiceComponent {
             componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
                 @Override
                 public void activated(Component component) {
-                    if (component == Component.StratosManager) {
+                    if (component == Component.CloudController) {
                         scheduleEventSynchronizers();
                     }
                 }
