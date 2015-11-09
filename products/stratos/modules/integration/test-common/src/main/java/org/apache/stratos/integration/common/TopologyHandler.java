@@ -55,13 +55,14 @@ public class TopologyHandler {
     public static final int APPLICATION_ACTIVATION_TIMEOUT = 500000;
     public static final int APPLICATION_UNDEPLOYMENT_TIMEOUT = 500000;
     public static final int MEMBER_TERMINATION_TIMEOUT = 500000;
-    public static final int APPLICATION_TOPOLOGY_TIMEOUT = 120000;
-    public static final int TOPOLOGY_INIT_TIMEOUT = 10000;
+    public static final int APPLICATION_TOPOLOGY_TIMEOUT = 20000;
+    public static final int TOPOLOGY_INIT_TIMEOUT = 20000;
     public static final String APPLICATION_STATUS_CREATED = "Created";
     public static final String APPLICATION_STATUS_UNDEPLOYING = "Undeploying";
     private ApplicationsEventReceiver applicationsEventReceiver;
     private TopologyEventReceiver topologyEventReceiver;
     public static TopologyHandler topologyHandler;
+    private ExecutorService executorService = StratosThreadPool.getExecutorService("stratos.integration.test.pool", 10);
     private Map<String, Long> terminatedMembers = new ConcurrentHashMap<String, Long>();
     private Map<String, Long> terminatingMembers = new ConcurrentHashMap<String, Long>();
     private Map<String, Long> createdMembers = new ConcurrentHashMap<String, Long>();
@@ -94,7 +95,6 @@ public class TopologyHandler {
     private void initializeApplicationEventReceiver() {
         if (applicationsEventReceiver == null) {
             applicationsEventReceiver = new ApplicationsEventReceiver();
-            ExecutorService executorService = StratosThreadPool.getExecutorService("STRATOS_TEST_SERVER", 1);
             applicationsEventReceiver.setExecutorService(executorService);
             applicationsEventReceiver.execute();
         }
@@ -106,7 +106,6 @@ public class TopologyHandler {
     private void initializeTopologyEventReceiver() {
         if (topologyEventReceiver == null) {
             topologyEventReceiver = new TopologyEventReceiver();
-            ExecutorService executorService = StratosThreadPool.getExecutorService("STRATOS_TEST_SERVER1", 1);
             topologyEventReceiver.setExecutorService(executorService);
             topologyEventReceiver.execute();
         }
@@ -116,6 +115,8 @@ public class TopologyHandler {
      * Assert application Topology initialization
      */
     private void assertApplicationTopologyInitialized() {
+        log.info(String.format("Asserting application topology initialization within %d ms",
+                APPLICATION_TOPOLOGY_TIMEOUT));
         long startTime = System.currentTimeMillis();
         boolean applicationTopologyInitialized = ApplicationManager.getApplications().isInitialized();
         while (!applicationTopologyInitialized) {
@@ -128,8 +129,13 @@ public class TopologyHandler {
                 break;
             }
         }
-        assertEquals(String.format("Application Topology didn't get initialized "), applicationTopologyInitialized,
-                true);
+        if (applicationTopologyInitialized) {
+            log.info(String.format("Application topology initialized under %d ms",
+                    (System.currentTimeMillis() - startTime)));
+        }
+        assertEquals(
+                String.format("Application topology didn't get initialized within %d ms", APPLICATION_TOPOLOGY_TIMEOUT),
+                applicationTopologyInitialized, true);
     }
 
     /**

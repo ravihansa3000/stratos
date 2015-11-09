@@ -21,17 +21,23 @@ package org.apache.stratos.messaging.message.processor.initializer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.messaging.listener.EventListener;
+import org.apache.stratos.messaging.listener.initializer.CompleteApplicationsRequestEventListener;
 import org.apache.stratos.messaging.listener.initializer.CompleteTopologyRequestEventListener;
 import org.apache.stratos.messaging.message.processor.MessageProcessorChain;
 
 public class InitializerMessageProcessorChain extends MessageProcessorChain {
     private static final Log log = LogFactory.getLog(InitializerMessageProcessorChain.class);
     private CompleteTopologyRequestMessageProcessor completeTopologyRequestMessageProcessor;
+    private CompleteApplicationsRequestMessageProcessor completeApplicationsRequestMessageProcessor;
 
     @Override
     protected void initialize() {
         completeTopologyRequestMessageProcessor = new CompleteTopologyRequestMessageProcessor();
         add(completeTopologyRequestMessageProcessor);
+
+        completeApplicationsRequestMessageProcessor = new CompleteApplicationsRequestMessageProcessor();
+        add(completeApplicationsRequestMessageProcessor);
+
         if (log.isDebugEnabled()) {
             log.debug("Initializer message processor chain initialized");
         }
@@ -41,6 +47,8 @@ public class InitializerMessageProcessorChain extends MessageProcessorChain {
     public void addEventListener(EventListener eventListener) {
         if (eventListener instanceof CompleteTopologyRequestEventListener) {
             completeTopologyRequestMessageProcessor.addEventListener(eventListener);
+        } else if (eventListener instanceof CompleteApplicationsRequestEventListener) {
+            completeApplicationsRequestMessageProcessor.addEventListener(eventListener);
         } else {
             throw new RuntimeException("Unknown event listener");
         }

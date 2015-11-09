@@ -57,7 +57,6 @@ public class TopologyEventReceiver {
         try {
             // Start topic subscriber thread
             eventSubscriber = new EventSubscriber(MessagingUtil.Topics.TOPOLOGY_TOPIC.getTopicName(), messageListener);
-            // subscriber.setMessageListener(messageListener);
             executorService.execute(eventSubscriber);
 
             if (log.isDebugEnabled()) {

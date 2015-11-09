@@ -26,6 +26,7 @@ import org.apache.stratos.autoscaler.algorithms.networkpartition.NetworkPartitio
 import org.apache.stratos.autoscaler.applications.ApplicationEventSynchronizer;
 import org.apache.stratos.autoscaler.context.AutoscalerContext;
 import org.apache.stratos.autoscaler.event.receiver.health.AutoscalerHealthStatEventReceiver;
+import org.apache.stratos.autoscaler.event.receiver.initializer.AutoscalerInitializerTopicReceiver;
 import org.apache.stratos.autoscaler.event.receiver.topology.AutoscalerTopologyEventReceiver;
 import org.apache.stratos.autoscaler.exception.AutoScalerException;
 import org.apache.stratos.autoscaler.exception.AutoScalingPolicyAlreadyExistException;
@@ -81,6 +82,7 @@ public class AutoscalerServiceComponent {
     private static final String AUTOSCALER_COORDINATOR_LOCK = "AUTOSCALER_COORDINATOR_LOCK";
     private AutoscalerTopologyEventReceiver asTopologyReceiver;
     private AutoscalerHealthStatEventReceiver autoscalerHealthStatEventReceiver;
+    private AutoscalerInitializerTopicReceiver autoscalerInitializerTopicReceiver;
     private ExecutorService executorService;
     private ScheduledExecutorService scheduler;
 
@@ -161,7 +163,6 @@ public class AutoscalerServiceComponent {
         asTopologyReceiver = new AutoscalerTopologyEventReceiver();
         asTopologyReceiver.setExecutorService(executorService);
         asTopologyReceiver.execute();
-
         if (log.isDebugEnabled()) {
             log.debug("Topology receiver executor service started");
         }
@@ -172,6 +173,14 @@ public class AutoscalerServiceComponent {
         autoscalerHealthStatEventReceiver.execute();
         if (log.isDebugEnabled()) {
             log.debug("Health statistics receiver thread started");
+        }
+
+        // Start initializer receiver
+        autoscalerInitializerTopicReceiver = new AutoscalerInitializerTopicReceiver();
+        autoscalerInitializerTopicReceiver.setExecutorService(executorService);
+        autoscalerInitializerTopicReceiver.execute();
+        if (log.isDebugEnabled()) {
+            log.debug("Initializer receiver thread started");
         }
 
         // Add AS policies to information model
