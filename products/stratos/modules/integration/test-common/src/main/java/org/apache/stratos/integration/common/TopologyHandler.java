@@ -56,6 +56,7 @@ public class TopologyHandler {
     public static final int APPLICATION_UNDEPLOYMENT_TIMEOUT = 500000;
     public static final int MEMBER_TERMINATION_TIMEOUT = 500000;
     public static final int APPLICATION_TOPOLOGY_TIMEOUT = 120000;
+    public static final int TOPOLOGY_INIT_TIMEOUT = 10000;
     public static final String APPLICATION_STATUS_CREATED = "Created";
     public static final String APPLICATION_STATUS_UNDEPLOYING = "Undeploying";
     private ApplicationsEventReceiver applicationsEventReceiver;
@@ -135,6 +136,7 @@ public class TopologyHandler {
      * Assert Topology initialization
      */
     private void assertTopologyInitialized() {
+        log.info(String.format("Asserting topology initialization within %d ms", TOPOLOGY_INIT_TIMEOUT));
         long startTime = System.currentTimeMillis();
         boolean topologyInitialized = TopologyManager.getTopology().isInitialized();
         while (!topologyInitialized) {
@@ -143,11 +145,15 @@ public class TopologyHandler {
             } catch (InterruptedException ignore) {
             }
             topologyInitialized = TopologyManager.getTopology().isInitialized();
-            if ((System.currentTimeMillis() - startTime) > APPLICATION_TOPOLOGY_TIMEOUT) {
+            if ((System.currentTimeMillis() - startTime) > TOPOLOGY_INIT_TIMEOUT) {
                 break;
             }
         }
-        assertEquals(String.format("Topology didn't get initialized "), topologyInitialized, true);
+        if (topologyInitialized) {
+            log.info(String.format("Topology initialized under %d ms", (System.currentTimeMillis() - startTime)));
+        }
+        assertEquals(String.format("Topology didn't get initialized within %d ms", TOPOLOGY_INIT_TIMEOUT),
+                topologyInitialized, true);
     }
 
     /**
