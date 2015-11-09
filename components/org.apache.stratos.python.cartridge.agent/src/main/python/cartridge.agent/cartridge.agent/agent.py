@@ -18,18 +18,15 @@
 
 import threading
 
-from subscriber import EventSubscriber
 import publisher
+from logpublisher import *
+from modules.event.application.signup.events import *
+from modules.event.domain.mapping.events import *
+from modules.event.eventhandler import EventHandler
 from modules.event.instance.notifier.events import *
 from modules.event.tenant.events import *
 from modules.event.topology.events import *
-from modules.event.application.signup.events import *
-from modules.event.domain.mapping.events import *
-from entity import *
-from logpublisher import *
-from config import Config
-from modules.event.eventhandler import EventHandler
-import constants
+from subscriber import EventSubscriber
 
 
 class CartridgeAgent(threading.Thread):
@@ -70,6 +67,9 @@ class CartridgeAgent(threading.Thread):
             self.__log.debug("LVS Virtual IP is not defined")
         else:
             self.__event_handler.create_dummy_interface()
+
+        # request complete topology event from CC by publishing CompleteTopologyRequestEvent
+        publisher.publish_complete_topology_request_event()
 
         # wait until complete topology message is received to get LB IP
         self.wait_for_complete_topology()

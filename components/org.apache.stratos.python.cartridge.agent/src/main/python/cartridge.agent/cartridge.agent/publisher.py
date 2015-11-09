@@ -182,6 +182,12 @@ def publish_instance_ready_to_shutdown_event():
     else:
         log.warn("Instance already in a ReadyToShutDown event...")
 
+def publish_complete_topology_request_event():
+    complete_topology_request_event = CompleteTopologyRequestEvent()
+    publisher = get_publisher(constants.INITIALIZER_TOPIC + constants.COMPLETE_TOPOLOGY__REQUEST_EVENT)
+    publisher.publish(complete_topology_request_event)
+    log.info("Complete topology request event published")
+
 
 def get_publisher(topic):
     if topic not in publishers:
