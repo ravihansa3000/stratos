@@ -21,7 +21,9 @@ package org.apache.stratos.messaging.message.processor.initializer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.messaging.listener.EventListener;
+import org.apache.stratos.messaging.listener.initializer.CompleteApplicationSignUpsRequestEventListener;
 import org.apache.stratos.messaging.listener.initializer.CompleteApplicationsRequestEventListener;
+import org.apache.stratos.messaging.listener.initializer.CompleteTenantRequestEventListener;
 import org.apache.stratos.messaging.listener.initializer.CompleteTopologyRequestEventListener;
 import org.apache.stratos.messaging.message.processor.MessageProcessorChain;
 
@@ -29,6 +31,8 @@ public class InitializerMessageProcessorChain extends MessageProcessorChain {
     private static final Log log = LogFactory.getLog(InitializerMessageProcessorChain.class);
     private CompleteTopologyRequestMessageProcessor completeTopologyRequestMessageProcessor;
     private CompleteApplicationsRequestMessageProcessor completeApplicationsRequestMessageProcessor;
+    private CompleteTenantRequestMessageProcessor completeTenantRequestMessageProcessor;
+    private CompleteApplicationSignUpsRequestMessageProcessor completeApplicationSignUpsRequestMessageProcessor;
 
     @Override
     protected void initialize() {
@@ -37,6 +41,12 @@ public class InitializerMessageProcessorChain extends MessageProcessorChain {
 
         completeApplicationsRequestMessageProcessor = new CompleteApplicationsRequestMessageProcessor();
         add(completeApplicationsRequestMessageProcessor);
+
+        completeTenantRequestMessageProcessor = new CompleteTenantRequestMessageProcessor();
+        add(completeTenantRequestMessageProcessor);
+
+        completeApplicationSignUpsRequestMessageProcessor = new CompleteApplicationSignUpsRequestMessageProcessor();
+        add(completeApplicationSignUpsRequestMessageProcessor);
 
         if (log.isDebugEnabled()) {
             log.debug("Initializer message processor chain initialized");
@@ -49,6 +59,10 @@ public class InitializerMessageProcessorChain extends MessageProcessorChain {
             completeTopologyRequestMessageProcessor.addEventListener(eventListener);
         } else if (eventListener instanceof CompleteApplicationsRequestEventListener) {
             completeApplicationsRequestMessageProcessor.addEventListener(eventListener);
+        } else if (eventListener instanceof CompleteTenantRequestEventListener) {
+            completeTenantRequestMessageProcessor.addEventListener(eventListener);
+        } else if (eventListener instanceof CompleteApplicationSignUpsRequestEventListener) {
+            completeApplicationSignUpsRequestMessageProcessor.addEventListener(eventListener);
         } else {
             throw new RuntimeException("Unknown event listener");
         }
