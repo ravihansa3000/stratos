@@ -88,6 +88,12 @@ class CartridgeAgent(threading.Thread):
         # start application signup event listener
         self.register_application_signup_event_listeners()
 
+        # request complete tenant event from CC by publishing CompleteTenantRequestEvent
+        publisher.publish_complete_tenant_request_event()
+
+        # request complete application signups event from CC by publishing CompleteApplicationSignUpsRequestEvent
+        publisher.publish_complete_application_signups_request_event()
+
         # Execute instance started shell script
         self.__event_handler.on_instance_started_event()
 
