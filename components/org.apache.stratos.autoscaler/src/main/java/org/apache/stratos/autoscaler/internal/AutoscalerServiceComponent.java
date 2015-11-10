@@ -45,7 +45,6 @@ import org.apache.stratos.autoscaler.util.AutoscalerUtil;
 import org.apache.stratos.autoscaler.util.ConfUtil;
 import org.apache.stratos.autoscaler.util.ServiceReferenceHolder;
 import org.apache.stratos.common.Component;
-import org.apache.stratos.common.services.ComponentActivationEventListener;
 import org.apache.stratos.common.services.ComponentStartUpSynchronizer;
 import org.apache.stratos.common.services.DistributedObjectProvider;
 import org.apache.stratos.common.threading.StratosThreadPool;
@@ -69,9 +68,11 @@ import java.util.concurrent.TimeUnit;
  * cardinality="1..1" policy="dynamic" bind="setTaskService" unbind="unsetTaskService"
  * @scr.reference name="hazelcast.instance.service" interface="com.hazelcast.core.HazelcastInstance"
  * cardinality="0..1"policy="dynamic" bind="setHazelcastInstance" unbind="unsetHazelcastInstance"
- * @scr.reference name="distributedObjectProvider" interface="org.apache.stratos.common.services.DistributedObjectProvider"
+ * @scr.reference name="distributedObjectProvider"
+ * interface="org.apache.stratos.common.services.DistributedObjectProvider"
  * cardinality="1..1" policy="dynamic" bind="setDistributedObjectProvider" unbind="unsetDistributedObjectProvider"
- * @scr.reference name="componentStartUpSynchronizer" interface="org.apache.stratos.common.services.ComponentStartUpSynchronizer"
+ * @scr.reference name="componentStartUpSynchronizer"
+ * interface="org.apache.stratos.common.services.ComponentStartUpSynchronizer"
  * cardinality="1..1" policy="dynamic" bind="setComponentStartUpSynchronizer" unbind="unsetComponentStartUpSynchronizer"
  * @scr.reference name="config.context.service" interface="org.wso2.carbon.utils.ConfigurationContextService"
  * cardinality="1..1" policy="dynamic" bind="setConfigurationContextService" unbind="unsetConfigurationContextService"
@@ -92,25 +93,25 @@ public class AutoscalerServiceComponent {
         }
         try {
             XMLConfiguration conf = ConfUtil.getInstance(AutoscalerConstants.COMPONENTS_CONFIG).getConfiguration();
-            int threadPoolSize = conf.getInt(AutoscalerConstants.THREAD_POOL_SIZE_KEY,
-                    AutoscalerConstants.AUTOSCALER_THREAD_POOL_SIZE);
-            executorService = StratosThreadPool.getExecutorService(AutoscalerConstants.AUTOSCALER_THREAD_POOL_ID,
-                    threadPoolSize);
+            int threadPoolSize = conf
+                    .getInt(AutoscalerConstants.THREAD_POOL_SIZE_KEY, AutoscalerConstants.AUTOSCALER_THREAD_POOL_SIZE);
+            executorService = StratosThreadPool
+                    .getExecutorService(AutoscalerConstants.AUTOSCALER_THREAD_POOL_ID, threadPoolSize);
 
             int schedulerThreadPoolSize = conf.getInt(AutoscalerConstants.SCHEDULER_THREAD_POOL_SIZE_KEY,
                     AutoscalerConstants.AUTOSCALER_SCHEDULER_THREAD_POOL_SIZE);
-            scheduler = StratosThreadPool.getScheduledExecutorService(AutoscalerConstants.AUTOSCALER_SCHEDULER_ID,
-                    schedulerThreadPoolSize);
+            scheduler = StratosThreadPool
+                    .getScheduledExecutorService(AutoscalerConstants.AUTOSCALER_SCHEDULER_ID, schedulerThreadPoolSize);
 
             Runnable autoscalerActivator = new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        ComponentStartUpSynchronizer componentStartUpSynchronizer =
-                                ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer();
+                        ComponentStartUpSynchronizer componentStartUpSynchronizer = ServiceReferenceHolder.getInstance()
+                                .getComponentStartUpSynchronizer();
                         // Wait for cloud controller component to be activated
-                        componentStartUpSynchronizer.waitForComponentActivation(Component.Autoscaler,
-                                Component.CloudController);
+                        componentStartUpSynchronizer
+                                .waitForComponentActivation(Component.Autoscaler, Component.CloudController);
 
                         ServiceReferenceHolder.getInstance().setExecutorService(executorService);
 
@@ -121,8 +122,8 @@ public class AutoscalerServiceComponent {
                                     ServiceReferenceHolder.getInstance().getHazelcastInstance()
                                             .getLock(AUTOSCALER_COORDINATOR_LOCK).lock();
 
-                                    log.info("Elected this member [" + ServiceReferenceHolder.getInstance().getHazelcastInstance()
-                                            .getCluster().getLocalMember().getUuid() + "] " +
+                                    log.info("Elected this member [" + ServiceReferenceHolder.getInstance()
+                                            .getHazelcastInstance().getCluster().getLocalMember().getUuid() + "] " +
                                             "as the autoscaler coordinator for the cluster");
 
                                     AutoscalerContext.getInstance().setCoordinator(true);
@@ -138,8 +139,8 @@ public class AutoscalerServiceComponent {
                         } else {
                             executeCoordinatorTasks();
                         }
-                        componentStartUpSynchronizer.waitForAxisServiceActivation(Component.Autoscaler,
-                                "AutoscalerService");
+                        componentStartUpSynchronizer
+                                .waitForAxisServiceActivation(Component.Autoscaler, "AutoscalerService");
                         componentStartUpSynchronizer.setComponentStatus(Component.Autoscaler, true);
                         if (log.isInfoEnabled()) {
                             log.info("Autoscaler service component activated");
@@ -156,8 +157,9 @@ public class AutoscalerServiceComponent {
         }
     }
 
-    private void executeCoordinatorTasks() throws InvalidPolicyException,
-            InvalidDeploymentPolicyException, InvalidApplicationPolicyException, AutoScalingPolicyAlreadyExistException {
+    private void executeCoordinatorTasks()
+            throws InvalidPolicyException, InvalidDeploymentPolicyException, InvalidApplicationPolicyException,
+                   AutoScalingPolicyAlreadyExistException {
 
         // Start topology receiver
         asTopologyReceiver = new AutoscalerTopologyEventReceiver();
@@ -200,7 +202,6 @@ public class AutoscalerServiceComponent {
             PolicyManager.getInstance().addDeploymentPolicyToInformationModel(depPolicy);
         }
 
-
         // Add application policies to information model
         List<ApplicationPolicy> applicationPolicies = RegistryManager.getInstance().
                 retrieveApplicationPolicies();
@@ -211,9 +212,10 @@ public class AutoscalerServiceComponent {
         }
 
         // Add application policies to information model
-        List<NetworkPartitionAlgorithmContext> networkPartitionAlgorithmContexts =
-                RegistryManager.getInstance().retrieveNetworkPartitionAlgorithmContexts();
-        Iterator<NetworkPartitionAlgorithmContext> networkPartitionAlgoCtxtIterator = networkPartitionAlgorithmContexts.iterator();
+        List<NetworkPartitionAlgorithmContext> networkPartitionAlgorithmContexts = RegistryManager.getInstance()
+                .retrieveNetworkPartitionAlgorithmContexts();
+        Iterator<NetworkPartitionAlgorithmContext> networkPartitionAlgoCtxtIterator = networkPartitionAlgorithmContexts
+                .iterator();
         while (networkPartitionAlgoCtxtIterator.hasNext()) {
             NetworkPartitionAlgorithmContext algorithmContext = networkPartitionAlgoCtxtIterator.next();
             AutoscalerContext.getInstance().addNetworkPartitionAlgorithmContext(algorithmContext);
@@ -232,24 +234,6 @@ public class AutoscalerServiceComponent {
         if (log.isInfoEnabled()) {
             log.info("Scheduling tasks to publish applications");
         }
-
-        ComponentStartUpSynchronizer componentStartUpSynchronizer =
-                ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer();
-        if (componentStartUpSynchronizer.isEnabled()) {
-            componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
-                @Override
-                public void activated(Component component) {
-                    if (component == Component.Autoscaler) {
-                        scheduleEventSynchronizers();
-                    }
-                }
-            });
-        } else {
-            scheduleEventSynchronizers();
-        }
-    }
-
-    private void scheduleEventSynchronizers() {
         Runnable applicationSynchronizer = new ApplicationEventSynchronizer();
         scheduler.scheduleAtFixedRate(applicationSynchronizer, 0, 1, TimeUnit.MINUTES);
     }
@@ -341,8 +325,8 @@ public class AutoscalerServiceComponent {
     }
 
     protected void setConfigurationContextService(ConfigurationContextService cfgCtxService) {
-        ServiceReferenceHolder.getInstance().setAxisConfiguration(
-                cfgCtxService.getServerConfigContext().getAxisConfiguration());
+        ServiceReferenceHolder.getInstance()
+                .setAxisConfiguration(cfgCtxService.getServerConfigContext().getAxisConfiguration());
     }
 
     protected void unsetConfigurationContextService(ConfigurationContextService cfgCtxService) {

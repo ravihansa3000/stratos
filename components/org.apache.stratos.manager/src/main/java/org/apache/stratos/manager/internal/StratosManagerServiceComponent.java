@@ -22,7 +22,6 @@ import com.hazelcast.core.HazelcastInstance;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.common.Component;
-import org.apache.stratos.common.services.ComponentActivationEventListener;
 import org.apache.stratos.common.services.ComponentStartUpSynchronizer;
 import org.apache.stratos.common.services.DistributedObjectProvider;
 import org.apache.stratos.common.threading.StratosThreadPool;
@@ -180,12 +179,13 @@ public class StratosManagerServiceComponent {
      */
     private void executeCoordinatorTasks(ComponentContext componentContext)
             throws UserStoreException, UserManagerException {
-
         initializeTenantEventPublisher(componentContext);
         initializeInstanceStatusEventReceiver();
         initializeInitializerEventReceiver();
-        registerComponentStartUpEventListeners();
-
+        Runnable tenantSynchronizer = new TenantEventSynchronizer();
+        scheduler.scheduleAtFixedRate(tenantSynchronizer, 0, 1, TimeUnit.MINUTES);
+        Runnable applicationSignUpSynchronizer = new ApplicationSignUpEventSynchronizer();
+        scheduler.scheduleAtFixedRate(applicationSignUpSynchronizer, 0, 1, TimeUnit.MINUTES);
         // Create internal/user Role at server start-up
         createInternalUserRole(componentContext);
     }
@@ -260,31 +260,6 @@ public class StratosManagerServiceComponent {
         if (log.isInfoEnabled()) {
             log.info("Tenant event publisher initialized");
         }
-    }
-
-    private void registerComponentStartUpEventListeners() {
-        ComponentStartUpSynchronizer componentStartUpSynchronizer = ServiceReferenceHolder.getInstance()
-                .getComponentStartUpSynchronizer();
-        if (componentStartUpSynchronizer.isEnabled()) {
-            componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
-                @Override
-                public void activated(Component component) {
-                    if (component == Component.StratosManager) {
-                        scheduleEventSynchronizers();
-                    }
-                }
-            });
-        } else {
-            scheduleEventSynchronizers();
-        }
-    }
-
-    private void scheduleEventSynchronizers() {
-        Runnable tenantSynchronizer = new TenantEventSynchronizer();
-        scheduler.scheduleAtFixedRate(tenantSynchronizer, 0, 1, TimeUnit.MINUTES);
-
-        Runnable applicationSignUpSynchronizer = new ApplicationSignUpEventSynchronizer();
-        scheduler.scheduleAtFixedRate(applicationSignUpSynchronizer, 0, 1, TimeUnit.MINUTES);
     }
 
     protected void setConfigurationContextService(ConfigurationContextService contextService) {
