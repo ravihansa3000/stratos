@@ -57,11 +57,11 @@ import java.util.concurrent.TimeUnit;
  * @scr.component name="org.apache.stratos.cloud.controller" immediate="true"
  * @scr.reference name="hazelcast.instance.service" interface="com.hazelcast.core.HazelcastInstance"
  * cardinality="0..1"policy="dynamic" bind="setHazelcastInstance" unbind="unsetHazelcastInstance"
- * @scr.reference name="distributedObjectProvider" interface="org.apache.stratos.common.services
- * .DistributedObjectProvider"
+ * @scr.reference name="distributedObjectProvider"
+ * interface="org.apache.stratos.common.services.DistributedObjectProvider"
  * cardinality="1..1" policy="dynamic" bind="setDistributedObjectProvider" unbind="unsetDistributedObjectProvider"
- * @scr.reference name="componentStartUpSynchronizer" interface="org.apache.stratos.common.services
- * .ComponentStartUpSynchronizer"
+ * @scr.reference name="componentStartUpSynchronizer"
+ * interface="org.apache.stratos.common.services.ComponentStartUpSynchronizer"
  * cardinality="1..1" policy="dynamic" bind="setComponentStartUpSynchronizer" unbind="unsetComponentStartUpSynchronizer"
  * @scr.reference name="ntask.component" interface="org.wso2.carbon.ntask.core.service.TaskService"
  * cardinality="1..1" policy="dynamic" bind="setTaskService" unbind="unsetTaskService"
