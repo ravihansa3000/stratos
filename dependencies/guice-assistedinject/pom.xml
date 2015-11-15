@@ -36,9 +36,9 @@
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-assistedinject</artifactId>
-            <version>${guice.assistedinject.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

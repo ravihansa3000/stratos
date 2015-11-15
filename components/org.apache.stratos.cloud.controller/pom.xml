@@ -53,12 +53,17 @@
                             org.apache.stratos.cloud.controller.internal.*,
                         </Private-Package>
                         <Import-Package>
-                            !org.apache.stratos.cloud.controller.*,
-                            org.apache.stratos.mock.iaas.*,
-                            org.apache.commons.*,
-                            org.wso2.carbon.utils.*,
+                            org.apache.stratos.mock.iaas.*; version="${project.version}",
+                            org.apache.stratos.mock.iaas.client.*; version="${project.version}",
                             org.apache.stratos.common.*; version="${project.version}",
+                            org.apache.stratos.messaging.*; version="${project.version}",
                             org.apache.stratos.kubernetes.client.*; version="${project.version}",
+                            org.wso2.carbon.utils.*; version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.databridge.agent.thrift.*;
+                            version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.securevault.*; version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.analytics.hive.stub.*;
+                            version="${carbon.platform.package.import.version.range}",
                             org.jclouds.aws.ec2.*; version=${jclouds.version},
                             org.jclouds.ec2.*; version=${jclouds.version},
                             org.jclouds.compute.*; version=${jclouds.version},
@@ -66,6 +71,7 @@
                             org.jclouds.googlecomputeengine*; version=${jclouds.version},
                             org.jclouds.googlecloud.*; version=${jclouds.version},
                             org.jclouds*; version=${jclouds.version},
+                            org.apache.commons.*,
                             *; resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
@@ -95,38 +101,27 @@
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.core</artifactId>
-            <version>${carbon.kernel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.messaging</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.kubernetes.client</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.securevault</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.analytics.hive.stub</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -135,94 +130,80 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
-            <version>${carbon.kernel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.mock.iaas</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.mock.iaas.client</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-api</artifactId>
-            <version>${kubernetes.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.ntask.core</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
 
         <!-- jclouds dependencies -->
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
             <artifactId>cloudstack</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds</groupId>
             <artifactId>jclouds-core</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds</groupId>
             <artifactId>jclouds-compute</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.driver</groupId>
             <artifactId>jclouds-enterprise</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
             <artifactId>ec2</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>aws-ec2</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
             <artifactId>openstack-nova</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.labs</groupId>
             <artifactId>openstack-neutron</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.api</groupId>
             <artifactId>openstack-keystone</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds</groupId>
             <artifactId>jclouds-scriptbuilder</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>google-compute-engine</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.driver</groupId>
             <artifactId>jclouds-log4j</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.driver</groupId>
             <artifactId>jclouds-slf4j</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jclouds.driver</groupId>
             <artifactId>jclouds-sshj</artifactId>
-            <version>${jclouds.version}</version>
         </dependency>
     </dependencies>
 </project>

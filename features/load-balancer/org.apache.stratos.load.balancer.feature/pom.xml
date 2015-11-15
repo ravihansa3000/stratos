@@ -61,7 +61,8 @@
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
                                 </importFeatureDef>
-                                <importFeatureDef>org.apache.synapse.wso2:${synapse.wso2.feature.version}</importFeatureDef>
+                                <importFeatureDef>org.apache.synapse.wso2:${synapse.wso2.feature.version}
+                                </importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

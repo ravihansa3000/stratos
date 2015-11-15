@@ -34,12 +34,10 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
+            <groupId>org.apache.geronimo.specs.wso2</groupId>
             <artifactId>geronimo-jms_1.1_spec</artifactId>
-            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -48,48 +46,38 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jamesmurty.utils</groupId>
             <artifactId>java-xmlbuilder</artifactId>
-            <version>0.6</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>mqtt-client</artifactId>
-            <version>0.4.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -112,15 +100,9 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.messaging,
-                            org.apache.stratos.messaging.*,
-                            org.apache.stratos.messaging.topology,
-                            org.apache.stratos.messaging.topology.*,
-                            org.apache.stratos.messaging.util.MessagingConstants,
+                            org.apache.stratos.messaging.*; version="${project.version}"
                         </Export-Package>
                         <Import-Package>
-                            !org.apache.commons.logging,
-                            org.apache.commons.logging; version=0.0.0,
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

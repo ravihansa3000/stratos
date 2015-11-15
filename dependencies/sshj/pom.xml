@@ -36,7 +36,6 @@
         <dependency>
             <groupId>net.schmizz</groupId>
             <artifactId>sshj</artifactId>
-            <version>${net.schmizz.sshj.version}</version>
         </dependency>
     </dependencies>
     

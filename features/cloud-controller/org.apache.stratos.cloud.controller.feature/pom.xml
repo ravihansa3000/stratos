@@ -163,13 +163,17 @@
                                 </bundleDef>
                                 <bundleDef>jdom.wso2:jdom:1.0.0.wso2v1</bundleDef>
                                 <bundleDef>org.json.wso2:json:1.0.0.wso2v1</bundleDef>
-                                <bundleDef>org.apache.httpcomponents.wso2:httpcore:4.3.0.wso2v1</bundleDef>
-                                <bundleDef>org.apache.httpcomponents.wso2:httpclient:4.2.5.wso2v1</bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpclient-osgi:${httpclient.version}</bundleDef>
+                                <bundleDef>org.apache.httpcomponents:httpcore-osgi:${httpcore.version}</bundleDef>
                             </bundles>
                             <importBundles>
                             </importBundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}</importFeatureDef>
+                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                </importFeatureDef>
+                                <importFeatureDef>
+                                    org.wso2.carbon.ntask.core:${carbon.platform.patch.version.4.2.1}
+                                </importFeatureDef>
                             </importFeatures>
                         </configuration>
                     </execution>

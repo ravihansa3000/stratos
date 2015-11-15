@@ -44,19 +44,19 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.common.*,
-                            org.apache.stratos.common.constants.*,
-                            org.apache.stratos.common.domain.*,
-                            org.apache.stratos.common.client.*,
-                            org.apache.stratos.common.services.*,
-                            org.apache.stratos.common.statistics.publisher.*,
-                            org.apache.stratos.common.concurrent.locks.*,
+                            org.apache.stratos.common.*
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.registry.core.*;version=1.0.1,
-                            org.wso2.carbon.user.core.*,
-                            javax.servlet;version="${imp.pkg.version.javax.servlet}",
-                            javax.servlet.http;version="${imp.pkg.version.javax.servlet}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
+                            org.wso2.carbon.user.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.user.mgt.*;version="${carbon.kernel.package.import.version.range}",
+                            org.apache.stratos.cloud.controller.service.stub.*;version="${project.version}",
+                            org.apache.stratos.autoscaler.service.stub.*;version="${project.version}",
+                            org.apache.stratos.manager.service.stub.*;version="${project.version}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.version.4.2.0}",
+                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.version.4.2.0}",
+                            javax.servlet;version="${javax.servlet.imp.pkg.version}",
+                            javax.servlet.http;version="${javax.servlet.imp.pkg.version}",
                             org.apache.axiom.*; version="${axiom.osgi.version.range}",
                             *;resolution:=optional
                         </Import-Package>
@@ -70,63 +70,50 @@
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.registry.core</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.user.core</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.user.mgt</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.cloud.controller.service.stub</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.autoscaler.service.stub</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.manager.service.stub</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.databridge.commons</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-lang.wso2</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.6.0.wso2v1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
         </dependency>
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
-            <version>1.9</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
-            <version>${carbon.kernel.version}</version>
         </dependency>
     </dependencies>
 </project>
