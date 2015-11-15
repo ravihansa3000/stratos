@@ -45,7 +45,7 @@
             <artifactId>drools-compiler</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.thoughtworks.xstream</groupId>
+            <groupId>com.thoughtworks.xstream.wso2</groupId>
             <artifactId>xstream</artifactId>
         </dependency>
         <dependency>
@@ -57,12 +57,12 @@
             <artifactId>antlr</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-decisiontables</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr-runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-decisiontables</artifactId>
         </dependency>
         <dependency>
             <groupId>org.antlr</groupId>
@@ -105,11 +105,11 @@
             <artifactId>xpp3_min</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.lowagie</groupId>
+            <groupId>com.lowagie.wso2</groupId>
             <artifactId>itext</artifactId>
         </dependency>
         <dependency>
-            <groupId>jsr94</groupId>
+            <groupId>jsr94.wso2</groupId>
             <artifactId>jsr94</artifactId>
         </dependency>
         <dependency>
@@ -165,21 +165,23 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Private-Package>org.apache.stratos.autoscaler.internal.*</Private-Package>
-                        <Export-Package>!org.apache.stratos.autoscaler.internal.*,org.apache.stratos.autoscaler.*
+                        <Export-Package>
+                            !org.apache.stratos.autoscaler.internal.*,
+                            !org.apache.stratos.autoscaler.stub.*,
+                            org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>
-                            org.apache.stratos.common.services.*; version="${project.version}",
-                            org.apache.stratos.common.threading.*; version="${project.version}",
-                            org.apache.stratos.common.client.*; version="${project.version}",
-                            org.apache.stratos.common.partition.*; version="${project.version}",
-                            org.apache.stratos.common.constants.*; version="${project.version}",
                             org.apache.stratos.common.*; version="${project.version}",
                             org.apache.stratos.cloud.controller.stub.*; version="${project.version}",
                             *;resolution:=optional
                         </Import-Package>
                         <Bundle-Activator>org.apache.stratos.autoscaler.internal.ASBundleActivater</Bundle-Activator>
                         <DynamicImport-Package>*</DynamicImport-Package>
-                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Embed-Dependency>
+                            antlr,antlr-runtime,drools-decisiontables,stringtemplate,drools-core,drools-jsr94,
+                            drools-verifier,drools-compiler,drools-templates,xpp3_min,xmlpull,knowledge-api,
+                            knowledge-internal-api;scope=compile|runtime
+                        </Embed-Dependency>
                         <Embed-Directory>lib</Embed-Directory>
                     </instructions>
                 </configuration>

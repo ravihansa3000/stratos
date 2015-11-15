@@ -22,10 +22,8 @@ package org.apache.stratos.rest.endpoint.handlers;
 import org.apache.cxf.jaxrs.ext.RequestHandler;
 import org.apache.cxf.jaxrs.model.ClassResourceInfo;
 import org.apache.cxf.message.Message;
-import org.apache.stratos.common.Component;
 import org.apache.stratos.common.beans.ResponseMessageBean;
-import org.apache.stratos.common.services.ComponentStartUpSynchronizer;
-import org.apache.stratos.manager.internal.ServiceReferenceHolder;
+import org.apache.stratos.manager.context.StratosManagerContext;
 
 import javax.ws.rs.core.Response;
 
@@ -35,9 +33,7 @@ import javax.ws.rs.core.Response;
 public class ComponentSynchronizerHandler implements RequestHandler {
 
     public Response handleRequest(Message message, ClassResourceInfo classResourceInfo) {
-        ComponentStartUpSynchronizer componentStartUpSynchronizer =
-                ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer();
-        if (!componentStartUpSynchronizer.isComponentActive(Component.StratosManager)) {
+        if (!StratosManagerContext.getInstance().isActivated()) {
             ResponseMessageBean responseBean = new ResponseMessageBean();
             responseBean.setMessage("Stratos manager component is not active");
             return Response.status(Response.Status.NOT_ACCEPTABLE).entity(responseBean).build();

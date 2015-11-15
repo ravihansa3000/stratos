@@ -57,7 +57,7 @@
                             <bundles>
                                 <bundleDef>org.apache.stratos:org.apache.stratos.custom.handlers:${project.version}
                                 </bundleDef>
-                                <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:2.26.1.wso2v2</bundleDef>
+                                <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:${nimbus.jose.jwt.wso2.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

@@ -77,6 +77,7 @@ public class StratosManagerContext implements Serializable {
 
     private boolean clustered;
     private boolean coordinator;
+    private boolean isActivated;
 
     private StratosManagerContext() {
         // Initialize clustering status
@@ -377,5 +378,13 @@ public class StratosManagerContext implements Serializable {
                 log.error("Could not persist cloud controller context in registry", e);
             }
         }
+    }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
     }
 }

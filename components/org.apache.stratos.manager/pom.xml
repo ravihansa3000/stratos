@@ -47,6 +47,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -82,9 +83,8 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Private-Package>org.apache.stratos.manager.internal.*</Private-Package>
                         <Export-Package>
-                            org.apache.stratos.manager.domain.*,
-                            org.apache.stratos.manager.utils.*,
-                            org.apache.stratos.manager.service.*,
+                            !org.apache.stratos.manager.internal.*,
+                            !org.apache.stratos.manager.service.stub.*,
                             org.apache.stratos.manager.*
                         </Export-Package>
                         <Import-Package>

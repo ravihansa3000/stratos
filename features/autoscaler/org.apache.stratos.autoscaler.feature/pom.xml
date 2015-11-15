@@ -62,6 +62,22 @@
                                 <bundleDef>
                                     org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
                                 </bundleDef>
+                                <bundleDef>
+                                    org.mvel:mvel2:${mvel2.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    org.eclipse.jdt.core.compiler:ecj:${eclipse.ecj.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    jsr94.wso2:jsr94:${jsr94.wso2.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    com.thoughtworks.xstream.wso2:xstream:${xstream.wso2.version}
+                                </bundleDef>
+                                <bundleDef>
+                                    com.lowagie.wso2:itext:${itext.wso2.version}
+                                </bundleDef>
+                                <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:${nimbus.jose.jwt.wso2.version}</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
