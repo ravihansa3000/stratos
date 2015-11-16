@@ -36,10 +36,6 @@
             <artifactId>org.wso2.carbon.identity.oauth</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.minidev</groupId>
-            <artifactId>json-smart</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
         </dependency>
@@ -49,15 +45,21 @@
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.core.common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core.services</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
+        </dependency>
+
+        <!-- Misc -->
+        <dependency>
+            <groupId>commons-lang.wso2</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
             <groupId>opensaml.wso2</groupId>
@@ -66,6 +68,10 @@
         <dependency>
             <groupId>com.nimbusds.wso2</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
         </dependency>
     </dependencies>
 
@@ -86,16 +92,21 @@
                         </Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Import-Package>
-                            org.wso2.carbon.identity.oauth2.*; version="${identity.oauth2.imp.pkg.version}",
+                            org.wso2.carbon.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.identity.oauth2.*;version="${identity.oauth2.imp.pkg.version}",
+
+                            org.apache.commons.logging.*; version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            org.opensaml.*;version="${opensaml2.osgi.version.range}",
+                            com.nimbusds.jose.*;version="${nimbus.jose.jwt.import.version.range}",
+                            com.nimbusds.jwt.*;version="${nimbus.jose.jwt.import.version.range}",
+                            net.minidev.json; version="${net.minidev.json.import.version.range}",
                             *;resolution:=optional,
                         </Import-Package>
                         <Export-Package>
-                            !org.wso2.carbon.identity.authenticator.signedjwt.internal,
-                            org.apache.stratos.custom.handlers.*,
+                            org.apache.stratos.custom.handlers.*
                         </Export-Package>
-                        <Embed-Dependency>
-                            nimbus-jose-jwt|json-smart;scope=compile|runtime;inline=false
-                        </Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>

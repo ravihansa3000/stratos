@@ -43,6 +43,8 @@
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.databridge.commons</artifactId>
         </dependency>
+
+        <!-- Stratos components -->
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
@@ -50,6 +52,16 @@
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.messaging</artifactId>
+        </dependency>
+
+        <!-- Misc -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang.wso2</groupId>
+            <artifactId>commons-lang</artifactId>
         </dependency>
     </dependencies>
 
@@ -70,13 +82,21 @@
                         <Export-Package>
                             org.apache.stratos.mock.iaas.*,
                             org.apache.stratos.mock.iaas.domain.*,
-                            org.apache.stratos.mock.iaas.services.MockIaasService,
+                            org.apache.stratos.mock.iaas.services.MockIaasService
                         </Export-Package>
                         <Private-Package>
                             org.apache.stratos.mock.iaas.internal;
                         </Private-Package>
                         <Import-Package>
+                            org.wso2.carbon.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
+
                             org.apache.stratos.common.*="${project.version}",
+                            org.apache.stratos.messaging.*;version="${project.version}",
+
+                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

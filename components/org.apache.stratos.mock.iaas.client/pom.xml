@@ -32,6 +32,32 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.logging</artifactId>
+        </dependency>
+
+        <!-- Stratos components -->
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.mock.iaas</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents.wso2</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents.wso2</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.axis2.wso2</groupId>
+                    <artifactId>axis2-client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Misc -->
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
@@ -60,10 +86,6 @@
             <groupId>commons-lang.wso2</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.stratos</groupId>
-            <artifactId>org.apache.stratos.mock.iaas</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -81,12 +103,21 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.mock.iaas.client.*,
+                            org.apache.stratos.mock.iaas.client.*
                         </Export-Package>
                         <Private-Package>
                             org.apache.stratos.mock.iaas.client.internal;
                         </Private-Package>
                         <Import-Package>
+                            org.apache.stratos.mock.iaas.*;version="${project.version}",
+
+                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
+                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
+                            org.apache.http.auth.*;version="${http.client.import.version.range}",
+                            org.apache.http.cookie.*;version="${http.client.import.version.range}",
+                            org.apache.http.conn.*;version="${http.client.import.version.range}",
+                            org.apache.http.client.*;version="${http.client.import.version.range}",
+                            org.apache.http.impl.*;version="${http.client.import.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

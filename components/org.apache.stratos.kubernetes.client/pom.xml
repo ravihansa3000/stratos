@@ -34,20 +34,25 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.logging</artifactId>
+        </dependency>
+
+        <!-- Stratos components -->
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>kubernetes-api</artifactId>
+        </dependency>
+
+        <!-- Misc -->
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.stratos</groupId>
-            <artifactId>kubernetes-api</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -62,10 +67,11 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
-                            org.apache.stratos.kubernetes.client,
-                            org.apache.stratos.kubernetes.client.exceptions,
+                            org.apache.stratos.kubernetes.client.*
                         </Export-Package>
                         <Import-Package>
+                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
                             io.fabric8.kubernetes.api.*;version=${kubernetes.api.version},
                             io.fabric8.kubernetes.api.model.*;version=${kubernetes.api.version},
                             *;resolution:=optional

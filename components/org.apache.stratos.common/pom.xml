@@ -29,47 +29,14 @@
     <packaging>bundle</packaging>
     <name>Apache Stratos - Common</name>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-scr-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Export-Package>
-                            org.apache.stratos.common.*
-                        </Export-Package>
-                        <Import-Package>
-                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
-                            org.wso2.carbon.user.core.*;version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.user.mgt.*;version="${carbon.kernel.package.import.version.range}",
-                            org.apache.stratos.cloud.controller.service.stub.*;version="${project.version}",
-                            org.apache.stratos.autoscaler.service.stub.*;version="${project.version}",
-                            org.apache.stratos.manager.service.stub.*;version="${project.version}",
-                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.version.4.2.0}",
-                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.version.4.2.0}",
-                            javax.servlet;version="${javax.servlet.imp.pkg.version}",
-                            javax.servlet.http;version="${javax.servlet.imp.pkg.version}",
-                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
-                            *;resolution:=optional
-                        </Import-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.registry.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.logging</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -79,6 +46,16 @@
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.user.mgt</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.databridge.commons</artifactId>
+        </dependency>
+
+        <!-- Stratos components -->
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.cloud.controller.service.stub</artifactId>
@@ -91,13 +68,12 @@
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.manager.service.stub</artifactId>
         </dependency>
+
+        <!-- Misc -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.databridge.commons</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-lang.wso2</groupId>
@@ -112,8 +88,52 @@
             <artifactId>commons-configuration</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
+            <groupId>commons-codec.wso2</groupId>
+            <artifactId>commons-codec</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Private-Package>org.apache.stratos.common.internal.*</Private-Package>
+                        <Export-Package>
+                            !org.apache.stratos.common.internal.*,
+                            org.apache.stratos.common.*
+                        </Export-Package>
+                        <Import-Package>
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
+                            org.wso2.carbon.user.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.user.mgt.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.package.import.version.range}",
+
+                            org.apache.stratos.cloud.controller.service.stub.*;version="${project.version}",
+                            org.apache.stratos.autoscaler.service.stub.*;version="${project.version}",
+                            org.apache.stratos.manager.service.stub.*;version="${project.version}",
+
+                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.configuration.*;version="${commons.configuration.osgi.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            org.apache.commons.codec.*;version="${commons.codec.osgi.version.range}",
+                            org.apache.axiom.*; version="${axiom.osgi.version.range}",
+                            *;resolution:=optional
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

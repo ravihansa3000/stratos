@@ -332,7 +332,7 @@
                                     org.wso2.carbon:org.wso2.carbon.databridge.datapublisher.feature:${carbon.platform.patch.version.4.2.1}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
-                                    org.wso2.carbon:org.wso2.carbon.ntask.feature:${carbon.platform.patch.version.4.2.1}
+                                    org.wso2.carbon:org.wso2.carbon.ntask.core.feature:${carbon.platform.patch.version.4.2.1}
                                 </featureArtifactDef>
                                 <featureArtifactDef>
                                     org.wso2.carbon:org.wso2.carbon.registry.core.feature:${carbon.platform.patch.version.4.2.2}
@@ -658,7 +658,7 @@
                                     <version>${carbon.platform.patch.version.4.2.1}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.ntask.feature.group</id>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
                                     <version>${carbon.platform.patch.version.4.2.1}</version>
                                 </feature>
                                 <feature>
@@ -788,6 +788,10 @@
                             <deleteOldProfileFiles>true</deleteOldProfileFiles>
                             <features>
                                 <feature>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
+                                    <version>${carbon.platform.patch.version.4.2.1}</version>
+                                </feature>
+                                <feature>
                                     <id>org.wso2.carbon.webapp.mgt.feature.group</id>
                                     <version>${carbon.deployment.version}</version>
                                 </feature>
@@ -822,6 +826,14 @@
                                 <feature>
                                     <id>org.apache.stratos.common.feature.group</id>
                                     <version>${project.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.oauth.feature.group</id>
+                                    <version>${carbon.platform.patch.version.4.2.3}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.identity.application.mgt.feature.group</id>
+                                    <version>${carbon.platform.version.4.2.0}</version>
                                 </feature>
                             </features>
                         </configuration>
@@ -1009,7 +1021,7 @@
                                     <version>${carbon.platform.patch.version.4.2.1}</version>
                                 </feature>
                                 <feature>
-                                    <id>org.wso2.carbon.ntask.feature.group</id>
+                                    <id>org.wso2.carbon.ntask.core.feature.group</id>
                                     <version>${carbon.platform.patch.version.4.2.1}</version>
                                 </feature>
                                 <feature>

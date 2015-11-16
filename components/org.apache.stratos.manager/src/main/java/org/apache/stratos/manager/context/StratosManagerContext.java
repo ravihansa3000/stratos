@@ -22,6 +22,9 @@ package org.apache.stratos.manager.context;
 import org.apache.axis2.engine.AxisConfiguration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.stratos.common.Component;
+import org.apache.stratos.common.services.ComponentActivationEventListener;
+import org.apache.stratos.common.services.ComponentStartUpSynchronizer;
 import org.apache.stratos.common.services.DistributedObjectProvider;
 import org.apache.stratos.manager.internal.ServiceReferenceHolder;
 import org.apache.stratos.manager.registry.RegistryManager;
@@ -46,8 +49,10 @@ public class StratosManagerContext implements Serializable {
 
     private static final String SM_CARTRIDGES_CARTRIDGEGROUPS_WRITE_LOCK = "SM_CARTRIDGES_CARTRIDGEGROUPS_WRITE_LOCK";
     private static final String SM_CARTRIDGES_APPLICATIONS_WRITE_LOCK = "SM_CARTRIDGES_APPLICATIONS_WRITE_LOCK";
-    private static final String SM_CARTRIDGEGROUPS_CARTRIDGESUBGROUPS_WRITE_LOCK = "SM_CARTRIDGEGROUPS_CARTRIDGESUBGROUPS_WRITE_LOCK";
-    private static final String SM_CARTRIDGEGROUPS_APPLICATIONS_WRITE_LOCK = "SM_CARTRIDGEGROUPS_APPLICATIONS_WRITE_LOCK";
+    private static final String SM_CARTRIDGEGROUPS_CARTRIDGESUBGROUPS_WRITE_LOCK
+            = "SM_CARTRIDGEGROUPS_CARTRIDGESUBGROUPS_WRITE_LOCK";
+    private static final String SM_CARTRIDGEGROUPS_APPLICATIONS_WRITE_LOCK
+            = "SM_CARTRIDGEGROUPS_APPLICATIONS_WRITE_LOCK";
     private static final Log log = LogFactory.getLog(StratosManagerContext.class);
     private static volatile StratosManagerContext instance;
     private final transient DistributedObjectProvider distributedObjectProvider;
@@ -78,6 +83,7 @@ public class StratosManagerContext implements Serializable {
     private boolean clustered;
     private boolean coordinator;
     private boolean isActivated;
+    private ComponentStartUpSynchronizer componentStartUpSynchronizer;
 
     private StratosManagerContext() {
         // Initialize clustering status
@@ -92,8 +98,13 @@ public class StratosManagerContext implements Serializable {
         // Get maps from distributed object provider
         cartridgeTypeToCartridgeGroupsMap = distributedObjectProvider.getMap(SM_CARTRIDGE_TYPE_TO_CARTIDGE_GROUPS_MAP);
         cartridgeTypeToApplicationsMap = distributedObjectProvider.getMap(SM_CARTRIDGE_TYPE_TO_APPLICATIONS_MAP);
-        cartridgeGroupToCartridgeSubGroupsMap = distributedObjectProvider.getMap(SM_CARTRIDGE_GROUP_TO_CARTIDGE_GROUPS_MAP);
+        cartridgeGroupToCartridgeSubGroupsMap = distributedObjectProvider
+                .getMap(SM_CARTRIDGE_GROUP_TO_CARTIDGE_GROUPS_MAP);
         cartridgeGroupToApplicationsMap = distributedObjectProvider.getMap(SM_CARTRIDGE_GROUP_TO_APPLICATIONS_MAP);
+
+        // Register component startup listener to set SM context activated status
+        componentStartUpSynchronizer = ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer();
+        registerComponentStartupListener();
 
         // Update context from the registry
         updateContextFromRegistry();
@@ -257,7 +268,8 @@ public class StratosManagerContext implements Serializable {
         }
     }
 
-    public void removeUsedCartridgeGroupsInCartridgeSubGroups(String cartridgeSubGroupName, String[] cartridgeGroupNames) {
+    public void removeUsedCartridgeGroupsInCartridgeSubGroups(String cartridgeSubGroupName,
+            String[] cartridgeGroupNames) {
         if (cartridgeGroupNames == null) {
             return;
         }
@@ -344,7 +356,8 @@ public class StratosManagerContext implements Serializable {
 
                         copyMap(serializedObj.cartridgeTypeToCartridgeGroupsMap, cartridgeTypeToCartridgeGroupsMap);
                         copyMap(serializedObj.cartridgeTypeToApplicationsMap, cartridgeTypeToApplicationsMap);
-                        copyMap(serializedObj.cartridgeGroupToCartridgeSubGroupsMap, cartridgeGroupToCartridgeSubGroupsMap);
+                        copyMap(serializedObj.cartridgeGroupToCartridgeSubGroupsMap,
+                                cartridgeGroupToCartridgeSubGroupsMap);
                         copyMap(serializedObj.cartridgeGroupToApplicationsMap, cartridgeGroupToApplicationsMap);
 
                         if (log.isDebugEnabled()) {
@@ -357,8 +370,8 @@ public class StratosManagerContext implements Serializable {
                     }
                 }
             } catch (Exception e) {
-                String msg = "Unable to read Stratos Manager context from the registry. " +
-                        "Hence, any historical data will not be reflected";
+                String msg = "Unable to read Stratos Manager context from the registry. "
+                        + "Hence, any historical data will not be reflected";
                 log.warn(msg, e);
             }
         }
@@ -384,7 +397,17 @@ public class StratosManagerContext implements Serializable {
         return isActivated;
     }
 
-    public void setActivated(boolean activated) {
-        isActivated = activated;
+    public void registerComponentStartupListener() {
+        componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
+            @Override
+            public void activated(Component component) {
+                if (component == Component.StratosManager) {
+                    isActivated = true;
+                    if (log.isInfoEnabled()) {
+                        log.info("Stratos manager context was notified of Stratos manager activation.");
+                    }
+                }
+            }
+        });
     }
 }

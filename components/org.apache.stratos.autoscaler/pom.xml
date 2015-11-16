@@ -37,6 +37,46 @@
             <artifactId>org.wso2.carbon.registry.core</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.ntask.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.identity.oauth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.identity.oauth.stub</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.identity.application.mgt.stub</artifactId>
+        </dependency>
+
+        <!-- Stratos components -->
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.messaging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.stratos</groupId>
+            <artifactId>org.apache.stratos.cloud.controller.service.stub</artifactId>
+        </dependency>
+
+        <!-- Misc -->
+        <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
         </dependency>
@@ -45,12 +85,16 @@
             <artifactId>drools-compiler</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.thoughtworks.xstream.wso2</groupId>
-            <artifactId>xstream</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang.wso2</groupId>
+            <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
             <groupId>org.antlr</groupId>
@@ -81,20 +125,12 @@
             <artifactId>knowledge-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mvel</groupId>
-            <artifactId>mvel2</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-verifier</artifactId>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-templates</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jdt.core.compiler</groupId>
-            <artifactId>ecj</artifactId>
         </dependency>
         <dependency>
             <groupId>xmlpull</groupId>
@@ -105,48 +141,32 @@
             <artifactId>xpp3_min</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.lowagie.wso2</groupId>
+            <groupId>com.nimbusds.wso2</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lowagie</groupId>
             <artifactId>itext</artifactId>
         </dependency>
         <dependency>
-            <groupId>jsr94.wso2</groupId>
+            <groupId>jsr94</groupId>
             <artifactId>jsr94</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.stratos</groupId>
-            <artifactId>org.apache.stratos.messaging</artifactId>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.stratos</groupId>
-            <artifactId>org.apache.stratos.common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.stratos</groupId>
-            <artifactId>org.apache.stratos.cloud.controller.service.stub</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.ntask.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.identity.oauth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.identity.oauth.stub</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.identity.application.mgt.stub</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.nimbusds.wso2</groupId>
-            <artifactId>nimbus-jose-jwt</artifactId>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
         </dependency>
     </dependencies>
 
@@ -171,16 +191,32 @@
                             org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>
-                            org.apache.stratos.common.*; version="${project.version}",
-                            org.apache.stratos.cloud.controller.stub.*; version="${project.version}",
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
+
+                            org.apache.stratos.common.*;version="${project.version}",
+                            org.apache.stratos.messaging.*;version="${project.version}",
+                            org.apache.stratos.cloud.controller.stub.*;version="${project.version}",
+
+                            org.apache.commons.logging.*; version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.configuration.*;version="${commons.configuration.osgi.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
+                            com.nimbusds.jose.*;version="${nimbus.jose.jwt.import.version.range}",
+                            com.nimbusds.jwt.*;version="${nimbus.jose.jwt.import.version.range}",
                             *;resolution:=optional
                         </Import-Package>
-                        <Bundle-Activator>org.apache.stratos.autoscaler.internal.ASBundleActivater</Bundle-Activator>
                         <DynamicImport-Package>*</DynamicImport-Package>
+                        <!--Embed-Dependency>
+                            antlr,antlr-runtime,commons-configuration,drools-compiler,drools-core,drools-decisiontables,
+                            drools-jsr94,drools-templates,drools-verifier,ecj,itext,jsr94,knowledge-api,
+                            knowledge-internal-api,mvel2,nimbus-jose-jwt,org.wso2.carbon.identity.application.mgt.stub,
+                            org.wso2.carbon.identity.oauth.stub,org.wso2.carbon.identity.oauth,stringtemplate,xmlpull,
+                            xpp3_min,xstream;scope=compile|runtime
+                        </Embed-Dependency-->
                         <Embed-Dependency>
-                            antlr,antlr-runtime,drools-decisiontables,stringtemplate,drools-core,drools-jsr94,
-                            drools-verifier,drools-compiler,drools-templates,xpp3_min,xmlpull,knowledge-api,
-                            knowledge-internal-api;scope=compile|runtime
+                            *;scope=compile|runtime
                         </Embed-Dependency>
                         <Embed-Directory>lib</Embed-Directory>
                     </instructions>
@@ -203,6 +239,7 @@
                 </executions>
             </plugin>
         </plugins>
+
         <resources>
             <resource>
                 <directory>src/main/rules</directory>

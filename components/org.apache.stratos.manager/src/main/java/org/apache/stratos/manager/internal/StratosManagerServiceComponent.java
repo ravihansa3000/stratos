@@ -155,7 +155,6 @@ public class StratosManagerServiceComponent {
                         componentStartUpSynchronizer
                                 .waitForAxisServiceActivation(Component.StratosManager, "StratosManagerService");
                         componentStartUpSynchronizer.setComponentStatus(Component.StratosManager, true);
-                        StratosManagerContext.getInstance().setActivated(true);
 
                         if (log.isInfoEnabled()) {
                             log.info("Stratos manager component is activated");

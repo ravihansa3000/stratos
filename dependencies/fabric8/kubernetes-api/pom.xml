@@ -125,7 +125,7 @@
                         <Export-Package>
                             io.fabric8.kubernetes.api.*;version=${kubernetes.api.version},
                             io.fabric8.kubernetes.api.model.*;version=${kubernetes.api.version},
-                            io.fabric8.kubernetes.internal.*
+                            io.fabric8.kubernetes.internal.*;version=${kubernetes.api.version}
                         </Export-Package>
                         <Import-Package>
                             !javax.xml.bind.annotation.adapters,

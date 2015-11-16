@@ -17,7 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -87,9 +87,10 @@
 
     <repositories>
         <repository>
-            <id>wso2-nexus</id>
-            <name>WSO2 Internal Repository</name>
-            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+            <id>central</id>
+            <name>Maven Central Repository</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -97,10 +98,9 @@
             </releases>
         </repository>
         <repository>
-            <id>central</id>
-            <name>Maven Central Repository</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
+            <id>wso2-nexus</id>
+            <name>WSO2 Internal Repository</name>
+            <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -454,6 +454,11 @@
                 <version>${commons.configuration.version}</version>
             </dependency>
             <dependency>
+                <groupId>commons-codec.wso2</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.drools</groupId>
                 <artifactId>drools-core</artifactId>
                 <version>${drools.version}</version>
@@ -494,9 +499,9 @@
                 <version>${drools.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.thoughtworks.xstream.wso2</groupId>
+                <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
-                <version>${xstream.wso2.version}</version>
+                <version>${xstream.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.antlr</groupId>
@@ -534,14 +539,14 @@
                 <version>${xpp3.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.lowagie.wso2</groupId>
+                <groupId>com.lowagie</groupId>
                 <artifactId>itext</artifactId>
-                <version>${itext.wso2.version}</version>
+                <version>${itext.version}</version>
             </dependency>
             <dependency>
-                <groupId>jsr94.wso2</groupId>
+                <groupId>jsr94</groupId>
                 <artifactId>jsr94</artifactId>
-                <version>${jsr94.wso2.version}</version>
+                <version>${jsr94.version}</version>
             </dependency>
             <dependency>
                 <groupId>net.lingala.zip4j</groupId>
@@ -559,14 +564,14 @@
                 <version>${slf4j.log4j12.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.geronimo.specs.wso2</groupId>
+                <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-jms_1.1_spec</artifactId>
-                <version>${orbit.version.geronimo-jms_1.1_spec}</version>
+                <version>${geronimo.jms.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jgit.wso2</groupId>
                 <artifactId>org.eclipse.jgit</artifactId>
-                <version>${eclipse.jgit.version}</version>
+                <version>${eclipse.jgit.wso2.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
@@ -581,7 +586,7 @@
             <dependency>
                 <groupId>commons-httpclient</groupId>
                 <artifactId>commons-httpclient</artifactId>
-                <version>${commons-httpclient.version}</version>
+                <version>${commons.httpclient.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -679,14 +684,14 @@
                 <version>${javax.servlet.jsp.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-collections</groupId>
+                <groupId>commons-collections.wso2</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons.collections.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.jamesmurty.utils</groupId>
+                <groupId>com.jamesmurty.utils.wso2</groupId>
                 <artifactId>java-xmlbuilder</artifactId>
-                <version>${java.xmlbuilder.version}</version>
+                <version>${java.xmlbuilder.wso2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.paho</groupId>
@@ -842,7 +847,7 @@
             <dependency>
                 <groupId>org.apache.geronimo.specs</groupId>
                 <artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
-                <version>${geronimo.j2ee-management_1.1_spec.version}</version>
+                <version>${geronimo.j2ee.management_1.1_spec.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.fusesource.hawtbuf</groupId>
@@ -1412,6 +1417,35 @@
         <wso2.carbon.stratos.common.feature.version>2.2.2</wso2.carbon.stratos.common.feature.version>
         <carbon.event.processor.version>1.0.0</carbon.event.processor.version>
 
+        <!-- OSGi import ranges -->
+        <osgi.service.component.imp.pkg.version.range>[1.2.0, 2.0.0)</osgi.service.component.imp.pkg.version.range>
+        <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
+        <axiom.osgi.version.range>[1.2.11.wso2v4, 1.3.0)</axiom.osgi.version.range>
+        <axis2.osgi.version.range>[1.6.1.wso2v10, 2.0.0)</axis2.osgi.version.range>
+        <jzlib.imp.pkg.version>[1.0, 2)</jzlib.imp.pkg.version>
+        <slf4j.imp.pkg.version>[1.6, 2)</slf4j.imp.pkg.version>
+        <bouncycastle.imp.pkg.version>[1.45.0, 2)</bouncycastle.imp.pkg.version>
+        <netty.imp.pkg.version>[3.3, 4)</netty.imp.pkg.version>
+        <javax.servlet.imp.pkg.version>[2.6.0, 3.0.0)</javax.servlet.imp.pkg.version>
+        <carbon.platform.package.import.version.range>[4.2.0, 4.3.0)</carbon.platform.package.import.version.range>
+        <aopalliance.imp.pkg.version>[1.0, 2)</aopalliance.imp.pkg.version>
+        <guice.imp.pkg.version>[3.0, 4.0)</guice.imp.pkg.version>
+        <identity.oauth2.imp.pkg.version>[4.2.3, 4.3)</identity.oauth2.imp.pkg.version>
+        <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
+        <carbon.kernel.package.import.version.range>[4.2.0, 4.3.0)</carbon.kernel.package.import.version.range>
+        <nimbus.jose.jwt.import.version.range>[2.26.1, 2.27)</nimbus.jose.jwt.import.version.range>
+        <com.google.code.gson.osgi.version.range>[2.3.1, 3.0.0)</com.google.code.gson.osgi.version.range>
+        <commons.lang.osgi.version.range>[2.6.0, 3.0.0)</commons.lang.osgi.version.range>
+        <commons.lang3.osgi.version.range>[3.1, 3.2)</commons.lang3.osgi.version.range>
+        <commons.codec.osgi.version.range>[1.4.0, 2.0.0)</commons.codec.osgi.version.range>
+        <commons.logging.osgi.version.range>[1.1.1, 2.0)</commons.logging.osgi.version.range>
+        <commons.configuration.osgi.version.range>[1.9, 2.0)</commons.configuration.osgi.version.range>
+        <commons.collections.osgi.version.range>[3.2.0,4.0.0)</commons.collections.osgi.version.range>
+        <opensaml2.osgi.version.range>[2.4.1.wso2v1,3.0.0)</opensaml2.osgi.version.range>
+        <net.minidev.json.import.version.range>[1.3.0, 2.0.0)</net.minidev.json.import.version.range>
+        <http.core.import.version.range>[4.4.4, 4.5.0)</http.core.import.version.range>
+        <http.client.import.version.range>[4.5.1, 4.6.0)</http.client.import.version.range>
+
         <!-- 3rd party library versions -->
         <synapse.wso2.feature.version>2.1.2-wso2v3</synapse.wso2.feature.version>
         <sun.jersey.version>1.12</sun.jersey.version>
@@ -1420,12 +1454,11 @@
         <axis2.wso2.client.version>1.6.1.wso2v10</axis2.wso2.client.version>
         <axiom.wso2.version>1.2.11.wso2v4</axiom.wso2.version>
         <junit.version>4.11</junit.version>
-        <commons-httpclient.version>3.0.1</commons-httpclient.version>
-        <json.wso2.version>2.0.0.wso2v1</json.wso2.version>
+        <commons.httpclient.version>3.0.1</commons.httpclient.version>
+        <json.wso2.version>1.0.0.wso2v1</json.wso2.version>
         <neethi.wso2.version>2.0.4.wso2v4</neethi.wso2.version>
         <rampart.wso2.version>1.6.1.wso2v9</rampart.wso2.version>
         <wsdl4j.wso2.version>1.6.2.wso2v4</wsdl4j.wso2.version>
-        <version.commons.logging>1.1.1</version.commons.logging>
         <xmlschema.wso2.version>1.4.7.wso2v2</xmlschema.wso2.version>
         <jclouds.version>1.9.1</jclouds.version>
         <kubernetes.api.version>2.2.16</kubernetes.api.version>
@@ -1441,15 +1474,8 @@
         <slf4j.version>1.7.6</slf4j.version>
         <wiremock.version>1.46</wiremock.version>
         <quartz.wso2.version>2.1.1.wso2v1</quartz.wso2.version>
-        <json.wso2.version>2.0.0.wso2v1</json.wso2.version>
         <kaptcha.wso2.version>2.3.0.wso2v1</kaptcha.wso2.version>
-        <rampart.mar.version>1.6.1-wso2v8</rampart.mar.version>
-        <opencsv.version>1.8</opencsv.version>
-        <poi.version>3.0-FINAL</poi.version>
-        <servlet-api.version>2.4</servlet-api.version>
-        <log4j.version>1.2.17</log4j.version>
-        <commons.logging.version>1.1</commons.logging.version>
-        <quartz.wso2.version>2.1.1.wso2v1</quartz.wso2.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
         <siddhi.version>2.0.0-wso2v5</siddhi.version>
         <siddhi.event.processor.version>1.0.0</siddhi.event.processor.version>
         <scr.annotations.version>1.9.12</scr.annotations.version>
@@ -1461,7 +1487,8 @@
         <commons.lang.version>2.6.0.wso2v1</commons.lang.version>
         <commons.lang3.version>3.1</commons.lang3.version>
         <commons.configuration.version>1.9</commons.configuration.version>
-        <xstream.wso2.version>1.4.2.wso2v1</xstream.wso2.version>
+        <commons.codec.version>1.4.0.wso2v1</commons.codec.version>
+        <xstream.version>1.4.1</xstream.version>
         <antlr.version>3.3</antlr.version>
         <antlr.stringtemplate.version>3.2.1</antlr.stringtemplate.version>
         <jxl.wso2.version>2.6.12.wso2v1</jxl.wso2.version>
@@ -1469,13 +1496,17 @@
         <eclipse.ecj.version>3.5.1</eclipse.ecj.version>
         <xmlpull.version>1.1.3.1</xmlpull.version>
         <xpp3.version>1.1.4c</xpp3.version>
-        <itext.wso2.version>2.1.7.wso2v1</itext.wso2.version>
-        <jsr94.wso2.version>1.1.0.wso2v1</jsr94.wso2.version>
+        <itext.version>2.1.2</itext.version>
+        <jsr94.version>1.1</jsr94.version>
         <zip4j.version>1.3.2</zip4j.version>
         <andes.client.version>0.13.wso2v8</andes.client.version>
         <slf4j.log4j12.version>1.7.5</slf4j.log4j12.version>
-        <eclipse.jgit.version>2.3.1.wso2v2</eclipse.jgit.version>
+        <eclipse.jgit.wso2.version>2.3.1.wso2v2</eclipse.jgit.wso2.version>
+        <eclipse.jgit.wso2.osgi.version>2.1.0.wso2v1</eclipse.jgit.wso2.osgi.version>
+        <gitblit.version>1.2.0.wso2v1</gitblit.version>
         <commons.io.version>2.0</commons.io.version>
+        <commons.io.wso2.version>2.0.0.wso2v1</commons.io.wso2.version>
+        <jdom.wso2.version>1.0.0.wso2v1</jdom.wso2.version>
         <jsch.version>0.1.49.wso2v1</jsch.version>
         <commons.cli.version>1.2</commons.cli.version>
         <jline.version>2.11</jline.version>
@@ -1490,8 +1521,8 @@
         <eclipse.equinox.http.helper.version>1.0.0</eclipse.equinox.http.helper.version>
         <equinox.jsp.jasper.version>1.0.1.R33x_v20070816</equinox.jsp.jasper.version>
         <javax.servlet.jsp.version>2.0.0.v200706191603</javax.servlet.jsp.version>
-        <commons.collections.version>3.2.1</commons.collections.version>
-        <java.xmlbuilder.version>0.6</java.xmlbuilder.version>
+        <commons.collections.version>3.2.0.wso2v1</commons.collections.version>
+        <java.xmlbuilder.wso2.version>0.4.wso2v1</java.xmlbuilder.wso2.version>
         <kubernetes.model.version>1.0.2</kubernetes.model.version>
         <jackson.version>2.4.1</jackson.version>
         <cxf.rs.client.version>3.0.4</cxf.rs.client.version>
@@ -1507,32 +1538,28 @@
         <aws.java.sdk.version>1.8.8</aws.java.sdk.version>
         <velocity.version>1.7</velocity.version>
         <bcprov.jdk15.version>132</bcprov.jdk15.version>
-        <rampart.version>1.6.1-wso2v1</rampart.version>
+        <rampart.version>1.6.1-wso2v8</rampart.version>
         <hawtbuf.version>1.9</hawtbuf.version>
         <geronimo.jta_1.1_spec.version>1.1.1</geronimo.jta_1.1_spec.version>
-        <orbit.version.geronimo-jms_1.1_spec>1.1.0.wso2v1</orbit.version.geronimo-jms_1.1_spec>
-        <geronimo.j2ee-management_1.1_spec.version>1.0.1</geronimo.j2ee-management_1.1_spec.version>
+        <geronimo.jms.version>1.1.1</geronimo.jms.version>
+        <geronimo.j2ee.management_1.1_spec.version>1.0.1</geronimo.j2ee.management_1.1_spec.version>
         <paho.mqtt.client.version>0.4.0</paho.mqtt.client.version>
         <activemq.version>5.10.0</activemq.version>
         <jaggeryjs.version>0.9.0.ALPHA4.wso2v3</jaggeryjs.version>
         <caramel.version>1.0.1</caramel.version>
-
-        <!-- OSGi import ranges -->
-        <osgi.service.component.imp.pkg.version.range>[1.2.0, 2.0.0)</osgi.service.component.imp.pkg.version.range>
-        <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
-        <axiom.osgi.version.range>[1.2.11.wso2v4, 1.3.0)</axiom.osgi.version.range>
-        <axis2.osgi.version.range>[1.6.1.wso2v10, 2.0.0)</axis2.osgi.version.range>
-        <jzlib.imp.pkg.version>[1.0,2)</jzlib.imp.pkg.version>
-        <slf4j.imp.pkg.version>[1.6,2)</slf4j.imp.pkg.version>
-        <bouncycastle.imp.pkg.version>[1.45.0,2)</bouncycastle.imp.pkg.version>
-        <netty.imp.pkg.version>[3.3,4)</netty.imp.pkg.version>
-        <javax.servlet.imp.pkg.version>[2.6.0, 3.0.0)</javax.servlet.imp.pkg.version>
-        <carbon.platform.package.import.version.range>[4.2.0, 4.3.0)</carbon.platform.package.import.version.range>
-        <aopalliance.imp.pkg.version>[1.0,2)</aopalliance.imp.pkg.version>
-        <guice.imp.pkg.version>[3.0,4.0)</guice.imp.pkg.version>
-        <identity.oauth2.imp.pkg.version>[4.2.3,4.3)</identity.oauth2.imp.pkg.version>
-        <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
-        <carbon.kernel.package.import.version.range>[4.2.0, 4.3.0)</carbon.kernel.package.import.version.range>
+        <netty.version>3.5.9.Final</netty.version>
+        <guava.version>16.0.1</guava.version>
+        <jsch.agentproxy.version>0.0.8</jsch.agentproxy.version>
+        <jsch.agentproxy.sshj.version>0.0.8_1</jsch.agentproxy.sshj.version>
+        <commons.compress.version>1.5</commons.compress.version>
+        <net.schmizz.sshj.version>0.8.1</net.schmizz.sshj.version>
+        <servicemix.bundles.aopalliance.version>1.0_6</servicemix.bundles.aopalliance.version>
+        <servicemix.bundles.javax.inject.version>1_2</servicemix.bundles.javax.inject.version>
+        <jsr311.api.version>1.1.1</jsr311.api.version>
+        <bcprov.jdk16.version>1.45.wso2v1</bcprov.jdk16.version>
+        <servicemix.bundles.jzlib.version>1.1.1_1</servicemix.bundles.jzlib.version>
+        <jna.version>4.1.0</jna.version>
+        <usocket.nc.version>0.0.8</usocket.nc.version>
 
         <!-- product distribution properties -->
         <stratos.distribution.name>apache-stratos</stratos.distribution.name>

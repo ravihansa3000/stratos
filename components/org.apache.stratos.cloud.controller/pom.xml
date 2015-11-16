@@ -30,79 +30,41 @@
     <packaging>bundle</packaging>
     <name>Apache Stratos - Cloud Controller</name>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-scr-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Export-Package>
-                            !org.apache.stratos.cloud.controller.internal.*,
-                            !org.apache.stratos.cloud.controller.stub.*,
-                            org.apache.stratos.cloud.controller.*,
-                        </Export-Package>
-                        <Private-Package>
-                            org.apache.stratos.cloud.controller.internal.*,
-                        </Private-Package>
-                        <Import-Package>
-                            org.apache.stratos.mock.iaas.*; version="${project.version}",
-                            org.apache.stratos.mock.iaas.client.*; version="${project.version}",
-                            org.apache.stratos.common.*; version="${project.version}",
-                            org.apache.stratos.messaging.*; version="${project.version}",
-                            org.apache.stratos.kubernetes.client.*; version="${project.version}",
-                            org.wso2.carbon.utils.*; version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.databridge.agent.thrift.*;
-                            version="${carbon.platform.package.import.version.range}",
-                            org.wso2.carbon.securevault.*; version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.analytics.hive.stub.*;
-                            version="${carbon.platform.package.import.version.range}",
-                            org.jclouds.aws.ec2.*; version=${jclouds.version},
-                            org.jclouds.ec2.*; version=${jclouds.version},
-                            org.jclouds.compute.*; version=${jclouds.version},
-                            org.jclouds.domain.*; version=${jclouds.version},
-                            org.jclouds.googlecomputeengine*; version=${jclouds.version},
-                            org.jclouds.googlecloud.*; version=${jclouds.version},
-                            org.jclouds*; version=${jclouds.version},
-                            org.apache.commons.*,
-                            *; resolution:=optional
-                        </Import-Package>
-                        <DynamicImport-Package>*</DynamicImport-Package>
-                        <Axis2Deployer>CloudControllerDeployer</Axis2Deployer>
-                    </instructions>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.axis2</groupId>
-                <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
-                <configuration>
-                    <className>org.apache.stratos.cloud.controller.services.impl.CloudControllerServiceImpl</className>
-                    <outputFileName>target/generated-resources/wsdl/CloudControllerService.wsdl</outputFileName>
-                    <serviceName>CloudControllerService</serviceName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java2wsdl</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.registry.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.logging</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.utils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.databridge.commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.securevault</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.ntask.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.analytics.hive.stub</artifactId>
+        </dependency>
+
+        <!-- Stratos components -->
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.messaging</artifactId>
@@ -116,22 +78,6 @@
             <artifactId>org.apache.stratos.kubernetes.client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.securevault</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.analytics.hive.stub</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.mock.iaas</artifactId>
         </dependency>
@@ -143,9 +89,23 @@
             <groupId>org.apache.stratos</groupId>
             <artifactId>kubernetes-api</artifactId>
         </dependency>
+
+        <!-- Misc -->
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.ntask.core</artifactId>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec.wso2</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang.wso2</groupId>
+            <artifactId>commons-lang</artifactId>
         </dependency>
 
         <!-- jclouds dependencies -->
@@ -206,4 +166,77 @@
             <artifactId>jclouds-sshj</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-scr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Export-Package>
+                            !org.apache.stratos.cloud.controller.internal.*,
+                            !org.apache.stratos.cloud.controller.stub.*,
+                            org.apache.stratos.cloud.controller.*
+                        </Export-Package>
+                        <Private-Package>
+                            org.apache.stratos.cloud.controller.internal.*,
+                        </Private-Package>
+                        <Import-Package>
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.package.import.version.range}",
+
+                            org.apache.stratos.mock.iaas.*;version="${project.version}",
+                            org.apache.stratos.mock.iaas.client.*;version="${project.version}",
+                            org.apache.stratos.common.*;version="${project.version}",
+                            org.apache.stratos.messaging.*;version="${project.version}",
+                            org.apache.stratos.kubernetes.client.*;version="${project.version}",
+
+                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            org.apache.commons.codec.*;version="${commons.codec.osgi.version.range}",
+                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
+                            io.fabric8.kubernetes.*;version=${kubernetes.api.version},
+                            org.jclouds.aws.ec2.*;version=${jclouds.version},
+                            org.jclouds.ec2.*;version=${jclouds.version},
+                            org.jclouds.compute.*;version=${jclouds.version},
+                            org.jclouds.domain.*;version=${jclouds.version},
+                            org.jclouds.googlecomputeengine*;version=${jclouds.version},
+                            org.jclouds.googlecloud.*;version=${jclouds.version},
+                            org.jclouds*;version=${jclouds.version},
+                            *; resolution:=optional
+                        </Import-Package>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                        <Axis2Deployer>CloudControllerDeployer</Axis2Deployer>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
+                <configuration>
+                    <className>org.apache.stratos.cloud.controller.services.impl.CloudControllerServiceImpl</className>
+                    <outputFileName>target/generated-resources/wsdl/CloudControllerService.wsdl</outputFileName>
+                    <serviceName>CloudControllerService</serviceName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java2wsdl</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

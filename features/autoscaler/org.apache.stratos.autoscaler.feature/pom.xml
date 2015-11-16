@@ -54,7 +54,9 @@
                                 </properties>
                             </adviceFile>
                             <bundles>
-                                <bundleDef>org.apache.stratos:org.apache.stratos.autoscaler:${project.version}
+                                <!-- Stratos bundles -->
+                                <bundleDef>
+                                    org.apache.stratos:org.apache.stratos.autoscaler:${project.version}
                                 </bundleDef>
                                 <bundleDef>
                                     org.apache.stratos:org.apache.stratos.cloud.controller.service.stub:${project.version}
@@ -63,10 +65,18 @@
                                     org.apache.stratos:org.apache.stratos.manager.service.stub:${project.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.mvel:mvel2:${mvel2.version}
+                                    org.apache.stratos:org.apache.stratos.common:${project.version}
                                 </bundleDef>
                                 <bundleDef>
-                                    org.eclipse.jdt.core.compiler:ecj:${eclipse.ecj.version}
+                                    org.apache.stratos:org.apache.stratos.messaging:${project.version}
+                                </bundleDef>
+
+                                <!-- Misc -->
+                                <bundleDef>
+                                    commons-configuration:commons-configuration:${commons.configuration.version}
+                                </bundleDef>
+                                <!--bundleDef>
+                                    org.mvel:mvel2:${mvel2.version}
                                 </bundleDef>
                                 <bundleDef>
                                     jsr94.wso2:jsr94:${jsr94.wso2.version}
@@ -78,9 +88,22 @@
                                     com.lowagie.wso2:itext:${itext.wso2.version}
                                 </bundleDef>
                                 <bundleDef>com.nimbusds.wso2:nimbus-jose-jwt:${nimbus.jose.jwt.wso2.version}</bundleDef>
+                                <bundleDef>
+                                    commons-configuration:commons-configuration:${commons.configuration.version}
+                                </bundleDef-->
                             </bundles>
                             <importFeatures>
-                                <importFeatureDef>org.wso2.carbon.core.server:${carbon.kernel.version}
+                                <importFeatureDef>
+                                    org.wso2.carbon.core:${carbon.kernel.version}
+                                </importFeatureDef>
+                                <importFeatureDef>
+                                    org.wso2.carbon.identity.oauth:${carbon.platform.patch.version.4.2.3}
+                                </importFeatureDef>
+                                <importFeatureDef>
+                                    org.wso2.carbon.identity.application.mgt:${carbon.platform.version.4.2.0}
+                                </importFeatureDef>
+                                <importFeatureDef>
+                                    org.wso2.carbon.ntask.core:${carbon.platform.patch.version.4.2.1}
                                 </importFeatureDef>
                             </importFeatures>
                         </configuration>

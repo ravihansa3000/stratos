@@ -53,31 +53,16 @@
         </profile>
     </profiles>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/webapp/${appName}</directory>
-                        </resource>
-                    </webResources>
-                    <warName>metadata</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <!-- Dependency scope is set to provided to avoid dependent jar files being packaged with the war file -->
         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-bundle</artifactId>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.ntask.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.registry.ws.stub</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -100,6 +85,8 @@
             <artifactId>org.wso2.carbon.tenant.mgt</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Stratos components -->
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
@@ -125,14 +112,11 @@
             <artifactId>org.apache.stratos.messaging</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Misc -->
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.ntask.core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.registry.ws.stub</artifactId>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-bundle</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -141,4 +125,24 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp/${appName}</directory>
+                        </resource>
+                    </webResources>
+                    <warName>metadata</warName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

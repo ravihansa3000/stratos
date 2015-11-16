@@ -31,18 +31,6 @@
     <name>Apache Stratos - Cartridge Agent</name>
     <description>Apache Stratos Cartridge Agent</description>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
@@ -57,7 +45,7 @@
             <artifactId>andes-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.geronimo.specs.wso2</groupId>
+            <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-jms_1.1_spec</artifactId>
         </dependency>
         <dependency>
@@ -83,6 +71,7 @@
         <dependency>
             <groupId>org.eclipse.jgit.wso2</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
+            <version>${eclipse.jgit.wso2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
@@ -97,4 +86,16 @@
             <artifactId>org.wso2.carbon.databridge.agent.thrift</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

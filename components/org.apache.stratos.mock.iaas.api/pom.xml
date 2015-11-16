@@ -41,34 +41,8 @@
         </profile>
     </profiles>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <!-- this is relative to the pom.xml directory -->
-                            <directory>src/main/webapp/${appName}</directory>
-                        </resource>
-                    </webResources>
-                    <warName>mock-iaas</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <!-- Dependency scope is set to provided to avoid dependent jar files being packaged with the war file -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-bundle</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.core</artifactId>
@@ -89,6 +63,8 @@
             <artifactId>org.wso2.carbon.tenant.mgt</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Stratos components -->
         <dependency>
             <groupId>org.apache.stratos</groupId>
             <artifactId>org.apache.stratos.common</artifactId>
@@ -99,5 +75,33 @@
             <artifactId>org.apache.stratos.mock.iaas</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Misc -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-bundle</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>src/main/webapp/${appName}</directory>
+                        </resource>
+                    </webResources>
+                    <warName>mock-iaas</warName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
