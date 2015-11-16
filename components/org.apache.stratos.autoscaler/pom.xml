@@ -208,15 +208,10 @@
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
-                        <!--Embed-Dependency>
-                            antlr,antlr-runtime,commons-configuration,drools-compiler,drools-core,drools-decisiontables,
-                            drools-jsr94,drools-templates,drools-verifier,ecj,itext,jsr94,knowledge-api,
-                            knowledge-internal-api,mvel2,nimbus-jose-jwt,org.wso2.carbon.identity.application.mgt.stub,
-                            org.wso2.carbon.identity.oauth.stub,org.wso2.carbon.identity.oauth,stringtemplate,xmlpull,
-                            xpp3_min,xstream;scope=compile|runtime
-                        </Embed-Dependency-->
                         <Embed-Dependency>
-                            *;scope=compile|runtime
+                            antlr,antlr-runtime,drools-compiler,drools-core,drools-decisiontables,drools-jsr94,
+                            drools-templates,drools-verifier,ecj,itext,jsr94,knowledge-api,knowledge-internal-api,
+                            stringtemplate,xmlpull,xpp3_min,xstream;scope=compile|runtime
                         </Embed-Dependency>
                         <Embed-Directory>lib</Embed-Directory>
                     </instructions>
