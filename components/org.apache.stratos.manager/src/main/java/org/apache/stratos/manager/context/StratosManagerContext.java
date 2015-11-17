@@ -24,7 +24,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.common.Component;
 import org.apache.stratos.common.services.ComponentActivationEventListener;
-import org.apache.stratos.common.services.ComponentStartUpSynchronizer;
 import org.apache.stratos.common.services.DistributedObjectProvider;
 import org.apache.stratos.manager.internal.ServiceReferenceHolder;
 import org.apache.stratos.manager.registry.RegistryManager;
@@ -83,7 +82,6 @@ public class StratosManagerContext implements Serializable {
     private boolean clustered;
     private boolean coordinator;
     private boolean isActivated;
-    private ComponentStartUpSynchronizer componentStartUpSynchronizer;
 
     private StratosManagerContext() {
         // Initialize clustering status
@@ -103,7 +101,6 @@ public class StratosManagerContext implements Serializable {
         cartridgeGroupToApplicationsMap = distributedObjectProvider.getMap(SM_CARTRIDGE_GROUP_TO_APPLICATIONS_MAP);
 
         // Register component startup listener to set SM context activated status
-        componentStartUpSynchronizer = ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer();
         registerComponentStartupListener();
 
         // Update context from the registry
@@ -398,16 +395,17 @@ public class StratosManagerContext implements Serializable {
     }
 
     public void registerComponentStartupListener() {
-        componentStartUpSynchronizer.addEventListener(new ComponentActivationEventListener() {
-            @Override
-            public void activated(Component component) {
-                if (component == Component.StratosManager) {
-                    isActivated = true;
-                    if (log.isInfoEnabled()) {
-                        log.info("Stratos manager context was notified of Stratos manager activation.");
+        ServiceReferenceHolder.getInstance().getComponentStartUpSynchronizer()
+                .addEventListener(new ComponentActivationEventListener() {
+                    @Override
+                    public void activated(Component component) {
+                        if (component == Component.StratosManager) {
+                            isActivated = true;
+                            if (log.isInfoEnabled()) {
+                                log.info("Stratos manager context was notified of Stratos manager activation.");
+                            }
+                        }
                     }
-                }
-            }
-        });
+                });
     }
 }

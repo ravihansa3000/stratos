@@ -230,7 +230,7 @@
                         </Export-Package>
                         <Import-Package>
                             !org.wso2.carbon.ui.*,
-                            org.wso2.carbon.core.commons.stub.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.core.commons.stub.*;version="${carbon.platform.package.import.version.range}",
                             org.wso2.carbon.core.common;version="0.0.0",
                             org.apache.axis2.*; version="${imp.pkg.version.axis2}",
                             org.apache.axiom.*; version="${imp.pkg.version.axiom}",

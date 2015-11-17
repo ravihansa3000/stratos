@@ -125,12 +125,12 @@
                         </Export-Package>
                         <Import-Package>
                             org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.base.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.base.*;version="${carbon.base.imp.pkg.version.range}",
                             org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
                             org.wso2.carbon.ntask.core.*;version="0.0.0",
                             org.wso2.carbon.databridge.commons.*;version="${carbon.platform.imp.pkg.version.range}",
                             org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.user.api.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.user.api.*;version="${carbon.user.api.imp.pkg.version.range}",
 
                             org.apache.stratos.common.*;version="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",

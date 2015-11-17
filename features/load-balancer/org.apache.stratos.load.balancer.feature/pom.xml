@@ -68,6 +68,9 @@
 
                                 <!-- Misc -->
                                 <bundleDef>
+                                    org.wso2.orbit.commons-collections:commons-collections:${commons.collections.version}
+                                </bundleDef>
+                                <bundleDef>
                                     commons-configuration:commons-configuration:${commons.configuration.version}
                                 </bundleDef>
                             </bundles>

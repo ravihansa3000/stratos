@@ -1567,6 +1567,8 @@
         <netty.imp.pkg.version.range>[3.3, 4)</netty.imp.pkg.version.range>
         <javax.servlet.imp.pkg.version.range>[2.6.0, 3.0.0)</javax.servlet.imp.pkg.version.range>
         <carbon.platform.imp.pkg.version.range>[4.2.0, 4.3.0)</carbon.platform.imp.pkg.version.range>
+        <carbon.base.imp.pkg.version.range>[1.0.0, 2.0.0)</carbon.base.imp.pkg.version.range>
+        <carbon.user.api.imp.pkg.version.range>[1.0.1, 2.0.0)</carbon.user.api.imp.pkg.version.range>
         <aopalliance.imp.pkg.version.range>[1.0, 2)</aopalliance.imp.pkg.version.range>
         <guice.imp.pkg.version.range>[3.0, 4.0)</guice.imp.pkg.version.range>
         <identity.oauth2.imp.pkg.version.range>[4.2.3, 4.3)</identity.oauth2.imp.pkg.version.range>
@@ -1578,7 +1580,7 @@
         <commons.codec.imp.pkg.version.range>[1.4.0, 2.0.0)</commons.codec.imp.pkg.version.range>
         <commons.logging.imp.pkg.version.range>[1.1.1, 2.0)</commons.logging.imp.pkg.version.range>
         <commons.configuration.imp.pkg.version.range>[1.9, 2.0)</commons.configuration.imp.pkg.version.range>
-        <commons.collections.imp.pkg.version.range>[3.2.2, 4.0.0)</commons.collections.imp.pkg.version.range>
+        <commons.collections.imp.pkg.version.range>[3.2.0, 4.0.0)</commons.collections.imp.pkg.version.range>
         <opensaml2.imp.pkg.version.range>[2.4.1.wso2v1, 3.0.0)</opensaml2.imp.pkg.version.range>
         <http.core.imp.pkg.version.range>[4.4.4, 4.5.0)</http.core.imp.pkg.version.range>
         <http.client.imp.pkg.version.range>[4.5.1, 4.6.0)</http.client.imp.pkg.version.range>

@@ -63,6 +63,9 @@
                                 </bundleDef>
 
                                 <!-- Misc -->
+                                <bundleDef>
+                                    org.wso2.orbit.commons-collections:commons-collections:${commons.collections.version}
+                                </bundleDef>
                                 <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
                                 <bundleDef>org.apache.commons:commons-lang3:${commons.lang3.version}</bundleDef>
                                 <bundleDef>org.slf4j:slf4j-api:${slf4j.version}</bundleDef>
