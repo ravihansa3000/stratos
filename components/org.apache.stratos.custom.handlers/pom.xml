@@ -33,6 +33,10 @@
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.user.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.identity.oauth</artifactId>
         </dependency>
         <dependency>
@@ -69,10 +73,6 @@
             <groupId>com.nimbusds.wso2</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
         </dependency>
-        <dependency>
-            <groupId>net.minidev</groupId>
-            <artifactId>json-smart</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -91,9 +91,17 @@
                             ${project.artifactId}
                         </Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Private-Package>org.apache.stratos.custom.handlers.internal.*</Private-Package>
+                        <Export-Package>
+                            !org.apache.stratos.custom.handlers.internal.*,
+                            org.apache.stratos.custom.handlers.*
+                        </Export-Package>
                         <Import-Package>
                             org.wso2.carbon.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.user.core.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
                             org.wso2.carbon.identity.oauth2.*;version="${identity.oauth2.imp.pkg.version}",
+                            org.wso2.carbon.identity.oauth.*;version="${identity.oauth2.imp.pkg.version}",
 
                             org.apache.commons.logging.*; version="${commons.logging.osgi.version.range}",
                             org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
@@ -101,12 +109,8 @@
                             org.opensaml.*;version="${opensaml2.osgi.version.range}",
                             com.nimbusds.jose.*;version="${nimbus.jose.jwt.import.version.range}",
                             com.nimbusds.jwt.*;version="${nimbus.jose.jwt.import.version.range}",
-                            net.minidev.json; version="${net.minidev.json.import.version.range}",
                             *;resolution:=optional,
                         </Import-Package>
-                        <Export-Package>
-                            org.apache.stratos.custom.handlers.*
-                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

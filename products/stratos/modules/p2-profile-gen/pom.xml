@@ -827,14 +827,6 @@
                                     <id>org.apache.stratos.common.feature.group</id>
                                     <version>${project.version}</version>
                                 </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.identity.oauth.feature.group</id>
-                                    <version>${carbon.platform.patch.version.4.2.3}</version>
-                                </feature>
-                                <feature>
-                                    <id>org.wso2.carbon.identity.application.mgt.feature.group</id>
-                                    <version>${carbon.platform.version.4.2.0}</version>
-                                </feature>
                             </features>
                         </configuration>
                     </execution>
