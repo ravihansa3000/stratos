@@ -85,20 +85,21 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Export-Package>
+                            !org.apache.stratos.load.balancer.common.internal.*,
                             org.apache.stratos.load.balancer.common.*
                         </Export-Package>
                         <Private-Package>
-                            org.apache.stratos.load.balancer.common.internal;
+                            org.apache.stratos.load.balancer.common.internal.*
                         </Private-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
 
                             org.apache.stratos.messaging.*;version="${project.version}",
                             org.apache.stratos.common.*; version="${project.version}",
 
-                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            org.apache.commons.logging.*;version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

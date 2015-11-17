@@ -66,13 +66,13 @@
                             org.apache.stratos.metadata.client.*
                         </Export-Package>
                         <Import-Package>
-                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
-                            org.apache.commons.configuration.*;version="${commons.configuration.osgi.version.range}",
-                            org.apache.http.auth.*;version="${http.client.import.version.range}",
-                            org.apache.http.cookie.*;version="${http.client.import.version.range}",
-                            org.apache.http.conn.*;version="${http.client.import.version.range}",
-                            org.apache.http.client.*;version="${http.client.import.version.range}",
-                            org.apache.http.entity.*;version="${http.client.import.version.range}",
+                            com.google.gson.*;version="${gson.imp.pkg.version.range}",
+                            org.apache.commons.configuration.*;version="${commons.configuration.imp.pkg.version.range}",
+                            org.apache.http.auth.*;version="${http.client.imp.pkg.version.range}",
+                            org.apache.http.cookie.*;version="${http.client.imp.pkg.version.range}",
+                            org.apache.http.conn.*;version="${http.client.imp.pkg.version.range}",
+                            org.apache.http.client.*;version="${http.client.imp.pkg.version.range}",
+                            org.apache.http.entity.*;version="${http.client.imp.pkg.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

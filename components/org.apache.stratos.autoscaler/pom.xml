@@ -56,6 +56,10 @@
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.identity.application.mgt.stub</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.databridge.commons</artifactId>
+        </dependency>
 
         <!-- Stratos components -->
         <dependency>
@@ -191,22 +195,24 @@
                             org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
-                            org.wso2.carbon.identity.application.mgt.*;version="${carbon.platform.package.import.version.range}",
-                            org.wso2.carbon.identity.oauth.stub.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
+                            org.wso2.carbon.identity.application.mgt.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.identity.oauth.stub.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.ntask.core.*;version="0.0.0",
 
                             org.apache.stratos.common.*;version="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",
                             org.apache.stratos.cloud.controller.stub.*;version="${project.version}",
 
-                            org.apache.commons.logging.*; version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.configuration.*;version="${commons.configuration.osgi.version.range}",
-                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
-                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
-                            com.nimbusds.jose.*;version="${nimbus.jose.jwt.import.version.range}",
-                            com.nimbusds.jwt.*;version="${nimbus.jose.jwt.import.version.range}",
+                            org.apache.commons.logging.*; version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.configuration.*;version="${commons.configuration.imp.pkg.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
+                            com.google.gson.*;version="${gson.imp.pkg.version.range}",
+                            com.nimbusds.jose.*;version="${nimbus.jose.jwt.imp.pkg.version.range}",
+                            com.nimbusds.jwt.*;version="${nimbus.jose.jwt.imp.pkg.version.range}",
                             org.apache.amber.*;version="${amber.version}"
                             *;resolution:=optional
                         </Import-Package>

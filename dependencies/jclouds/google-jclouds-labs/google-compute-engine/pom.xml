@@ -89,7 +89,7 @@
                         </Private-Package>
                         <Import-Package>
                             org.jclouds.*; version="${jclouds.version}",
-                            com.google.inject.*;version="${guice.imp.pkg.version}",
+                            com.google.inject.*;version="${guice.imp.pkg.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <Include-Resource>

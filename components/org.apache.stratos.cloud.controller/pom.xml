@@ -17,7 +17,7 @@
   #  specific language governing permissions and limitations
   #  under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -31,6 +31,10 @@
     <name>Apache Stratos - Cloud Controller</name>
 
     <dependencies>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.registry.core</artifactId>
@@ -52,8 +56,8 @@
             <artifactId>org.wso2.carbon.databridge.commons</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
-            <artifactId>org.wso2.carbon.securevault</artifactId>
+            <groupId>org.wso2.securevault</groupId>
+            <artifactId>org.wso2.securevault</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
@@ -187,13 +191,17 @@
                             org.apache.stratos.cloud.controller.*
                         </Export-Package>
                         <Private-Package>
-                            org.apache.stratos.cloud.controller.internal.*,
+                            org.apache.stratos.cloud.controller.internal.*
                         </Private-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version}",
-                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.package.import.version.range}",
-                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
+                            org.wso2.carbon.core.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.databridge.agent.thrift.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.securevault.*;version="0.0.0",
+                            org.wso2.carbon.ntask.core.*;version="0.0.0",
+                            org.wso2.carbon.caching.*;version="${carbon.platform.imp.pkg.version.range}",
 
                             org.apache.stratos.mock.iaas.*;version="${project.version}",
                             org.apache.stratos.mock.iaas.client.*;version="${project.version}",
@@ -201,11 +209,11 @@
                             org.apache.stratos.messaging.*;version="${project.version}",
                             org.apache.stratos.kubernetes.client.*;version="${project.version}",
 
-                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
-                            org.apache.commons.codec.*;version="${commons.codec.osgi.version.range}",
-                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
+                            org.apache.commons.logging.*;version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
+                            org.apache.commons.codec.*;version="${commons.codec.imp.pkg.version.range}",
+                            com.google.gson.*;version="${gson.imp.pkg.version.range}",
                             io.fabric8.kubernetes.*;version=${kubernetes.api.version},
                             org.jclouds.aws.ec2.*;version=${jclouds.version},
                             org.jclouds.ec2.*;version=${jclouds.version},

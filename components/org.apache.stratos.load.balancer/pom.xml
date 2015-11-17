@@ -84,7 +84,7 @@
             <artifactId>commons-configuration</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-collections.wso2</groupId>
+            <groupId>org.wso2.orbit.commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
     </dependencies>
@@ -111,20 +111,20 @@
                             org.apache.stratos.load.balancer.internal.*
                         </Private-Package>
                         <Import-Package>
-                            org.wso2.carbon.registry.core.*; version="${carbon.kernel.registry.imp.pkg.version}",
-                            org.wso2.carbon.user.core.*;version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
-                            org.wso2.carbon.mediation.*;version="${carbon.platform.package.import.version.range}",
+                            org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
+                            org.wso2.carbon.user.core.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.mediation.*;version="${carbon.platform.imp.pkg.version.range}",
 
                             org.apache.stratos.common.*;version="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",
                             org.apache.stratos.load.balancer.common.*;version="${project.version}",
 
-                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
-                            org.apache.commons.codec.*;version="${commons.codec.osgi.version.range}",
-                            org.apache.commons.collections.*;version="${commons.collections.osgi.version.range}",
+                            org.apache.commons.logging.*;version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
+                            org.apache.commons.codec.*;version="${commons.codec.imp.pkg.version.range}",
+                            org.apache.commons.collections.*;version="${commons.collections.imp.pkg.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

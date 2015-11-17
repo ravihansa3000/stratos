@@ -33,6 +33,10 @@
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
         </dependency>
         <dependency>
@@ -65,7 +69,7 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-collections.wso2</groupId>
+            <groupId>org.wso2.orbit.commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
         <dependency>
@@ -108,15 +112,16 @@
                             org.apache.stratos.messaging.*;version="${project.version}"
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*;version="${carbon.kernel.package.import.version.range}",
+                            org.wso2.carbon.base.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
 
                             org.apache.stratos.common.*;version="${project.version}",
 
-                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.lang.*;version="${commons.lang.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
-                            org.apache.commons.collections.*;version="${commons.collections.osgi.version.range}",
-                            com.google.gson.*;version="${com.google.code.gson.osgi.version.range}",
+                            org.apache.commons.logging.*;version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.lang.*;version="${commons.lang.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
+                            org.apache.commons.collections.*;version="${commons.collections.imp.pkg.version.range}",
+                            com.google.gson.*;version="${gson.imp.pkg.version.range}",
                             *;resolution:=optional
                         </Import-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>

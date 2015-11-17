@@ -70,8 +70,8 @@
                             org.apache.stratos.kubernetes.client.*
                         </Export-Package>
                         <Import-Package>
-                            org.apache.commons.logging.*;version="${commons.logging.osgi.version.range}",
-                            org.apache.commons.lang3.*;version="${commons.lang3.osgi.version.range}",
+                            org.apache.commons.logging.*;version="${commons.logging.imp.pkg.version.range}",
+                            org.apache.commons.lang3.*;version="${commons.lang3.imp.pkg.version.range}",
                             io.fabric8.kubernetes.api.*;version=${kubernetes.api.version},
                             io.fabric8.kubernetes.api.model.*;version=${kubernetes.api.version},
                             *;resolution:=optional
