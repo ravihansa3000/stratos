@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-components-parent</artifactId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.stratos.load.balancer</artifactId>
@@ -44,11 +44,11 @@
             <artifactId>org.wso2.carbon.utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.mediation.initializer</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.mediation.dependency.mgt</artifactId>
         </dependency>
 
@@ -112,9 +112,9 @@
                         </Private-Package>
                         <Import-Package>
                             org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
-                            org.wso2.carbon.user.core.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.mediation.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.user.core.*;version="${carbon.kernel.imp.pkg.version}",
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.imp.pkg.version}",
+                            org.wso2.carbon.mediation.*;version="${carbon.mediation.imp.pkg.version}",
 
                             org.apache.stratos.common.*;version="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",

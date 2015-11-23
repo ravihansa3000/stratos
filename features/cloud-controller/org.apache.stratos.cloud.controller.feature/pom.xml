@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>cloud-controller-features</artifactId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -147,7 +147,7 @@
                                     org.apache.servicemix.bundles:org.apache.servicemix.bundles.jzlib:${servicemix.bundles.jzlib.version}
                                 </bundleDef>
                                 <bundleDef>com.google.code.gson:gson:${gson.version}</bundleDef>
-                                <bundleDef>org.bouncycastle.wso2:bcprov-jdk16:${bcprov.jdk16.version}</bundleDef>
+                                <bundleDef>org.bouncycastle.wso2:bcprov-jdk15on:${bcprov.jdk15on.version}</bundleDef>
                                 <bundleDef>javax.ws.rs:jsr311-api:${jsr311.api.version}</bundleDef>
                                 <bundleDef>
                                     org.apache.servicemix.bundles:org.apache.servicemix.bundles.javax-inject:${servicemix.bundles.javax.inject.version}
@@ -190,7 +190,7 @@
                                     org.wso2.carbon.core.server:${carbon.kernel.version}
                                 </importFeatureDef>
                                 <importFeatureDef>
-                                    org.wso2.carbon.ntask.core:${carbon.platform.patch.version.4.2.1}
+                                    org.wso2.carbon.ntask.core:${carbon.commons.version}
                                 </importFeatureDef>
                             </importFeatures>
                         </configuration>

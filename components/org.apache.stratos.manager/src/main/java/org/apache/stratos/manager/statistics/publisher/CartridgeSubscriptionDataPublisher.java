@@ -24,8 +24,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.stratos.manager.exception.StratosManagerException;
 import org.apache.stratos.manager.utils.CartridgeConstants;
 import org.wso2.carbon.base.ServerConfiguration;
-import org.wso2.carbon.databridge.agent.thrift.AsyncDataPublisher;
-import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
+import org.wso2.carbon.databridge.agent.DataPublisher;
 import org.wso2.carbon.databridge.commons.Attribute;
 import org.wso2.carbon.databridge.commons.AttributeType;
 import org.wso2.carbon.databridge.commons.Event;
@@ -42,18 +41,15 @@ import java.util.List;
  */
 public class CartridgeSubscriptionDataPublisher {
 
-    private static final Log log = LogFactory
-            .getLog(CartridgeSubscriptionDataPublisher.class);
+    private static final Log log = LogFactory.getLog(CartridgeSubscriptionDataPublisher.class);
     private static final String stratosManagerEventStreamVersion = "1.0.0";
-    private static AsyncDataPublisher dataPublisher;
+    private static DataPublisher dataPublisher;
     private static StreamDefinition streamDefinition;
 
     @SuppressWarnings("deprecation")
-    public static void publish(int tenantID, String adminUser,
-                               String cartridgeAlias, String cartridgeType, String repositoryUrl,
-                               boolean isMultiTenant, String autoScalingPolicy,
-                               String deploymentPolicy, String clusterID, String hostName,
-                               String mappedDomain, String action) throws StratosManagerException {
+    public static void publish(int tenantID, String adminUser, String cartridgeAlias, String cartridgeType,
+            String repositoryUrl, boolean isMultiTenant, String autoScalingPolicy, String deploymentPolicy,
+            String clusterID, String hostName, String mappedDomain, String action) throws StratosManagerException {
 
         //check if bam is enabled in cartridge-config.properties
         if (!Boolean.parseBoolean(System.getProperty(CartridgeConstants.BAM_PUBLISHER_ENABLED))) {
@@ -93,24 +89,14 @@ public class CartridgeSubscriptionDataPublisher {
         Event event = new Event();
         event.setPayloadData(payload.toArray());
         event.setArbitraryDataMap(new HashMap<String, String>());
+        event.setStreamId(streamDefinition.getStreamId());
 
-        try {
-            if (log.isDebugEnabled()) {
-                log.debug(String.format(
-                        "Publishing BAM event: [stream] %s [version] %s",
-                        streamDefinition.getName(),
-                        streamDefinition.getVersion()));
-            }
-            dataPublisher.publish(streamDefinition.getName(),
-                    streamDefinition.getVersion(), event);
-        } catch (AgentException e) {
-            if (log.isErrorEnabled()) {
-                log.error(
-                        String.format(
-                                "Could not publish BAM event: [stream] %s [version] %s",
-                                streamDefinition.getName(),
-                                streamDefinition.getVersion()), e);
-            }
+        if (log.isDebugEnabled()) {
+            log.debug(String.format("Publishing BAM event: [stream] %s [version] %s", streamDefinition.getName(),
+                    streamDefinition.getVersion()));
+        }
+        if (!dataPublisher.tryPublish(event)) {
+            throw new StratosManagerException("Data publisher did not accept event to be published.");
         }
     }
 
@@ -128,8 +114,7 @@ public class CartridgeSubscriptionDataPublisher {
         payloadData.add(new Attribute(CartridgeConstants.REPOSITORY_URL_COL, AttributeType.STRING));
         payloadData.add(new Attribute(CartridgeConstants.MULTI_TENANT_BEHAVIOR_COL, AttributeType.STRING));
         payloadData.add(new Attribute(CartridgeConstants.AUTO_SCALE_POLICY_COL, AttributeType.STRING));
-        payloadData
-                .add(new Attribute(CartridgeConstants.DEPLOYMENT_POLICY_COL, AttributeType.STRING));
+        payloadData.add(new Attribute(CartridgeConstants.DEPLOYMENT_POLICY_COL, AttributeType.STRING));
         payloadData.add(new Attribute(CartridgeConstants.CLUSTER_ID_COL, AttributeType.STRING));
         payloadData.add(new Attribute(CartridgeConstants.HOST_NAME_COL, AttributeType.STRING));
         payloadData.add(new Attribute(CartridgeConstants.MAPPED_DOMAIN_COL, AttributeType.STRING));
@@ -152,14 +137,11 @@ public class CartridgeSubscriptionDataPublisher {
         String adminPassword = System.getProperty(CartridgeConstants.BAM_ADMIN_PASSWORD);
 
         System.setProperty("javax.net.ssl.trustStore", trustStorePath);
-        System.setProperty("javax.net.ssl.trustStorePassword",
-                trustStorePassword);
+        System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
 
         try {
-            dataPublisher = new AsyncDataPublisher(
-                    "tcp://" + bamServerUrl + "", adminUsername, adminPassword);
+            dataPublisher = new DataPublisher("tcp://" + bamServerUrl + "", adminUsername, adminPassword);
             initializeStream();
-            dataPublisher.addStreamDefinition(streamDefinition);
         } catch (Exception e) {
             String msg = "Unable to create a data publisher to " + bamServerUrl;
             log.error(msg, e);

@@ -313,13 +313,13 @@ tomcat-catalina-7.0.34.jar
 The following components come under Public Domain License
 ===============================================================================
 
-For base64-2.3.8.jar
+base64-2.3.8.jar
 
 ===============================================================================
 The following components come under BouncyCastle License
 ===============================================================================
 
-For bcprov-jdk15-132.jar
+bcprov-jdk15on-1.49.0.wso2v2.jar
 
 Copyright (c) 2000 - 2013 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
 

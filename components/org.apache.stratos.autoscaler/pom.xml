@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>stratos-components-parent</artifactId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.stratos.autoscaler</artifactId>
@@ -45,19 +45,19 @@
             <artifactId>org.wso2.carbon.utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.ntask.core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.identity.oauth.stub</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.identity</groupId>
             <artifactId>org.wso2.carbon.identity.application.mgt.stub</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.analytics-common</groupId>
             <artifactId>org.wso2.carbon.databridge.commons</artifactId>
         </dependency>
 
@@ -195,12 +195,12 @@
                             org.apache.stratos.autoscaler.*
                         </Export-Package>
                         <Import-Package>
-                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.imp.pkg.version}",
                             org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
-                            org.wso2.carbon.identity.application.mgt.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.identity.oauth.stub.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.databridge.commons.*;version="${carbon.platform.imp.pkg.version.range}",
-                            org.wso2.carbon.ntask.core.*;version="0.0.0",
+                            org.wso2.carbon.identity.application.mgt.*;version="${carbon.identity.imp.pkg.version}",
+                            org.wso2.carbon.identity.oauth.stub.*;version="${carbon.identity.imp.pkg.version}",
+                            org.wso2.carbon.databridge.commons.*;version="${carbon.analytics.common.imp.pkg.version}",
+                            org.wso2.carbon.ntask.core.*;version="${carbon.commons.imp.pkg.version}",
 
                             org.apache.stratos.common.*;version="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",

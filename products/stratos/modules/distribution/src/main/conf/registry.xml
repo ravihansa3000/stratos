@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!--
-  ~ Licensed to the Apache Software Foundation (ASF) under one
-  ~ or more contributor license agreements.  See the NOTICE file
-  ~ distributed with this work for additional information
-  ~ regarding copyright ownership.  The ASF licenses this file
-  ~ to you under the Apache License, Version 2.0 (the
-  ~ "License"); you may not use this file except in compliance
-  ~ with the License.  You may obtain a copy of the License at
+  ~ Copyright 2005-2011 WSO2, Inc. (http://wso2.com)
   ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
   ~
-  ~ Unless required by applicable law or agreed to in writing,
-  ~ software distributed under the License is distributed on an
-  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-  ~ KIND, either express or implied.  See the License for the
-  ~ specific language governing permissions and limitations
-  ~ under the License.
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
   -->
 <wso2registry>
 
@@ -34,7 +31,50 @@
         <dataSource>jdbc/WSO2CarbonDB</dataSource>
     </dbConfig>
 
-   <!--<handler class="org.wso2.carbon.registry.extensions.handlers.SynapseRepositoryHandler">
+    <indexingConfiguration>
+        <startIndexing>true</startIndexing>
+        <startingDelayInSeconds>35</startingDelayInSeconds>
+        <indexingFrequencyInSeconds>5</indexingFrequencyInSeconds>
+        <!--number of resources submit for given indexing thread -->
+        <batchSize>30</batchSize>
+        <!--number of worker threads for indexing -->
+        <indexerPoolSize>30</indexerPoolSize>
+        <!-- location storing the time the indexing took place-->
+        <lastAccessTimeLocation>
+            /_system/local/repository/components/org.wso2.carbon.registry/indexing/lastaccesstime
+        </lastAccessTimeLocation>
+        <!-- the indexers that implement the indexer interface for a relevant media type/(s) -->
+        <indexers>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.MSExcelIndexer"
+                     mediaTypeRegEx="application/vnd.ms-excel"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.MSPowerpointIndexer"
+                     mediaTypeRegEx="application/vnd.ms-powerpoint"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.MSWordIndexer"
+                     mediaTypeRegEx="application/msword"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.PDFIndexer"
+                     mediaTypeRegEx="application/pdf"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.XMLIndexer"
+                     mediaTypeRegEx="application/xml"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.XMLIndexer"
+                     mediaTypeRegEx="application/(.)+\+xml"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.PlainTextIndexer"
+                     mediaTypeRegEx="application/swagger\+json"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.PlainTextIndexer"
+                     mediaTypeRegEx="application/(.)+\+json"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.PlainTextIndexer"
+                     mediaTypeRegEx="text/(.)+"/>
+            <indexer class="org.wso2.carbon.registry.indexing.indexer.PlainTextIndexer"
+                     mediaTypeRegEx="application/x-javascript"/>
+        </indexers>
+        <exclusions>
+            <exclusion
+                    pathRegEx="/_system/config/repository/dashboards/gadgets/swfobject1-5/.*[.]html"/>
+            <exclusion
+                    pathRegEx="/_system/local/repository/components/org[.]wso2[.]carbon[.]registry/mount/.*"/>
+        </exclusions>
+    </indexingConfiguration>
+
+    <!--<handler class="org.wso2.carbon.registry.extensions.handlers.SynapseRepositoryHandler">
         <filter class="org.wso2.carbon.registry.core.jdbc.handlers.filters.MediaTypeMatcher">
             <property name="mediaType">application/vnd.apache.synapse</property>
         </filter>
@@ -89,7 +129,7 @@
         <targetPath>/_system/nodes</targetPath>
     </mount-->
 
-    
+
     <versionResourcesOnChange>false</versionResourcesOnChange>
 
     <!-- NOTE: You can edit the options under "StaticConfiguration" only before the

@@ -23,7 +23,7 @@
     <parent>
         <artifactId>stratos-components-parent</artifactId>
         <groupId>org.apache.stratos</groupId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.stratos.mock.iaas</artifactId>
@@ -36,7 +36,7 @@
             <artifactId>org.wso2.carbon.logging</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.analytics-common</groupId>
             <artifactId>org.wso2.carbon.databridge.commons</artifactId>
         </dependency>
         <dependency>
@@ -88,7 +88,7 @@
                         </Private-Package>
                         <Import-Package>
                             org.wso2.carbon.registry.core.*;version="${carbon.kernel.registry.imp.pkg.version.range}",
-                            org.wso2.carbon.utils.*;version="${carbon.platform.imp.pkg.version.range}",
+                            org.wso2.carbon.utils.*;version="${carbon.kernel.imp.pkg.version}",
 
                             org.apache.stratos.common.*="${project.version}",
                             org.apache.stratos.messaging.*;version="${project.version}",

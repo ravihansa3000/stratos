@@ -69,7 +69,8 @@
         <fileSet>
             <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/components
             </directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components</outputDirectory>
+            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components
+            </outputDirectory>
             <excludes>
                 <exclude>**/eclipse.ini</exclude>
                 <exclude>**/*.lock</exclude>
@@ -85,12 +86,14 @@
         </fileSet>
         <fileSet>
             <directory>src/main/conf/synapse-configs</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/deployment/server/synapse-configs
+            <outputDirectory>
+                ${load.balancer.distribution.name}-${project.version}/repository/deployment/server/synapse-configs
             </outputDirectory>
         </fileSet>
         <fileSet>
             <directory>src/main/cartridges</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/deployment/server/cartridges
+            <outputDirectory>
+                ${load.balancer.distribution.name}-${project.version}/repository/deployment/server/cartridges
             </outputDirectory>
         </fileSet>
         <fileSet>
@@ -106,82 +109,9 @@
                 <include>*.xsd</include>
             </includes>
         </fileSet>
-
-        <!-- Kernel Patches-->
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0001</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0001/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gentarget/WSO2-CARBON-PATCH-4.2.0-0002</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0002/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0003</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0003/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0004</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0004/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0005</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0005/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0006</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0006/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0007</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0007/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0008</directory>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/patches</outputDirectory>
-            <includes>
-                <include>**/patch0008/*.*</include>
-            </includes>
-        </fileSet>
     </fileSets>
 
     <dependencySets>
-        <!-- use the new tool to create a bundles -->
-        <dependencySet>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/lib/core/WEB-INF/lib</outputDirectory>
-            <includes>
-                <include>org.wso2.carbon:org.wso2.carbon.mediator.bridge:jar</include>
-            </includes>
-        </dependencySet>
-        <dependencySet>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/axis2/client/lib</outputDirectory>
-            <includes>
-                <include>bouncycastle:bcprov-jdk15:jar</include>
-            </includes>
-            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}
-            </outputFileNameMapping>
-        </dependencySet>
         <dependencySet>
             <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/deployment/client/modules
             </outputDirectory>
@@ -191,14 +121,16 @@
         </dependencySet>
         <!-- MB Client libs -->
         <dependencySet>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/dropins</outputDirectory>
+            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/dropins
+            </outputDirectory>
             <includes>
                 <include>org.wso2.andes.wso2:andes-client:jar</include>
                 <include>org.apache.geronimo.specs.wso2:geronimo-jms_1.1_spec:jar</include>
             </includes>
         </dependencySet>
         <dependencySet>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/lib</outputDirectory>
+            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/components/lib
+            </outputDirectory>
             <includes>
                 <include>org.apache.activemq:activemq-client:jar</include>
                 <include>org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:jar</include>
@@ -236,7 +168,8 @@
         </file>
         <file>
             <source>src/main/conf/axis2.xml</source>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/conf/axis2</outputDirectory>
+            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/conf/axis2
+            </outputDirectory>
             <destName>axis2.xml</destName>
         </file>
         <file>
@@ -319,32 +252,6 @@
             <outputDirectory>${load.balancer.distribution.name}-${project.version}/bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
-        </file>
-
-        <!--Copying config files from kernel patches -->
-        <file>
-            <source>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0001/dbscripts/mysql.sql</source>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/dbscripts</outputDirectory>
-            <filtered>true</filtered>
-        </file>
-        <file>
-            <source>
-                ../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0002/repository/conf/security/cipher-text.properties
-            </source>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/conf/security/</outputDirectory>
-            <filtered>true</filtered>
-        </file>
-        <file>
-            <source>
-                ../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0002/repository/conf/security/cipher-tool.properties
-            </source>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/conf/security/</outputDirectory>
-            <filtered>true</filtered>
-        </file>
-        <file>
-            <source>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0004/repository/conf/carbon.xml</source>
-            <outputDirectory>${load.balancer.distribution.name}-${project.version}/repository/conf/</outputDirectory>
-            <filtered>true</filtered>
         </file>
     </files>
 </assembly>

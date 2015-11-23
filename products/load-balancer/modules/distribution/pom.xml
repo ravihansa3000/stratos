@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.stratos.load.balancer</groupId>
         <artifactId>load-balancer-parent</artifactId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -35,12 +35,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wso2.carbon</groupId>
+            <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.mediator.bridge</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>bouncycastle</groupId>
-            <artifactId>bcprov-jdk15</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.rampart</groupId>

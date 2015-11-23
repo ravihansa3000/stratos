@@ -38,7 +38,7 @@ import org.apache.stratos.cloud.controller.util.CloudControllerConstants;
 import org.apache.stratos.cloud.controller.util.CloudControllerUtil;
 import org.apache.stratos.common.services.DistributedObjectProvider;
 import org.apache.stratos.common.threading.StratosThreadPool;
-import org.wso2.carbon.databridge.agent.thrift.AsyncDataPublisher;
+import org.wso2.carbon.databridge.agent.DataPublisher;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 
 import java.io.Serializable;
@@ -192,7 +192,7 @@ public class CloudControllerContext implements Serializable {
     private boolean isTopologySyncRunning;
     private boolean clustered;
 
-    private transient AsyncDataPublisher dataPublisher;
+    private transient DataPublisher dataPublisher;
     private boolean coordinator;
 
     private CloudControllerContext() {
@@ -352,11 +352,11 @@ public class CloudControllerContext implements Serializable {
         }
     }
 
-    public AsyncDataPublisher getDataPublisher() {
+    public DataPublisher getDataPublisher() {
         return dataPublisher;
     }
 
-    public void setDataPublisher(AsyncDataPublisher dataPublisher) {
+    public void setDataPublisher(DataPublisher dataPublisher) {
         this.dataPublisher = dataPublisher;
     }
 

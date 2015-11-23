@@ -44,7 +44,6 @@
                 <exclude>**/README*</exclude>
                 <exclude>**/log4j.properties</exclude>
                 <exclude>**/repository/components/**</exclude>
-                <exclude>**/lib/endorsed/**</exclude>
                 <exclude>**/repository/conf/security/cipher-tool.properties</exclude>
                 <exclude>**/dbscripts/**</exclude>
                 <exclude>**/repository/conf/security/cipher-text.properties</exclude>
@@ -57,9 +56,6 @@
                 <exclude>**/repository/conf/log4j.properties</exclude>
                 <exclude>**/repository/conf/data-bridge/**</exclude>
                 <exclude>**/repository/resources/security/client-truststore.jks</exclude>
-                <exclude>**/bin/org.wso2.carbon.bootstrap-4.2.0.jar</exclude>
-                <exclude>**/lib/org.wso2.carbon.server-4.2.0.jar</exclude>
-                <exclude>**/lib/org.wso2.ciphertool-1.0.0-wso2v2.jar</exclude>
             </excludes>
         </fileSet>
         <!-- Copying p2 profile and osgi bundles-->
@@ -79,7 +75,6 @@
                 <exclude>**/jboss-logging_3.1.0.wso2v1.jar</exclude>
                 <exclude>**/marshalling_1.3.6.wso2v1.jar</exclude>
                 <exclude>**/jboss-transaction-api_1.1_spec-1.0.0.Final.jar</exclude>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
                 <exclude>**/guice_3.0.0.wso2v1.jar</exclude>
                 <exclude>**/httpclient_4.1.1.wso2v1.jar</exclude>
                 <exclude>**/httpcore_4.1.0.wso2v1.jar</exclude>
@@ -196,15 +191,6 @@
         <fileSet>
             <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/dbscripts</directory>
             <outputDirectory>${stratos.distribution.name}-${project.version}/dbscripts</outputDirectory>
-            <excludes>
-                <exclude>**/identity/**</exclude>
-                <!-- Patched in WSO2-CARBON-PATCH-4.2.0-0001, WSO2-CARBON-PATCH-4.2.0-0012 and WSO2-CARBON-PATCH-4.2.0-0003
-                Excluding since overwriting is not supported in assembly plugin -->
-                <exclude>mysql.sql</exclude>
-                <exclude>db2.sql</exclude>
-                <exclude>mysql_cluster.sql</exclude>
-                <exclude>oracle_rac.sql</exclude>
-            </excludes>
             <includes>
                 <include>**/**.sql</include>
             </includes>
@@ -240,167 +226,6 @@
             <directory>src/main/conf/multitenancy</directory>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/multitenancy
             </outputDirectory>
-        </fileSet>
-
-        <!-- Apply Kernel Patches-->
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0001</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0001/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0002</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0002/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0003</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0003/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0004</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0004/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0005</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0005/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0006</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0006/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0007</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0007/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0008</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <includes>
-                <include>**/patch0008/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0009</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0009/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0010</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0010/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0011</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui-4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0011/*.*</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0012</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/patches
-            </outputDirectory>
-            <excludes>
-                <exclude>**/org.wso2.carbon.ui_4.2.0.jar</exclude>
-            </excludes>
-            <includes>
-                <include>**/patch0012/*.*</include>
-            </includes>
-        </fileSet>
-
-        <!-- Additional configuration for kernel patches -->
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0001/dbscripts</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/dbscripts</outputDirectory>
-            <includes>
-                <include>**/db2.sql</include>
-                <include>**/mysql.sql</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0003/dbscripts</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/dbscripts</outputDirectory>
-            <includes>
-                <include>**/mysql_cluster.sql</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0009/bin</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/bin</outputDirectory>
-            <includes>
-                <include>**/org.wso2.carbon.bootstrap_4.2.0.jar</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0010/lib</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/lib</outputDirectory>
-            <includes>
-                <include>**/org.wso2.ciphertool-1.0.0-wso2v2.jar</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0012/lib</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/lib</outputDirectory>
-            <includes>
-                <include>**/org.wso2.carbon.server-4.2.0.jar</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>../p2-profile-gen/target/WSO2-CARBON-PATCH-4.2.0-0012/dbscripts</directory>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/dbscripts</outputDirectory>
-            <includes>
-                <include>**/oracle_rac.sql</include>
-            </includes>
         </fileSet>
 
         <!-- Jaggery modules -->
@@ -440,68 +265,47 @@
 
         <!-- cep -->
         <!--creating an empty input event adaptors directory-->
-        <fileSet>
-            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/inputeventadaptors</directory>
+        <!--<fileSet>
+            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-4.0.0/inputeventadaptors</directory>
             <outputDirectory>
                 ${stratos.distribution.name}-${project.version}/repository/deployment/server/inputeventadaptors
             </outputDirectory>
         </fileSet>
-        <!--creating an empty output event adaptors directory-->
+        &lt;!&ndash;creating an empty output event adaptors directory&ndash;&gt;
         <fileSet>
-            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/outputeventadaptors</directory>
+            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-4.0.0/outputeventadaptors</directory>
             <outputDirectory>
                 ${stratos.distribution.name}-${project.version}/repository/deployment/server/outputeventadaptors
             </outputDirectory>
         </fileSet>
-        <!--creating an empty event builders directory-->
+        &lt;!&ndash;creating an empty event builders directory&ndash;&gt;
         <fileSet>
-            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/eventbuilders</directory>
+            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-4.0.0/eventbuilders</directory>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/deployment/server/eventbuilders
             </outputDirectory>
         </fileSet>
-        <!--creating an empty event formatters directory-->
+        &lt;!&ndash;creating an empty event formatters directory&ndash;&gt;
         <fileSet>
-            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/eventformatters</directory>
+            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-4.0.0/eventformatters</directory>
             <outputDirectory>
                 ${stratos.distribution.name}-${project.version}/repository/deployment/server/eventformatters
             </outputDirectory>
         </fileSet>
-        <!--creating an empty execution plans directory-->
+        &lt;!&ndash;creating an empty execution plans directory&ndash;&gt;
         <fileSet>
-            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/executionplans</directory>
+            <directory>../../../../extensions/cep/modules/artifacts/wso2cep-4.0.0/executionplans</directory>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/deployment/server/executionplans
             </outputDirectory>
         </fileSet>
-        <!--customization scripts-->
+        &lt;!&ndash;customization scripts&ndash;&gt;
         <fileSet>
             <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/scripts
             </directory>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/scripts</outputDirectory>
-        </fileSet>
+        </fileSet>-->
     </fileSets>
 
     <dependencySets>
-        <dependencySet>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/lib</outputDirectory>
-            <includes>
-                <include>bouncycastle:bcprov-jdk15:jar</include>
-            </includes>
-        </dependencySet>
-        <!-- use the new tool to create a bundles -->
-        <dependencySet>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/lib/core/WEB-INF/lib</outputDirectory>
-            <includes>
-                <include>org.wso2.carbon:org.wso2.carbon.mediator.bridge:jar</include>
-            </includes>
-        </dependencySet>
-        <dependencySet>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/axis2/client/lib
-            </outputDirectory>
-            <includes>
-                <include>bouncycastle:bcprov-jdk15:jar</include>
-            </includes>
-            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
-        </dependencySet>
         <dependencySet>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/deployment/client/modules
             </outputDirectory>
@@ -528,13 +332,6 @@
             <outputDirectory>${stratos.distribution.name}-${project.version}/lib/endorsed</outputDirectory>
             <includes>
                 <include>org.apache.geronimo.specs:geronimo-jta_1.1_spec:jar</include>
-            </includes>
-        </dependencySet>
-        <dependencySet>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/components/dropins
-            </outputDirectory>
-            <includes>
-                <include>org.apache.stratos:org.wso2.carbon.ui:jar</include>
             </includes>
         </dependencySet>
     </dependencySets>
@@ -591,6 +388,16 @@
             <fileMode>600</fileMode>
         </file>
         <file>
+            <source>src/main/conf/hazelcast.properties</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/conf/sec.policy</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <file>
             <source>src/main/conf/mqtttopic.properties</source>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
             <filtered>true</filtered>
@@ -598,6 +405,24 @@
         </file>
         <file>
             <source>src/main/conf/event-broker.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>600</fileMode>
+        </file>
+        <file>
+            <source>src/main/conf/event-processor.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>600</fileMode>
+        </file>
+        <file>
+            <source>src/main/conf/output-event-adapters.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>600</fileMode>
+        </file>
+        <file>
+            <source>src/main/conf/input-event-adapters.xml</source>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
             <filtered>true</filtered>
             <fileMode>600</fileMode>
@@ -615,7 +440,9 @@
             <filtered>true</filtered>
         </file>
         <file>
-            <source>../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/streamdefinitions/stream-manager-config.xml</source>
+            <source>
+                ../../../../extensions/cep/modules/artifacts/wso2cep-3.0.0/streamdefinitions/stream-manager-config.xml
+            </source>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/</outputDirectory>
             <filtered>true</filtered>
         </file>
@@ -642,14 +469,14 @@
         </file>
         <!-- identity.xml and application-authentication.xml for oAuth feature -->
         <file>
-            <source>src/main/conf/identity.xml</source>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf</outputDirectory>
+            <source>src/main/conf/identity/identity.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>600</fileMode>
         </file>
         <file>
-            <source>src/main/conf/security/application-authentication.xml</source>
-            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/security/</outputDirectory>
+            <source>src/main/conf/identity/application-authentication.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/identity/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>600</fileMode>
         </file>
@@ -874,6 +701,18 @@
             <fileMode>644</fileMode>
         </file>
         <!-- End of Meta data service webapp -->
+        <file>
+            <source>src/main/conf/data-bridge/data-agent-config.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/data-bridge/
+            </outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>src/main/conf/event-processor.xml</source>
+            <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/
+            </outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
         <file>
             <source>src/main/conf/data-bridge/data-bridge-config.xml</source>
             <outputDirectory>${stratos.distribution.name}-${project.version}/repository/conf/data-bridge/

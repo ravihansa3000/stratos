@@ -261,6 +261,12 @@ echo CARBON_HOME environment variable is set to $CARBON_HOME
 
 cd "$CARBON_HOME"
 
+TMP_DIR=$CARBON_HOME/tmp
+if [ -d "$TMP_DIR" ]; then
+rm -rf "$TMP_DIR"
+fi
+
+
 START_EXIT_STATUS=121
 status=$START_EXIT_STATUS
 
@@ -291,12 +297,16 @@ do
     -Dconf.location="$CARBON_HOME/repository/conf" \
     -Dcom.atomikos.icatch.file="$CARBON_HOME/lib/transactions.properties" \
     -Dcom.atomikos.icatch.hide_init_file_path=true \
+    -Dorg.apache.jasper.compiler.Parser.STRICT_QUOTE_ESCAPING=false \
     -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true \
     -Dcom.sun.jndi.ldap.connect.pool.authentication=simple  \
     -Dcom.sun.jndi.ldap.connect.pool.timeout=3000  \
     -Dorg.terracotta.quartz.skipUpdateCheck=true \
     -Djava.security.egd=file:/dev/./urandom \
     -Dfile.encoding=UTF8 \
+    -Djava.net.preferIPv4Stack=true \
+    -Dcom.ibm.cacheLocalHost=true \
+    -DworkerNode=false \
     -Ddisable.cassandra.server.startup=true \
     -Djndi.properties.dir="$CARBON_HOME/repository/conf" \
     -Dthrift.client.config.file.path="$CARBON_HOME/repository/conf/thrift-client-config.xml" \

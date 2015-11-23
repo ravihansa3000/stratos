@@ -21,18 +21,10 @@ package org.apache.stratos.common.statistics.publisher;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.databridge.agent.thrift.Agent;
-import org.wso2.carbon.databridge.agent.thrift.AsyncDataPublisher;
-import org.wso2.carbon.databridge.agent.thrift.conf.AgentConfiguration;
-import org.wso2.carbon.databridge.agent.thrift.exception.AgentException;
-import org.wso2.carbon.databridge.agent.thrift.lb.DataPublisherHolder;
-import org.wso2.carbon.databridge.agent.thrift.lb.LoadBalancingDataPublisher;
-import org.wso2.carbon.databridge.agent.thrift.lb.ReceiverGroup;
-import org.wso2.carbon.databridge.agent.thrift.util.DataPublisherUtil;
+import org.wso2.carbon.databridge.agent.DataPublisher;
 import org.wso2.carbon.databridge.commons.Event;
 import org.wso2.carbon.databridge.commons.StreamDefinition;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,16 +36,18 @@ public class ThriftStatisticsPublisher implements StatisticsPublisher {
     private static final Log log = LogFactory.getLog(ThriftStatisticsPublisher.class);
 
     private StreamDefinition streamDefinition;
-    private LoadBalancingDataPublisher loadBalancingDataPublisher;
+    private DataPublisher dataPublisher;
     private List<ThriftClientInfo> thriftClientInfoList;
     private boolean enabled = false;
+    private String username;
+    private String password;
 
     /**
      * Credential information stored inside thrift-client-config.xml file
      * is parsed and assigned into ip,port,username and password fields
      *
-     * @param streamDefinition      Thrift Event Stream Definition
-     * @param thriftClientName      Thrift Client Name
+     * @param streamDefinition Thrift Event Stream Definition
+     * @param thriftClientName Thrift Client Name
      */
     public ThriftStatisticsPublisher(StreamDefinition streamDefinition, String thriftClientName) {
         ThriftClientConfig thriftClientConfig = ThriftClientConfig.getInstance();
@@ -61,54 +55,47 @@ public class ThriftStatisticsPublisher implements StatisticsPublisher {
         this.streamDefinition = streamDefinition;
 
         if (isPublisherEnabled()) {
-        	this.enabled = true;
+            this.enabled = true;
             init();
         }
     }
 
     private boolean isPublisherEnabled() {
-    	boolean publisherEnabled = false;
-    	for (ThriftClientInfo thriftClientInfo : thriftClientInfoList) {
-    		publisherEnabled = thriftClientInfo.isStatsPublisherEnabled();
-    		if(publisherEnabled){
-    			break;
-    		}
-		}    	
-		return publisherEnabled;
-	}
-
-	private void init() {
-        
-        // Initialize load balancing data publisher       
-        loadBalancingDataPublisher = new LoadBalancingDataPublisher(getReceiverGroups());
-        loadBalancingDataPublisher.addStreamDefinition(streamDefinition);
+        boolean publisherEnabled = false;
+        for (ThriftClientInfo thriftClientInfo : thriftClientInfoList) {
+            publisherEnabled = thriftClientInfo.isStatsPublisherEnabled();
+            if (publisherEnabled) {
+                break;
+            }
+        }
+        return publisherEnabled;
     }
 
-    private ArrayList<ReceiverGroup> getReceiverGroups() {
-    	
-        ArrayList<ReceiverGroup> receiverGroups = new ArrayList<ReceiverGroup>();    
-        
+    private void init() {
+        // Initialize load balancing data publisher
+        try {
+            dataPublisher = new DataPublisher(getReceiverURLSet(), username, password);
+        } catch (Exception e) {
+            throw new RuntimeException("Could not create data publisher.");
+        }
+    }
+
+    private String getReceiverURLSet() {
+        StringBuilder stringBuilder = new StringBuilder();
         for (ThriftClientInfo thriftClientInfo : thriftClientInfoList) {
-        	ArrayList<DataPublisherHolder> dataPublisherHolders = new ArrayList<DataPublisherHolder>();
-			DataPublisherHolder aNode = new DataPublisherHolder(null, buildUrl(thriftClientInfo), thriftClientInfo.getUsername(), thriftClientInfo.getPassword());
-			dataPublisherHolders.add(aNode);
-			ReceiverGroup group = new ReceiverGroup(dataPublisherHolders);
-			receiverGroups.add(group);
-		} 
-		return receiverGroups; 
-        
-	}
+            stringBuilder.append(buildUrl(thriftClientInfo));
+            username = thriftClientInfo.getUsername();
+            password = thriftClientInfo.getPassword();
+        }
+        return stringBuilder.toString();
+    }
 
-	private String buildUrl(ThriftClientInfo thriftClientInfo) {
-		String url = new StringBuilder()
-						.append("tcp://")
-						.append(thriftClientInfo.getIp())
-						.append(":")
-						.append(thriftClientInfo.getPort()).toString();				
-		return url;
-	}
+    private String buildUrl(ThriftClientInfo thriftClientInfo) {
+        return new StringBuilder().append("tcp://").append(thriftClientInfo.getIp()).append(":")
+                .append(thriftClientInfo.getPort()).toString();
+    }
 
-	@Override
+    @Override
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
         if (this.enabled) {
@@ -130,24 +117,15 @@ public class ThriftStatisticsPublisher implements StatisticsPublisher {
         Event event = new Event();
         event.setPayloadData(payload);
         event.setArbitraryDataMap(new HashMap<String, String>());
+        event.setStreamId(streamDefinition.getStreamId());
 
-        try {
-            if (log.isDebugEnabled()) {
-                log.debug(String.format("Publishing thrift event: [stream] %s [version] %s",
-                        streamDefinition.getName(), streamDefinition.getVersion()));
-            }
-            loadBalancingDataPublisher.publish(streamDefinition.getName(), streamDefinition.getVersion(), event);
-            if (log.isDebugEnabled()) {
-                log.debug(String.format("Successfully Published ********  thrift event: [stream] %s [version] %s",
-                        streamDefinition.getName(), streamDefinition.getVersion()));
-            }
-            
-            
-        } catch (AgentException e) {
-            if (log.isErrorEnabled()) {
-                log.error(String.format("Could not publish thrift event: [stream] %s [version] %s",
-                        streamDefinition.getName(), streamDefinition.getVersion()), e);
-            }
+        if (log.isDebugEnabled()) {
+            log.debug(String.format("Publishing thrift event: [stream] %s [version] %s", streamDefinition.getName(),
+                    streamDefinition.getVersion()));
+        }
+
+        if (!dataPublisher.tryPublish(event)) {
+            throw new RuntimeException("Data publisher rejected event.");
         }
     }
 }

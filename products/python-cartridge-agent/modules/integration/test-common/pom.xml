@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.stratos</groupId>
         <artifactId>python-cartridge-agent-integration</artifactId>
-        <version>4.1.5-SNAPSHOT</version>
+        <version>4.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>org.apache.stratos.python.cartridge.agent.integration.common</artifactId>
@@ -49,7 +49,7 @@
             <artifactId>org.apache.stratos.messaging</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>org.wso2.carbon</groupId>
+                    <groupId>org.wso2.carbon.analytics-common</groupId>
                     <artifactId>org.wso2.carbon.databridge.commons</artifactId>
                 </exclusion>
                 <exclusion>
